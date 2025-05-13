@@ -24,3 +24,9 @@ Route::get('/register', function () {
 Route::get('/about', function () {
     return view('about_us');
 })->name("about");
+Route::get('/contact', function () {
+    return view('contact');
+})->name("contact");
+Route::get('/product', function () {
+    return view('product');
+})->name("product");

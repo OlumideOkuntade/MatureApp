@@ -5,10 +5,10 @@
             <div class="col-md-2 mt-4">
                 <h6>Customer services</h6>
                 <ul>
-                    <li><a href="../contact.php">Customer Care</a></li>
-                    <li><a href="../product.php">Product</a></li>
-                    <li><a href="../product.php">Returns</a></li>
-                    <li><a href="../product.php">FAQ</a></li>
+                    <li><a href="{{route("contact")}}">Customer Care</a></li>
+                    <li><a href="{{route("product")}}">Product</a></li>
+                    <li><a href="{{route("product")}}">Returns</a></li>
+                    <li><a href="{{route("product")}}">FAQ</a></li>
                     <li><a href="{{route("login")}}">My Account</a></li>
                 </ul>
             </div>
@@ -16,7 +16,7 @@
                 <h6>Company</h6>
                 <ul>
                     <li><a href="{{route("about")}}">About Us</a></li>
-                    <li><a href="../contact.php">Contact Us</a></li>
+                    <li><a href="{{route("contact")}}">Contact Us</a></li>
                 </ul>
             </div>
             <div class="col-md-2 mt-4">

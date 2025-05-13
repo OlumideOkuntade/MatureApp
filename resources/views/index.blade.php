@@ -1,9 +1,9 @@
 @include("header")
     <div class="row mb-5">
         <div class="col-md-12" >
-            <div class=" header_container-first ">
+            <div class="header_container">
                 <div class ="overlay">
-                    <div >
+                    <div>
                         <h1 >Refined Fashion.</h1>
                         <h1>Unmatched Style.</h1>
                         <button class=" fw-bold btn btn-light btn-lg rounded-5 mt-3 ">Shop Now</button>
