@@ -36,7 +36,7 @@
                         <p class="fs-6 fw-bold lh-1">HF x 101 Avenue Hoodie Set</p>
                         <div class="d-flex justify-content-between align-items-start">
                             <p class="fs-4 fw-bold lh-1 ">$300</p>
-                            <button class="btn btn-success round-5 lh-1"><a href="#">Quick Buy</a></button>  
+                            <button class="btn btn-success round-5 lh-1 mt-4">Mature Fashion</button>  
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                         <p class="fs-6 fw-bold lh-1">HF x 101 Avenue Hoodie Set</p>
                         <div class="d-flex justify-content-between align-items-start">
                             <p class="fs-4 fw-bold lh-1 ">$300</p>
-                            <button class="btn btn-success round-5 lh-1"><a href="#">Quick Buy</a></button>  
+                            <button class="btn btn-success round-5 lh-1 mt-4">Mature Fashion</button>  
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                         <p class="fs-6 fw-bold lh-1">HF x 101 Avenue Hoodie Set</p>
                         <div class="d-flex justify-content-between align-items-start">
                             <p class="fs-4 fw-bold lh-1 ">$300</p>
-                            <button class="btn btn-success round-5 lh-1"><a href="#">Quick Buy</a></button>  
+                            <button class="btn btn-success round-5 lh-1 mt-4">Mature Fashion</button>  
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                         <p class="fs-6 fw-bold lh-1">HF x 101 Avenue Hoodie Set</p>
                         <div class="d-flex justify-content-between align-items-start">
                             <p class="fs-4 fw-bold lh-1 ">$300</p>
-                            <button class="btn btn-success round-5 lh-1"><a href="#">Quick Buy</a></button>  
+                            <button class="btn btn-success round-5 lh-1  mt-4">Mature Fashion</button>  
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                         <p class="fs-6 fw-bold lh-1">HF x 101 Avenue Hoodie Set</p>
                         <div class="d-flex justify-content-between align-items-start">
                             <p class="fs-4 fw-bold lh-1 ">$300</p>
-                            <button class="btn btn-success round-5 lh-1"><a href="#">Quick Buy</a></button>  
+                            <button class="btn btn-success round-5 lh-1 mt-4">Mature Fashion</button>  
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                         <p class="fs-6 fw-bold lh-1">HF x 101 Avenue Hoodie Set</p>
                         <div class="d-flex justify-content-between align-items-start">
                             <p class="fs-4 fw-bold lh-1 ">$300</p>
-                            <button class="btn btn-success round-5 lh-1"><a href="#">Quick Buy</a></button>  
+                            <button class="btn btn-success round-5 lh-1 mt-4">Mature Fashion</button>  
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                         <p class="fs-6 fw-bold lh-1">HF x 101 Avenue Hoodie Set</p>
                         <div class="d-flex justify-content-between align-items-start">
                             <p class="fs-4 fw-bold lh-1 ">$300</p>
-                            <button class="btn btn-success round-5 lh-1"><a href="#">Quick Buy</a></button>  
+                            <button class="btn btn-success round-5 lh-1 mt-4">Mature Fashion</button>  
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                         <p class="fs-6 fw-bold lh-1">HF x 101 Avenue Hoodie Set</p>
                         <div class="d-flex justify-content-between align-items-start">
                             <p class="fs-4 fw-bold lh-1 ">$300</p>
-                            <button class="btn btn-success round-5 lh-1"><a href="#">Quick Buy</a></button>  
+                            <button class="btn btn-success round-5 lh-1 mt-4">Mature Fashion</button>  
                         </div>
                     </div>
                 </div>
