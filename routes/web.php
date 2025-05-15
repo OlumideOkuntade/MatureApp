@@ -30,3 +30,9 @@ Route::get('/contact', function () {
 Route::get('/product', function () {
     return view('product');
 })->name("product");
+Route::get('/admin/login', function () {
+    return view('admin.login');
+})->name("admin.login");
+Route::get('/admin/logout', function () {
+    return view('admin.logout');
+})->name("admin.logout");

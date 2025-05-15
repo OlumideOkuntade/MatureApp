@@ -11,8 +11,9 @@
 </head>
 <body>
     <div class="container-fluid">
-        <!-- navigation -->       
-        <div class="row">
+        <!-- navigation -->
+        {{$slot}}
+        {{-- <div class="row">
             <div class="col-md-12">
                 <nav class="navbar navbar-expand-lg " id='nav_head'>
                     <div class="container-fluid ">
@@ -49,6 +50,6 @@
                     </div>
                 </nav>
             </div>
-        </div>
+        </div> --}}
     
   
