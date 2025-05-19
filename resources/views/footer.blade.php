@@ -6,7 +6,7 @@
                 <h6>Customer services</h6>
                 <ul>
                     <li><a href="{{route("contact")}}">Customer Care</a></li>
-                    <li><a href="{{route("product",['product' => $product->id])}}">Product</a></li>
+                    <li><a href="{{route("product",[$product->id])}}">Product</a></li>
                     {{-- <li><a href="{{route("product")}}">Returns</a></li>
                     <li><a href="{{route("product")}}">FAQ</a></li> --}}
                     <li><a href="{{route("login")}}">My Account</a></li>
