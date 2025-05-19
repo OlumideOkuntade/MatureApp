@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return view('index');
+    $gen1 = 'Men';
+    $gen2 = "Women";
+    $view = "View all";
+    return view('index')->with('key', $gen1 .' '. $gen2)->with('view',$view);
 });
 Route::get('/login', function () {
     return view('login');
@@ -27,8 +31,8 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name("contact");
-Route::get('/product', function () {
-    return view('product');
+Route::get('/product/{product}', function (Product $product ) {
+    return view('product')->with("product", $product);
 })->name("product");
 Route::get('/admin/login', function () {
     return view('admin.login');

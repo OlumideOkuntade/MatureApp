@@ -20,10 +20,12 @@
                 </div>
                 <div class="col-md-12 view_container-second" >
                     <div>
-                        <a href="#">Men</a>
-                        <a href="#">Women</a>
+                            {{$key}}
+                        {{-- <a href="#">Men</a>
+                        <a href="#">Women</a> --}}
+                      
                      </div>
-                    <button class="btn btn-dark btn-sm rounded-3 ">View All</button>
+                    <button class="btn btn-dark btn-sm rounded-3 ">{{$view}}</button>
                 </div>
             </section>
         </div>

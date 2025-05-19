@@ -1,8 +1,8 @@
-
 @include("header")
 
 <div class="row">
   <div class="col-md-11 mx-4 mt-5 ">
+      {{$product}}
       <h4 class="mb-4">PRODUCT</h4>
       <p>Can I return my product?</p>
       <p>We always aim for make sure our customers love our products, 
