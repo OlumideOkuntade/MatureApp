@@ -17,7 +17,8 @@ Route::get('/', function () {
     $gen1 = 'Men';
     $gen2 = "Women";
     $view = "View all";
-    return view('index')->with('key', $gen1 .' '. $gen2)->with('view',$view);
+    $product = Product::find(1);
+    return view('index')->with('key', $gen1 .' '. $gen2)->with('view',$view)->with("product", $product);
 });
 Route::get('/login', function () {
     return view('login');
