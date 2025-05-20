@@ -1,25 +1,3 @@
-{{-- <?php
-session_start();
-  require_once("partials/header.php");
-  $firstname = isset($_SESSION['firstname'])? $_SESSION['firstname']:'';
-  unset($_SESSION['firstname']);
-  $lastname = isset($_SESSION['lastname'])? $_SESSION['lastname']:'';
-  unset($_SESSION['lastname']);
-  $email = isset($_SESSION['email'])? $_SESSION['email']:'';
-  unset($_SESSION['email']);
-  $phone = isset($_SESSION['phone'])? $_SESSION['phone']:'';
-  unset($_SESSION['phone']);
-  $password = isset($_SESSION['pass'])? $_SESSION['pass']:'';
-  unset($_SESSION['pass']);
-  $radio = isset($_SESSION['radio'])? $_SESSION['radio']:'';
-  if($radio == "yes"){
-    $rad = "checked";
-  }elseif($radio == "no"){
-    $radd = "checked";
-  }
-  unset($_SESSION['radio']);
- 
-?> --}}
 @include("header")
 
 <div class="row">

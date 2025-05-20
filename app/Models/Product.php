@@ -9,13 +9,13 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function Category()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
      public function cartItem()
     {
-        return $this->hasOne(cartItem::class);
+        return $this->hasOne(CartItem::class);
     }
 
 }

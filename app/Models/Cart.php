@@ -10,6 +10,6 @@ class Cart extends Model
     use HasFactory;
       public function cartItem()
     {
-        return $this->hasOne(cartItem::class);
+        return $this->hasOne(CartItem::class);
     }
 }

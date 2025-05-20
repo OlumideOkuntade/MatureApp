@@ -25,7 +25,7 @@
                         <a href="#">Women</a> --}}
                       
                      </div>
-                    <button class="btn btn-dark btn-sm rounded-3 ">{{$view}} {{$product}}</button>
+                    <button class="btn btn-dark btn-sm rounded-3 ">{{$view}}</button>
                 </div>
             </section>
         </div>
