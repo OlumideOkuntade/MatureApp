@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     use HasFactory;
-      public function cartItem()
+      public function cartItems()
     {
-        return $this->hasOne(CartItem::class);
+        return $this->hasMany(CartItem::class);
     }
 }

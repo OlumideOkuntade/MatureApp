@@ -13,9 +13,9 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-     public function cartItem()
+     public function cartItems()
     {
-        return $this->hasOne(CartItem::class);
+        return $this->belongsToMany(CartItem::class);
     }
 
 }
