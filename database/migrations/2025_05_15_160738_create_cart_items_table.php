@@ -14,12 +14,13 @@ class CreateCartItemsTable extends Migration
     public function up()
     {
         Schema::create('cart_items', function (Blueprint $table) {
-             $table->id();
-            $table->integer("user_id");
-            $table->foreignId("product_id")->constrained();
-            $table->foreignId("cart_id")->constrained();
+            $table->id();
+            $table->integer("customer_id");
+            $table->foreignId("product_id");
+            $table->foreignId("cart_id");
             $table->unsignedInteger("quantity");
             $table->decimal('amount', total: 10, places: 2);
+            $table->timestamps();
         });
     }
 

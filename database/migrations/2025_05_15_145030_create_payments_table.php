@@ -15,13 +15,14 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-             $table->decimal('amount', total: 10, places: 2);
-            $table->integer('cust_id');
-            $table->enum('status',['pending','paid'])->default('pending');
-            $table->timestamp('date');
+            $table->decimal('amount', total: 10, places: 2);
+            $table->integer('customer_id');
+            $table->boolean('is_paid')->default('0');
             $table->string('reference');
             $table->integer('order_id');
             $table->text('data');
+            $table->timestamps();
+
         });
     }
 

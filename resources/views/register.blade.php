@@ -4,7 +4,7 @@
   <div class="col-md-4 offset-4 mt-5 register">
     <h6 class="fs-5">Create Account</h6>
      
-      <form action="process/process_register.php" method="post">
+      <form action="/register" method="post">
         <div class=' form-floating '>
           <input type="text" name="firstname" class='form-control mb-3 ' placeholder="Enter your Firstname">
           <label >First name</label>
@@ -36,9 +36,10 @@
         <button name="btn"class="btn btn-dark col-12 round-5 mb-2">Create</button>
         <p>By continuing, you agree to the Terms of use and Privacy Policy.</p> 
       </form> 
+
       <div class="mt-5 mb-5">
       <p>Already have an account?</p>
-        <button class="btn btn-outline-dark col-12 round-5"><a href="{{route("login")}}">Sign in</a></button>
+        <button class="btn btn-outline-dark col-12 round-5"><a href="/login">Sign in</a></button>
       </div>
   </div>
 </div> 

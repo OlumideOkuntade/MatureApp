@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Product;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,23 +19,21 @@ Route::get('/', function () {
     $gen1 = 'Men';
     $gen2 = "Women";
     $view = "View all";
-    $product = Product::find(1);
-    return view('index')->with('key', $gen1 .' '. $gen2)->with('view',$view)->with("product", $product);
+    return view('index')->with('key', $gen1 .' '. $gen2)->with('view',$view);
 });
-Route::get('/login', function () {
-    return view('login');
-})->name("login");
-Route::get('/register', function () {
-    return view('register');
-})->name("register");
+Route::get('/login', [LoginController::class,'create'])->name('login');
+Route::post('/login', [LoginController::class,'store'])->name('login');
+Route::get('/register', [RegisterController::class,'create'])->name('register');;
+Route::post('/register', [RegisterController::class,'store'])->name('register');;
+
 Route::get('/about', function () {
     return view('about_us');
 })->name("about");
 Route::get('/contact', function () {
     return view('contact');
 })->name("contact");
-Route::get('/product/{product}', function (Product $product ) {
-    return view('product')->with("product", $product);
+Route::get('/product', function ( ) {
+    return view('product');
 })->name("product");
 Route::get('/admin/login', function () {
     return view('admin.login');

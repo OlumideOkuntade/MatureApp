@@ -15,8 +15,8 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->timestamp("cart_date");
-            $table->integer("cart_userId");
+            $table->integer("customer_id");
+            $table->timestamps();
         });
     }
 
