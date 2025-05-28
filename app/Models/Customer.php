@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
+      protected $fillable = [
+        'firstname',
+        'lastname',
+        'phone',
+        'radio',
+        'email',
+        'password',
+    ];
       public function order()
     {
         return $this->hasMany(Order::class);
