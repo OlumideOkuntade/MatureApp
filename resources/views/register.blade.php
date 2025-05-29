@@ -2,9 +2,6 @@
 
 <div class="row">
   <div class="col-md-4 offset-4 mt-5 register">
-    @if(session()->has('success'))
-        <p class="bg-success text-light fs-5">{{session('success')}}</p>
-      @endif
     <h6 class="fs-5">Create Account</h6>
       <form action="/register" method="post">
         @csrf

@@ -27,8 +27,7 @@ class RegisterController extends Controller
             "password" => $data['password'], 
             "phone_number" => $data['phone']
         ]);
-        session()->flash('success','Registration successful, Please login');
-        return redirect()->back()->with('success','Registration successful, Please login');
+        return redirect()->to('/login')->with('success','Registration successful, Please login');
 
     } 
 }
