@@ -10,9 +10,18 @@ class LoginController extends Controller
     {
       return view('login');
     }  
-    public function store()
-    {
-      
+    public function store(){
+      $customer = request()->validate([
+        "email"=> "required",
+        "password" => "required"
+      ]);
        
+      if(auth()->attempt($customer)){
+        return redirect('/')->with('success','welcome Back!');
+      }
+
+      return back()
+        ->withInput()
+        ->withErrors(['email'=>'Email not found']);
     } 
 }

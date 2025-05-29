@@ -5,6 +5,7 @@ use App\models\Customer;
 use Illuminate\Http\Request;
 
 
+
 class RegisterController extends Controller
 {
     public function create(){
@@ -27,6 +28,7 @@ class RegisterController extends Controller
             "password" => $data['password'], 
             "phone_number" => $data['phone']
         ]);
+  
         return redirect()->to('/login')->with('success','Registration successful, Please login');
 
     } 

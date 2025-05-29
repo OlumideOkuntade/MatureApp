@@ -14,7 +14,10 @@
     </div>
 <!-- selct -->
         <div class="row view_container ms-5 mb-3 me-5">
-            <section>  
+            <section>
+                @if(session()->has('success'))
+                    <p class="bg-success text-light fs-5 mt-5">{{session('success')}}</p>
+                @endif
                 <div class="col-md-12 view_container-first mb-3">
                     <h3>New Arrivals</h3>
                 </div>
