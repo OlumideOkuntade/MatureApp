@@ -15,13 +15,14 @@ class LoginController extends Controller
         "email"=> "required",
         "password" => "required"
       ]);
-       
+
       if(auth()->attempt($customer)){
-        return redirect('/')->with('success','welcome Back!');
+        return redirect('/dashboard')->with('success','welcome Back!');
       }
 
       return back()
         ->withInput()
         ->withErrors(['email'=>'Email not found']);
+      
     } 
 }
