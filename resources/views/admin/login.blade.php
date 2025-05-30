@@ -27,24 +27,15 @@
     <div class="row">
       <div class="col-md-4 offset-4 mt-5 register">
         <h6 class="fs-5">Administrative login</h6>
-        {{-- <?php
-          if(isset($_SESSION["errormsg"])){
-            echo "<div class='alert alert-danger'>". $_SESSION["errormsg"] ."</div>";
-            unset($_SESSION["errormsg"]);
-          }
-          if(isset($_SESSION["feedback"])){
-            echo "<div class='alert alert-success'>". $_SESSION["feedback"] ."</div>";
-            unset($_SESSION["feedback"]);
-          }
-
-        ?> --}}
-        <form action="process/adminlogin_process.php" method="post">
+        
+        <form action="/admin/login" method="post">
+          @csrf
           <div class='form-floating'>
-            <input type="text" name="username" class='form-control mb-3'placeholder="Enter your username">
+            <input type="text" name="name" class='form-control mb-3'placeholder="Enter your username" value={{old('name')}}>
             <label>Enter your Username</label>
           </div>
           <div class='form-floating'>
-            <input type="password" name="pass" class='form-control mb-3 ' placeholder="Enter your password" >
+            <input type="password" name="password" class='form-control mb-3 ' placeholder="Enter your password" >
             <label>Enter your password</label>
           </div>
           <button name="btn"class="btn btn-dark col-12 round-5 mb-2">Login</button>

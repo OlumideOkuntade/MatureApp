@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
-
+use App\models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +26,17 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class,'create'])->name('login');
 Route::post('/login', [LoginController::class,'store'])->name('login');
 Route::post('/logout', [LoginController::class,'destroy'])->name('logout');
-Route::get('/register', [RegisterController::class,'create'])->name('register');;
-Route::post('/register', [RegisterController::class,'store'])->name('register');;
+Route::get('/register', [RegisterController::class,'create'])->name('register');
+Route::post('/register', [RegisterController::class,'store'])->name('register');
+Route::get('/new_product', [ProductController::class,'create'])->name('new_product');
+Route::post('/new)product', [ProductController::class,'store'])->name('new_product');
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $products = Product::all();
+    return view('dashboard')->with("products",$products);
 })->name("dashboard");
+Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login');
+Route::post('/admin/login', [AdminController::class,'store'])->name('admin.login');
+
 Route::get('/about', function () {
     return view('about_us');
 })->name("about");
@@ -38,9 +46,6 @@ Route::get('/contact', function () {
 Route::get('/product', function ( ) {
     return view('product');
 })->name("product");
-Route::get('/admin/login', function () {
-    return view('admin.login');
-})->name("admin.login");
 Route::get('/admin/logout', function () {
     return view('admin.logout');
 })->name("admin.logout");

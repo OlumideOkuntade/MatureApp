@@ -44,7 +44,6 @@
                                 <a class="btn dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Hi, Olumide
                                 </a>
-                                {{-- <a class="dropdown-item text-dark" href="/logout">Logout</a> --}}
                                 <ul class="dropdown-menu user-profile" style="border-radius:0px;background-color:white;">
                                     <li><a class="dropdown-item text-dark" href="#">Profile</a></li>
                                     <li><a class="dropdown-item text-dark" href="customer_orders.php">Orders</a></li>
@@ -55,7 +54,6 @@
                                             <button class="mt-2 ps-3 bg-body border-0">Logout</button>
                                         </form>
                                     </li>
-                                    
                                 </ul>
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping me-4"></i></a>
                                 <span>{{0}}</span>
