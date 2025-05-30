@@ -29,7 +29,7 @@ Route::post('/logout', [LoginController::class,'destroy'])->name('logout');
 Route::get('/register', [RegisterController::class,'create'])->name('register');
 Route::post('/register', [RegisterController::class,'store'])->name('register');
 Route::get('/new_product', [ProductController::class,'create'])->name('new_product');
-Route::post('/new)product', [ProductController::class,'store'])->name('new_product');
+Route::post('/new_product', [ProductController::class,'store'])->name('new_product');
 Route::get('/dashboard', function () {
     $products = Product::all();
     return view('dashboard')->with("products",$products);

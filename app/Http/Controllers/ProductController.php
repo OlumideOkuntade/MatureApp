@@ -18,14 +18,18 @@ class ProductController extends Controller
             "name"=> "required|max:100",
             "qty"=>"required|max:200",
             "price"=>"required",
-            "category_id"=>"required"
+            "category"=>"required",
+            "status"=>"required",
+            "status"=>"required",
         ]);
         $prod = new Product;
         $prod->name = request()->name;
-        $prod->qty = request()->qty;
+        $prod->quantity = request()->qty;
         $prod->price = request()->price;
-        $prod->category_id = request()->category_id;
+        $prod->status = request()->status;
+        $prod->image = "";
+        $prod->category_id = request()->category;
         $prod->save();
-        return redirect()->back()->with("success","post created successfully");
+        return redirect('/dashboard')->with("success","post created successfully");
     } 
 }
