@@ -83,6 +83,7 @@
                 </div>
             </div>
         </div>
+    <!-- end start card -->
  <!-- second card -->
         <div class="row ms-5 me-5 card_container">
             <div class="col-md-3 ">

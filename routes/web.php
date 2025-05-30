@@ -23,12 +23,12 @@ Route::get('/', function () {
 });
 Route::get('/login', [LoginController::class,'create'])->name('login');
 Route::post('/login', [LoginController::class,'store'])->name('login');
+Route::post('/logout', [LoginController::class,'destroy'])->name('logout');
 Route::get('/register', [RegisterController::class,'create'])->name('register');;
 Route::post('/register', [RegisterController::class,'store'])->name('register');;
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name("dashboard");
-
 Route::get('/about', function () {
     return view('about_us');
 })->name("about");

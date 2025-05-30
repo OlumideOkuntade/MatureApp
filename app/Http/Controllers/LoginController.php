@@ -24,5 +24,11 @@ class LoginController extends Controller
         ->withInput()
         ->withErrors(['email'=>'Email not found']);
       
-    } 
+    }
+    
+     public function destroy()
+    {
+      auth()->logout();
+      return redirect('/')->with('success','Goodbye!');
+    }  
 }

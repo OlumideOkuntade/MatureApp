@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="assets/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>MaturedfashionStores</title>
     <style>
         #nav_head span{
@@ -24,7 +24,6 @@
         .modal button a {
             text-decoration:none;
             color:white;
-        
         }
     </style>
 </head>
@@ -40,25 +39,26 @@
                         <span class="navbar-toggler-icon"></span>
                       </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent" >
-                            <a class="navbar-brand fw-bold me-auto fs-3 fst-italic" href="dashboard.php">Maturefashion</a>
+                            <a class="navbar-brand fw-bold me-auto fs-3 fst-italic" href="/">Maturefashion</a>
                             <div class="dropdown user-menu d-flex align-items-center">
                                 <a class="btn dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Hi, <?php echo $data->last_name ?>
+                                    Hi, Olumide
                                 </a>
+                                {{-- <a class="dropdown-item text-dark" href="/logout">Logout</a> --}}
                                 <ul class="dropdown-menu user-profile" style="border-radius:0px;background-color:white;">
                                     <li><a class="dropdown-item text-dark" href="#">Profile</a></li>
                                     <li><a class="dropdown-item text-dark" href="customer_orders.php">Orders</a></li>
                                     <li><a class="dropdown-item text-dark" href="payment_status.php">Payment details</a></li>
-                                    <li><a class="dropdown-item text-dark" href="logout.php">Logout</a></li>
+                                    <li>
+                                        <form action="/logout" method="post">
+                                            @csrf
+                                            <button class="mt-2 ps-3 bg-body border-0">Logout</button>
+                                        </form>
+                                    </li>
+                                    
                                 </ul>
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping me-4"></i></a>
-                                <span><?php 
-                                if(isset($_SESSION['counter'])){
-                                    echo $_SESSION['counter'];
-                                }else{
-                                    echo 0;
-                                }
-                                ?></span>
+                                <span>{{0}}</span>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,8 @@
             </div>
         </div>
 
-        {{'slot'}}                     
+        
+        {{$slot}}                     
     
 
 
