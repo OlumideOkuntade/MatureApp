@@ -1,15 +1,24 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Authenticatable
+class Customer extends  Model
 {
     use HasFactory;
-    use Notifiable;
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'password',
+        'phone_number'
+    ];
+
+      public function user()
+    {
+        return $this->hasOne(User::class);
+    }
    
       public function order()
     {

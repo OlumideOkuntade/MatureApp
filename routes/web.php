@@ -24,10 +24,10 @@ Route::get('/', function () {
     return view('index')->with('key', $gen1 .' '. $gen2)->with('view',$view);
 });
 Route::get('/login', [LoginController::class,'create'])->name('login');
-Route::post('/login', [LoginController::class,'store'])->name('login');
+Route::post('/login/store', [LoginController::class,'store'])->name('login.store');
 Route::post('/logout', [LoginController::class,'destroy'])->name('logout');
 Route::get('/register', [RegisterController::class,'create'])->name('register');
-Route::post('/register', [RegisterController::class,'store'])->name('register');
+Route::post('/register/store', [RegisterController::class,'store'])->name('register.store');
 Route::get('/new_product', [ProductController::class,'create'])->name('new_product');
 Route::post('/new_product', [ProductController::class,'store'])->name('new_product');
 Route::get('/dashboard', function () {

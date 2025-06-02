@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+@props(['name'])<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,7 +42,7 @@
                             <a class="navbar-brand fw-bold me-auto fs-3 fst-italic" href="/">Maturefashion</a>
                             <div class="dropdown user-menu d-flex align-items-center">
                                 <a class="btn dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Hi, Olumide
+                                    Hi, {{"$name"}}
                                 </a>
                                 <ul class="dropdown-menu user-profile" style="border-radius:0px;background-color:white;">
                                     <li><a class="dropdown-item text-dark" href="#">Profile</a></li>

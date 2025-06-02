@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -13,12 +14,13 @@ class AdminController extends Controller
     }  
 
     public function store(){
-        $admin = request()->validate([
+      $user = request()->validate([
         "name"=> "required",
-        "password" => "required"
+        "password" => "required",
+        'role'=> "required|admin"
       ]);
-        $ad = new Admin;
-      if(auth()->attempt($admin)){
+
+      if(auth()->attempt($user)){
         return redirect('/')->with('success','welcome Back!');
       }
 

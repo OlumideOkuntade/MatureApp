@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-md-4 offset-4 mt-5 register">
     <h6 class="fs-5">Create Account</h6>
-      <form action="/register" method="post">
+      <form action="/register/store" method="post">
         @csrf
         <div class=' form-floating '>
           <input type="text" name="firstname" class='form-control mb-3 ' placeholder="Enter your Firstname"value="{{old('firstname')}}">     

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\models\Customer;
+use App\models\User;
 use Illuminate\Http\Request;
 
 
@@ -13,24 +14,31 @@ class RegisterController extends Controller
     }  
     
     public function store(){
-        $data = request()->validate([
+        request()->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => 'required|email|lowercase|unique:customers,email',
+            'email' => 'required|email|unique:customers,email',
             'phone' => 'required',
             'password' =>'required|min:3',
-            'radio' => 'required'
+            'radio' => 'required',
        ]);
-        $request['password'] = bcrypt($data['password']);
-        $customer = Customer::insert([
-            "first_name" => $data['firstname'], 
-            "last_name" => $data['lastname'], 
-            "email" => $data['email'], 
-            "password" => $data['password'], 
-            "phone_number" => $data['phone']
+        
+        Customer::create([
+            "first_name" => request()->firstname, 
+            "last_name" => request()->lastname, 
+            "email" => request()->email, 
+            "password" => bcrypt(request()->password),
+            "phone_number" => request()->phone 
+        ]);
+        $customer = Customer::latest()->first();
+        $user = User::create([
+            "email" => request()->email, 
+            "password" => bcrypt(request()->password),
+            'role'=> 'user',
+            'customer_id'=> $customer->id
         ]);
 
-        auth()->login($customer);
+        auth()->login($user);
         return redirect()->to('/login')->with('success','Registration successful, Please login');
 
     } 

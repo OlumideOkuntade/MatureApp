@@ -7,7 +7,7 @@
     @endif
     <div class="login">
       <h6 class="fs-5 mt-4">Login</h6>
-      <form action="/login" method="post" class="mt-4">
+      <form action="/login/store" method="post" class="mt-4">
         @csrf
         <div class=' form-floating '>
           <input type="email" name="email" class='form-control mb-4 ' placeholder="Enter your email" value="{{old('email')}}" >

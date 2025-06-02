@@ -1,12 +1,16 @@
 
-<x-nav>
-        <x-modal/>
-       
-       
+<x-nav :name="auth()->user()->customer->first_name" >
+        <x-modal />
+
         <div class="row mb-5">
             <div class="col-md-12 ">
                 <h3 style="margin-bottom:20px;" class="text-center heading-title mt-2">Dashboard</h3> 
-                <h4 class="mx-5">Welcome back Olumide</h4>
+                <h4 class="mx-5"> 
+                    @if(session()->has('success'))
+                        <p class="text-dark fs-5 mt-5">{{session('success')}}</p>
+                    @endif
+                    Hi, {{auth()->user()->customer->first_name}} 
+                </h4>
                 <p class="mx-5">You are logged in, Please select any cloth of choice for purchase.</p>
             </div>
         </div>
