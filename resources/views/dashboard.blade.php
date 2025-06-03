@@ -24,7 +24,7 @@
                             <p class="fs-6 fw-bold lh-1">{{$product->name}}</p>
                             <div class="d-flex justify-content-between align-items-start">
                                 <p class="fs-4 fw-bold lh-1 "> {{'₦'.number_format($product->price)}}</p>
-                                <button class="btn btn-success round"><a href={{route('product/{product}',['product'=> $product->id])}}>Quick Buy</a></button>   
+                                <button class="btn btn-success round"><a href={{route('product.purchase',['product'=> $product->id])}}>Quick Buy</a></button>   
                             </div>
                         </div>
                     </div>

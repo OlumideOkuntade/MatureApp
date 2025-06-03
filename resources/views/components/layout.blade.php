@@ -131,7 +131,7 @@
         </footer>
 
     </div>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js" ></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.bundle.min.js" ></script>
     <script src="js/jquery.js"></script>
 </body>
 </html>

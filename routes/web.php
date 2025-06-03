@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ProductPurchaseController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 
@@ -34,10 +35,13 @@ Route::get('/dashboard', function () {
     $products = Product::all();
     return view('dashboard')->with("products", $products);
 })->name("dashboard");
-Route::get('/product/{product}', function (Product $product) {//route binding
-    
-    return view('purchase')->with('product',$product);
-})->name("product/{product}");
+Route::get('/confirm_purchase/{product}', function (Product $product) {
+   
+    return view('confirm_purchase')->with('product',$product);
+})->name("confirm.purchase");
+
+Route::get('/product/{product}', [ProductPurchaseController::class,'create'])->name("product.purchase");
+Route::post('/product/store', [ProductPurchaseController::class,'store'])->name("product.store");
 Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class,'store'])->name('admin.login');
 
