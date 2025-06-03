@@ -32,8 +32,12 @@ Route::get('/new_product', [ProductController::class,'create'])->name('new_produ
 Route::post('/new_product/store', [ProductController::class,'store'])->name('new_product');
 Route::get('/dashboard', function () {
     $products = Product::all();
-    return view('dashboard')->with("products",$products);
+    return view('dashboard')->with("products", $products);
 })->name("dashboard");
+Route::get('/product/{product}', function (Product $product) {//route binding
+    
+    return view('purchase')->with('product',$product);
+})->name("product/{product}");
 Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class,'store'])->name('admin.login');
 
