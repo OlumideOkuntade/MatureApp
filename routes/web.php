@@ -5,7 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
-use App\models\Product;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ Route::post('/logout', [LoginController::class,'destroy'])->name('logout');
 Route::get('/register', [RegisterController::class,'create'])->name('register');
 Route::post('/register/store', [RegisterController::class,'store'])->name('register.store');
 Route::get('/new_product', [ProductController::class,'create'])->name('new_product');
-Route::post('/new_product', [ProductController::class,'store'])->name('new_product');
+Route::post('/new_product/store', [ProductController::class,'store'])->name('new_product');
 Route::get('/dashboard', function () {
     $products = Product::all();
     return view('dashboard')->with("products",$products);

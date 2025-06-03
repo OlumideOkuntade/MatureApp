@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\models\Customer;
-use App\models\User;
+use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
