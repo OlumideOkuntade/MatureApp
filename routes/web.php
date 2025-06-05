@@ -35,6 +35,7 @@ Route::get('/dashboard', function () {
     $products = Product::all();
     return view('dashboard')->with("products", $products);
 })->name("dashboard");
+
 Route::get('/confirm_purchase/{product}', function (Product $product) {
    
     return view('confirm_purchase')->with('product',$product);
@@ -42,6 +43,9 @@ Route::get('/confirm_purchase/{product}', function (Product $product) {
 
 Route::get('/product/{product}', [ProductPurchaseController::class,'create'])->name("product.purchase");
 Route::post('/product/store', [ProductPurchaseController::class,'store'])->name("product.store");
+Route::get('/product/index', [ProductPurchaseController::class,'index'])->name("product.index");
+
+
 Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class,'store'])->name('admin.login');
 

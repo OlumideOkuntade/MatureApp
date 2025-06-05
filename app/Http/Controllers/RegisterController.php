@@ -20,7 +20,7 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:customers,email',
             'phone' => 'required',
             'password' =>'required|min:3',
-            'radio' => 'required',
+            'radio' => 'required'
        ]);
         
         Customer::create([
