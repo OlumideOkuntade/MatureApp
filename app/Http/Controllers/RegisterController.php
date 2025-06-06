@@ -17,7 +17,7 @@ class RegisterController extends Controller
         request()->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => 'required|email|unique:customers,email',
+            'email' => 'required|email|unique:users,email',
             'phone' => 'required',
             'password' =>'required|min:3',
             'radio' => 'required'
@@ -26,8 +26,6 @@ class RegisterController extends Controller
         Customer::create([
             "first_name" => request()->firstname, 
             "last_name" => request()->lastname, 
-            "email" => request()->email, 
-            "password" => bcrypt(request()->password),
             "phone_number" => request()->phone 
         ]);
         $customer = Customer::latest()->first();

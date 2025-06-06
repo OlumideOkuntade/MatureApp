@@ -10,9 +10,7 @@ use App\Models\CartItem;
 class ProductPurchaseController extends Controller
 {
     public function create(Product $product){
-
         return view('purchase')->with('product', $product);
-
     }  
     public function store(){
         $userId = auth()->id();
@@ -33,24 +31,16 @@ class ProductPurchaseController extends Controller
             $getProductExitInCartItem->increment('amount', $amount);
              $getProductExitInCartItem->save();
         }else{
+            $cat = Cart::latest()->first();
             $cart = new CartItem;
             $cart->customer_id =  $userId;
             $cart->product_id = $productId;
             $cart->quantity = $quantity;
-            $cart->cart_id = $cartUserId->id;
+            $cart->cart_id = $cat->id;
             $cart->amount = $amount;
             $cart->save();
         }
         return redirect()->route('confirm.purchase', ['product' => $productId]);
     }
-    public function index(){
-        $userId = auth()->id();
-        $cartItems = CartItem::where('customer_id', $userId)->get();
-        if($cartItems) {
-            $cartCount = $cartItems->count();
-            $cartTotal = $cartItems->sum('amount');
-        }
-        return view('component.modal')->with('cartCount', $cartCount)->with('cartTotal',$cartTotal);
-        
-    } 
+  
 }

@@ -1,6 +1,5 @@
 <x-layout :name="auth()->user()->customer->first_name">
       <x-modal/>
-
       <div class="row">
             <div class="col-md-6 ms-5 mt-5 mb-5">
                 <img src="/images/bg.jpeg" class="img-fluid" style="width:280px;">
