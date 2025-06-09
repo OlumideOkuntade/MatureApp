@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->foreignId("customer_id");
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('role')->default('user');
+            $table->string('role')->default('customer');
             $table->timestamps();
         });
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Customer;
 use App\Models\CartItem;
 
 class ProductPurchaseController extends Controller
@@ -13,17 +14,21 @@ class ProductPurchaseController extends Controller
         return view('purchase')->with('product', $product);
     }  
     public function store(){
-        $userId = auth()->id();
-        $cartUserId = Cart::latest()->where('customer_id', $userId)->first();
+        $user = auth()->user();
+        if ($user->role === 'customer'){
+        $customer = $user->customer; // one-to-one relationship
+        $customer_id = $customer->id;
+        } 
+        $cartUserId = Cart::where('customer_id', $customer_id)->first();
         if(!$cartUserId){
             $cat = new Cart;
-            $cat->customer_id = $userId;
+            $cat->customer_id = $customer_id;
             $cat->save();
         }
         $productId = request()->productId; 
         $quantity = request()->qty;
         $amount = request()->qty * request()->price;
-        $getProductExitInCartItem = CartItem::where('customer_id',$userId)
+        $getProductExitInCartItem = CartItem::where('customer_id',$customer_id)
                                 ->where('product_id',$productId)
                                 ->first();
         if($getProductExitInCartItem){
@@ -33,7 +38,7 @@ class ProductPurchaseController extends Controller
         }else{
             $cat = Cart::latest()->first();
             $cart = new CartItem;
-            $cart->customer_id =  $userId;
+            $cart->customer_id = $customer_id;
             $cart->product_id = $productId;
             $cart->quantity = $quantity;
             $cart->cart_id = $cat->id;

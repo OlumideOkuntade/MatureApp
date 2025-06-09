@@ -39,7 +39,7 @@
                         <span class="navbar-toggler-icon"></span>
                       </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent" >
-                            <a class="navbar-brand fw-bold me-auto fs-3 fst-italic" href="/">Maturefashion</a>
+                            <a class="navbar-brand fw-bold me-auto fs-3 fst-italic" href="/dashboard">Maturefashion</a>
                             <div class="dropdown user-menu d-flex align-items-center">
                                 <a class="btn dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Hi, {{"$name"}}
