@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProductPurchaseController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
+use App\Models\CartItem;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,17 +28,27 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class,'create'])->name('login');
 Route::post('/login/store', [LoginController::class,'store'])->name('login.store');
 Route::post('/logout', [LoginController::class,'destroy'])->name('logout');
+
 Route::get('/register', [RegisterController::class,'create'])->name('register');
 Route::post('/register/store', [RegisterController::class,'store'])->name('register.store');
+
 Route::get('/new_product', [ProductController::class,'create'])->name('new_product');
 Route::post('/new_product/store', [ProductController::class,'store'])->name('new_product');
+
 Route::get('/dashboard', function () {
     $products = Product::all();
-    return view('dashboard')->with("products", $products);
+
+    $user = auth()->user();
+    if($user->role === 'customer'){
+        $customer = $user->customer;
+        $customer_id = $customer->id;
+    }
+    $cartItems = CartItem::where("customer_id", $customer_id)->get();
+    $count = CartItem::where("customer_id", $customer_id)->count();
+    return view('dashboard')->with("products", $products)->with("cartItems", $cartItems)->with('count',$count);
 })->name("dashboard");
 
 Route::get('/confirm_purchase/{product}', function (Product $product) {
-   
     return view('confirm_purchase')->with('product',$product);
 })->name("confirm.purchase");
 

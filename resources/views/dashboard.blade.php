@@ -1,6 +1,6 @@
 
-<x-layout :name="auth()->user()->customer->first_name" >
-        <x-modal />
+<x-layout :name="auth()->user()->customer->first_name" :count="$count" >
+        <x-modal :cartitems="$cartItems"/>
 
         <div class="row mb-5">
             <div class="col-md-12 ">

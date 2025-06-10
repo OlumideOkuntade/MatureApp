@@ -1,4 +1,4 @@
-
+@props(["cartitems"])
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,13 +48,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td> </td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
+                                            @if($cartitems ?? false){
+                                                    @foreach($cartitems as $cartitem)
+                                                        <tr>
+                                                            <td>{{$cartitem->quantity}}</td>
+                                                            <td>{{$cartitem->quantity}}</td>
+                                                            <td>{{$cartitem->quantity}}</td>
+                                                            <td>{{'₦'. number_format($cartitem->amount)}}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                }
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>

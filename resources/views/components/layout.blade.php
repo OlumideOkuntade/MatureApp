@@ -1,4 +1,4 @@
-@props(['name'])<!DOCTYPE html>
+@props(['name','count'])<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,6 @@
             color:white;
             width:20px;
             text-align:center;
-            /* height:20px; */ 
             font-weight:bold;
             background-color:red;
             border-radius:50%;
@@ -42,7 +41,7 @@
                             <a class="navbar-brand fw-bold me-auto fs-3 fst-italic" href="/dashboard">Maturefashion</a>
                             <div class="dropdown user-menu d-flex align-items-center">
                                 <a class="btn dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Hi, {{"$name"}}
+                                    Hi, {{$name}}
                                 </a>
                                 <ul class="dropdown-menu user-profile" style="border-radius:0px;background-color:white;">
                                     <li><a class="dropdown-item text-dark" href="#">Profile</a></li>
@@ -56,7 +55,7 @@
                                     </li>
                                 </ul>
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping me-4"></i></a>
-                                <span>{{0}}</span>
+                                <span>{{$count ?? 0}}</span>
                             </div>
                         </div>
                     </div>

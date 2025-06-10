@@ -16,7 +16,7 @@ class ProductPurchaseController extends Controller
     public function store(){
         $user = auth()->user();
         if ($user->role === 'customer'){
-        $customer = $user->customer; // one-to-one relationship
+        $customer = $user->customer;
         $customer_id = $customer->id;
         } 
         $cartUserId = Cart::where('customer_id', $customer_id)->first();
