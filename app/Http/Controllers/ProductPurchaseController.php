@@ -11,7 +11,15 @@ use App\Models\CartItem;
 class ProductPurchaseController extends Controller
 {
     public function create(Product $product){
-        return view('purchase')->with('product', $product);
+        $user = auth()->user();
+        if($user->role === 'customer'){
+        $customer = $user->customer;
+        $customer_id = $customer->id;
+    }
+    $cartItem = CartItem::where("customer_id", $customer_id)->get();
+    $count = CartItem::where("customer_id", $customer_id)->count();
+    $total = CartItem::where("customer_id", $customer_id)->sum('amount');
+        return view('purchase')->with('product', $product)->with("cartItem", $cartItem)->with("count",$count)->with("total", $total );
     }  
     public function store(){
         $user = auth()->user();

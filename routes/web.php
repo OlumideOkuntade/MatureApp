@@ -43,13 +43,22 @@ Route::get('/dashboard', function () {
         $customer = $user->customer;
         $customer_id = $customer->id;
     }
-    $cartItems = CartItem::where("customer_id", $customer_id)->get();
+    $cartItem = CartItem::where("customer_id", $customer_id)->get();
     $count = CartItem::where("customer_id", $customer_id)->count();
-    return view('dashboard')->with("products", $products)->with("cartItems", $cartItems)->with('count',$count);
+    $total = CartItem::where("customer_id", $customer_id)->sum('amount');
+    return view('dashboard')->with("products", $products)->with("cartItem", $cartItem)->with('count',$count)->with('total',$total);
 })->name("dashboard");
 
 Route::get('/confirm_purchase/{product}', function (Product $product) {
-    return view('confirm_purchase')->with('product',$product);
+    $user = auth()->user();
+    if($user->role === 'customer'){
+        $customer = $user->customer;
+        $customer_id = $customer->id;
+    }
+    $cartItem = CartItem::where("customer_id", $customer_id)->get();
+    $count = CartItem::where("customer_id", $customer_id)->count();
+    $total = CartItem::where("customer_id", $customer_id)->sum('amount');
+    return view('confirm_purchase')->with('product',$product)->with("cartItem", $cartItem)->with('count',$count)->with('total',$total);;
 })->name("confirm.purchase");
 
 Route::get('/product/{product}', [ProductPurchaseController::class,'create'])->name("product.purchase");

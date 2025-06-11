@@ -1,4 +1,4 @@
-@props(["cartitems"])
+@props(["cartitem","total"])
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +13,6 @@
             color:white;
             width:20px;
             text-align:center;
-            /* height:20px; */ 
             font-weight:bold;
             background-color:red;
             border-radius:50%;
@@ -48,13 +47,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($cartitems ?? false){
-                                                    @foreach($cartitems as $cartitem)
+                                            @if($cartitem ?? false){
+                                                    @foreach($cartitem as $cart)
                                                         <tr>
-                                                            <td>{{$cartitem->quantity}}</td>
-                                                            <td>{{$cartitem->quantity}}</td>
-                                                            <td>{{$cartitem->quantity}}</td>
-                                                            <td>{{'₦'. number_format($cartitem->amount)}}</td>
+                                                            <td><img src="/images/bg.jpeg" class="img-fluid" style="width:30px;"></td>
+                                                            <td>{{$cart->product->name}}</td>
+                                                            <td>{{$cart->quantity}}</td>
+                                                            <td>{{'₦'. number_format($cart->amount)}}</td>
                                                         </tr>
                                                     @endforeach
                                                 }
@@ -65,7 +64,11 @@
                             </div>
                         </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-dark"><a href="order_purchase.php">Checkout</a></button>   
+                        <button type="submit" class="btn btn-dark"><a href="order_purchase.php"> 
+                            @if($total ?? false)
+                            {{'₦'.number_format($total)}} Checkout
+                            @endif
+                        </a></button>   
                     </div>
                 </div>
             </div>
