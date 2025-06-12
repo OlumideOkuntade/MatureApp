@@ -35,6 +35,7 @@ class ProductPurchaseController extends Controller
         }
         $productId = request()->productId; 
         $quantity = request()->qty;
+        //$size = request()->size;
         $amount = request()->qty * request()->price;
         $getProductExitInCartItem = CartItem::where('customer_id',$customer_id)
                                 ->where('product_id',$productId)

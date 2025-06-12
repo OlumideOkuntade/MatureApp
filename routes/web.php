@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductPurchaseController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
@@ -72,10 +73,11 @@ Route::get('/order_purchase', function(){
     return view('order_purchase')->with("cartItem", $cartItem)->with('total',$total);
 })->name("order.purchase");
 
-
 Route::get('/product/{product}', [ProductPurchaseController::class,'create'])->name("product.purchase");
 Route::post('/product/store', [ProductPurchaseController::class,'store'])->name("product.store");
-Route::get('/product/index', [ProductPurchaseController::class,'index'])->name("product.index");
+
+Route::get('/confirm_order', [OrderController::class,'create'])->name('confirm.order');
+Route::post('/confirm_order/store', [OrderController::class,'store'])->name('confirm.order.store');
 
 
 Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login');

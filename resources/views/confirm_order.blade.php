@@ -63,7 +63,7 @@
 
 
 
-         <div class="row">
+         {{-- <div class="row">
             <div class="col-md-10 offset-1 mt-5">
                   <table class="table table-bordered">
                         <thead>
@@ -79,7 +79,11 @@
                                     <tr>
                                         <td class="text-center"><img src="/images/bg.jpeg" class="img-fluid" style="width:40px;"></td>
                                         <td class="text-center">{{$cart->product->name}}</td>
-                                        <td class="text-center">{{'NGN'. number_format($cart->amount)}}</td>
+                                        <td class="text-center">
+                                            @if($total ?? false)
+                                                {{'NGN'. number_format($total)}}
+                                            @endif
+                                        </td>
                                     </tr> 
                                 @endforeach
                             @endif
@@ -93,22 +97,11 @@
                             {{'NGN'. number_format($total)}}
                         @endif
                 </p>
-                <form action="{{route("confirm.order.store")}}" method="post">
-                    @csrf
-                    @if($cartItem ?? false)
-                        @foreach($cartItem as $cart)
-                            <input type="hidden"name="productId" value="{{$cart->product_id}}">
-                        @endforeach
-                    @endif
-                    <input type="hidden"name="customerId" value="{{auth()->user()->customer->id}}">
-                    @if($total ?? false)
-                        <input type="hidden"name="total" value="{{($total)}}">
-                    @endif
-
-                    <button class="btn btn-dark float-end">Confirm order</button>    
+                <form action="process/process_order.php" method="post">
+                    <button class="btn btn-dark float-end" name="btnorder">Confirm order</button>
                 </form>
             </div>
-        </div>
+        </div> --}}
 
         <footer>
             <div class="row mt-5 ms-5 me-5 footer_container" >
