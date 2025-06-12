@@ -58,8 +58,20 @@ Route::get('/confirm_purchase/{product}', function (Product $product) {
     $cartItem = CartItem::where("customer_id", $customer_id)->get();
     $count = CartItem::where("customer_id", $customer_id)->count();
     $total = CartItem::where("customer_id", $customer_id)->sum('amount');
-    return view('confirm_purchase')->with('product',$product)->with("cartItem", $cartItem)->with('count',$count)->with('total',$total);;
+    return view('confirm_purchase')->with('product',$product)->with("cartItem", $cartItem)->with('count',$count)->with('total',$total);
 })->name("confirm.purchase");
+
+Route::get('/order_purchase', function(){
+    $user = auth()->user();
+    if($user->role === 'customer'){
+        $customer = $user->customer;
+        $customer_id = $customer->id;
+    }
+    $cartItem = CartItem::where("customer_id", $customer_id)->get();
+    $total = CartItem::where("customer_id", $customer_id)->sum('amount');
+    return view('order_purchase')->with("cartItem", $cartItem)->with('total',$total);
+})->name("order.purchase");
+
 
 Route::get('/product/{product}', [ProductPurchaseController::class,'create'])->name("product.purchase");
 Route::post('/product/store', [ProductPurchaseController::class,'store'])->name("product.store");

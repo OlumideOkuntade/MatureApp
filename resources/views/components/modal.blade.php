@@ -64,9 +64,9 @@
                             </div>
                         </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-dark"><a href="order_purchase.php"> 
+                        <button type="submit" class="btn btn-dark"><a href={{route('order.purchase')}}> 
                             @if($total ?? false)
-                            {{'₦'.number_format($total)}} Checkout
+                             Checkout ({{'₦'.number_format($total)}})
                             @endif
                         </a></button>   
                     </div>
