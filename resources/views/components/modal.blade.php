@@ -52,6 +52,7 @@
                                                         <tr>
                                                             <td><img src="/images/bg.jpeg" class="img-fluid" style="width:30px;"></td>
                                                             <td>{{$cart->product->name}}</td>
+                                                            <td>{{$cart->size}}</td>
                                                             <td>{{$cart->quantity}}</td>
                                                             <td>{{'₦'. number_format($cart->amount)}}</td>
                                                         </tr>

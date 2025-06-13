@@ -17,6 +17,9 @@ class CreateOrderProductsTable extends Migration
             $table->id();
             $table->foreignId("product_id");
             $table->foreignId("order_id");
+            $table->string('size');
+            $table->unsignedInteger("quantity");
+            $table->decimal('amount',total:10,places:2);
             $table->timestamps();
         });
     }

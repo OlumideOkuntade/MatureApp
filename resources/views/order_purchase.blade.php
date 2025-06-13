@@ -95,16 +95,6 @@
                 </p>
                 <form action="{{route("confirm.order.store")}}" method="post">
                     @csrf
-                    @if($cartItem ?? false)
-                        @foreach($cartItem as $cart)
-                            <input type="hidden"name="productId" value="{{$cart->product_id}}">
-                        @endforeach
-                    @endif
-                    <input type="hidden"name="customerId" value="{{auth()->user()->customer->id}}">
-                    @if($total ?? false)
-                        <input type="hidden"name="total" value="{{($total)}}">
-                    @endif
-
                     <button class="btn btn-dark float-end">Confirm order</button>    
                 </form>
             </div>

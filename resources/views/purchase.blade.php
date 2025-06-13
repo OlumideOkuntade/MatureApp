@@ -32,7 +32,7 @@
                               <input type="number" min='1' name="qty" class="col-4 rounded text-center" >
                         </div>
                         <div>
-                              <button class="btn btn-dark col-12 rounded-7 col-12 mb-4"name="addcart">Add to Cart</button>
+                              <button class="btn btn-dark col-12 rounded-7 col-12 mb-4">Add to Cart</button>
                         </div>
                 </form>
             </div>

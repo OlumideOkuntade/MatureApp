@@ -17,9 +17,8 @@ class OrderController extends Controller
         
         $order = new Order;
         $order->customer_id = request()->customerId;
-        $order->product_id = request()->productId;
         $order->size = "small";
-        $order->amount = request()->total;
+        $order->amount = request()->amount;
         $order->save();
     }
 }
