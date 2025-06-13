@@ -34,7 +34,7 @@ class OrderController extends Controller
           'size' => $item->size,
           'amount' => $item->amount,
           'quantity' => $item->quantity,
-          ]);
+        ]);
       }
 
     }
