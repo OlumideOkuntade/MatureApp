@@ -14,11 +14,34 @@ class OrderController extends Controller
       return view('confirm_order');
     }  
     public function store(){  
-        
-        $order = new Order;
-        $order->customer_id = request()->customerId;
-        $order->size = "small";
-        $order->amount = request()->amount;
+      $order = new Order;
+      $user = auth()->user();
+      if($user->role === 'customer'){
+        $customer = $user->customer;
+        $carts = $customer->carts;
+        $customer_id = $customer->id;
+        $order->customer_id = $customer_id;
         $order->save();
+        if($carts ?? false){
+          foreach($carts as $cat){
+            $cat_id = $cat->id;
+            $cartItems = CartItem::where('cart_id', $cat_id)->get();
+          }
+        }
+      }
+      foreach ($cartItems as $item) {
+        $order->products()->attach($item->product_id, [
+          'size' => $item->size,
+          'amount' => $item->amount,
+          'quantity' => $item->quantity,
+          ]);
+      }
+
     }
-}
+  
+  
+  
+  
+  
+  
+  }

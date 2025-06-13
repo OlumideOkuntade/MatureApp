@@ -43,7 +43,7 @@
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Image</th><th>Description</th><th>Qty</th><th>Amount</th>
+                                                <th>Image</th><th>Description</th><th>size</th><th>Qty</th><th>Amount</th>
                                             </tr>
                                         </thead>
                                         <tbody>
