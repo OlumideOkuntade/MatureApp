@@ -36,12 +36,37 @@ class OrderController extends Controller
           'quantity' => $item->quantity,
         ]);
       }
+      return redirect()->route("my_orders");
 
     }
-  
-  
-  
-  
-  
-  
-  }
+
+    public function index(){
+      $user = auth()->user();
+      if($user->role === 'customer'){
+        $customer = $user->customer;
+        $orders = $customer->orders;
+        $customer_id = $customer->id;
+        foreach($orders as $order){
+          $order_id = $order->id;
+        }
+      }
+      $order = Order::where("customer_id", $customer_id )->get();
+    
+      return view('orders.index');
+    
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

@@ -1,4 +1,4 @@
-@props(['name','count'])<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,21 +41,8 @@
                             <a class="navbar-brand fw-bold me-auto fs-3 fst-italic" href="/dashboard">Maturefashion</a>
                             <div class="dropdown user-menu d-flex align-items-center">
                                 <a class="btn dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Hi, {{$name}}
+                                    Hi, {{auth()->user()->customer->first_name}}
                                 </a>
-                                <ul class="dropdown-menu user-profile" style="border-radius:0px;background-color:white;">
-                                    <li><a class="dropdown-item text-dark" href="#">Profile</a></li>
-                                    <li><a class="dropdown-item text-dark" href={{route('my_orders')}}>Orders</a></li>
-                                    <li><a class="dropdown-item text-dark" href="payment_status.php">Payment details</a></li>
-                                    <li>
-                                        <form action="/logout" method="post">
-                                            @csrf
-                                            <button class="mt-2 ps-3 bg-body border-0">Logout</button>
-                                        </form>
-                                    </li>
-                                </ul>
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping me-4"></i></a>
-                                <span>{{$count ?? 0}}</span>
                             </div>
                         </div>
                     </div>
@@ -63,11 +50,31 @@
             </div>
         </div>
 
-        
-        {{$slot}}                     
-    
 
 
+         <div class="row">
+            <div class="col-md-10 offset-1 mt-5">
+                  <table class="table table-bordered">
+                        <thead>
+                              <tr>
+                                    <th class="text-center">Order No</th>
+                                    <th class="text-center">Product Name</th>
+                                    <th class="text-center">Size</th>
+                                    <th class="text-center">Amount</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                            @if($order ?? false)
+                                    <tr>
+                                        <td class="text-center"><img src="/images/bg.jpeg" class="img-fluid" style="width:40px;"></td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
+                                    </tr>
+                            @endif
+                        </tbody>
+                  </table>
+            </div>
+        </div>
 
         <footer>
             <div class="row mt-5 ms-5 me-5 footer_container" >

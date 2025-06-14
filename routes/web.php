@@ -94,7 +94,7 @@ Route::post('/product/store', [ProductPurchaseController::class,'store'])->name(
 
 Route::get('/confirm_order', [OrderController::class,'create'])->name('confirm.order');
 Route::post('/confirm_order/store', [OrderController::class,'store'])->name('confirm.order.store');
-
+Route::get('/my-orders', [OrderController::class,'index'])->name('my_orders');
 
 Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class,'store'])->name('admin.login');
