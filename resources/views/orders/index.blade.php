@@ -58,18 +58,23 @@
                         <thead>
                               <tr>
                                     <th class="text-center">Order No</th>
+                                    <th class="text-center">Product Image</th>
                                     <th class="text-center">Product Name</th>
                                     <th class="text-center">Size</th>
                                     <th class="text-center">Amount</th>
                               </tr>
                         </thead>
                         <tbody>
-                            @if($order ?? false)
-                                    <tr>
-                                        <td class="text-center"><img src="/images/bg.jpeg" class="img-fluid" style="width:40px;"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                    </tr>
+                            @if($orderProducts ?? null)
+                                @foreach($orderProducts as $item )
+                                <tr>
+                                    <td class="text-center">{{$item->order_id }}</td>
+                                    <td class="text-center"><img src="/images/bg.jpeg" class="img-fluid" style="width:40px;"></td>
+                                    <td class="text-center">{{$item->product_name }}</td>
+                                    <td class="text-center">{{$item->product_size}}</td>
+                                    <td class="text-center">{{$item->amount}}</td>
+                                </tr>
+                                @endforeach
                             @endif
                         </tbody>
                   </table>

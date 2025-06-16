@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\CartItem;
+use App\Models\Customer;
 
 use Illuminate\Http\Request;
 
@@ -44,16 +45,25 @@ class OrderController extends Controller
       $user = auth()->user();
       if($user->role === 'customer'){
         $customer = $user->customer;
-        $orders = $customer->orders;
         $customer_id = $customer->id;
-        foreach($orders as $order){
-          $order_id = $order->id;
+      }
+      $customer = Customer::with('orders.products')->findOrFail($customer_id);
+      $orderProducts = collect();
+      foreach ($customer->orders as $order) {
+        foreach ($order->products as $product) {
+          $orderProducts->push((object)[
+            'order_id' => $order->id,
+            'order_date' => $order->created_at,
+            'product_id' => $product->id,
+            'product_name' => $product->name,
+            'product_size' => $product->size,
+            'quantity' => $product->pivot->quantity,
+            'price' => $product->pivot->price,
+            'amount' => $product->pivot->amount
+          ]);
         }
       }
-      $order = Order::where("customer_id", $customer_id )->get();
-    
-      return view('orders.index');
-    
+      return view('orders.index')->with('orderProducts',$orderProducts);
     }
 
 
