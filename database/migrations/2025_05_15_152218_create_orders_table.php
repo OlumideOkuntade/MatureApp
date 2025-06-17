@@ -16,6 +16,9 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained();
+            $table->string('status')->default('pending');
+            $table->string('payment_status')->default('pending');
+            $table->decimal('amount', total: 10, places: 2);
             $table->timestamps();
         });
     }

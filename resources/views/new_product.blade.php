@@ -1,4 +1,4 @@
-<x-nav>
+<x-layout>
     
 <div class="row">
       <div class="col-md-4 offset-4 mt-5 register">
@@ -58,4 +58,4 @@
       </div>
 </div>
 
-</x-nav>
+</x-layout>

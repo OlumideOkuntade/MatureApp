@@ -48,4 +48,15 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Customer::class);
     }
+
+       public function isCustomer()
+    {
+        $user = auth()->user();
+        if($user->role === 'customer'){
+            $customer = $user->customer;
+            return $customer;
+        }
+    }
+
+
 }
