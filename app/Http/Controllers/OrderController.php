@@ -42,6 +42,7 @@ class OrderController extends Controller
         'quantity' => $item->quantity
       ]);
     }
+    CartItem::where('cart_id', $cat_id)->delete();
     return redirect()->route("my_orders");
   }
 
@@ -64,6 +65,7 @@ class OrderController extends Controller
     }
     return view('orders.index')->with("orderContent", $orderContent);
   }
+
   public function show($order_id){
     $order = Order::with('products')->findOrFail($order_id);
     $orderedProduct = collect();
@@ -75,8 +77,9 @@ class OrderController extends Controller
         "size" => $product->pivot->size
       ]);
     }
-    return view("orders.show")->with("orderedProduct", $orderedProduct); 
+    return view("orders.show")->with("orderedProduct", $orderedProduct ?? null); 
   }
+
 
 
 
