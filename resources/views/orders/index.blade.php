@@ -11,6 +11,7 @@
                                     <th class="text-center"> Status</th>
                                     <th class="text-center">Payment Status</th>
                                     <th class="text-center">View Product</th>
+                                    <th class="text-center">Payment</th>
                               </tr>
                         </thead>
                         <tbody>
@@ -23,6 +24,7 @@
                                                 <td class="text-center">{{$content->status }}</td>
                                                 <td class="text-center">{{$content->payment_status}}</td>
                                                 <td class="text-center"><button><a href={{route('my_order',["order_id"=> $content->order_no])}}><i class="fa-solid fa-eye"></i></a></button></td>
+                                                <td class="text-center"><a href="">Make Payment</a></td>
                                           </tr>
                                     @endforeach
                               @endif
