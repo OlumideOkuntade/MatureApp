@@ -32,7 +32,7 @@
         <div class="col-md-12">
             <nav class="navbar navbar-expand-lg " id='nav_head'>
                 <div class="container-fluid ">
-                    <a class="navbar-brand fw-bold me-auto fs-3 fst-italic" href="{{route("admin.login")}}">Maturefashion</a>
+                    <a class="navbar-brand fw-bold me-auto fs-3 fst-italic" href="{{route("admin.dashboard")}}">Maturefashion</a>
                     <a href={{route('admin.logout')}}>LOGOUT</a>
                 </div>
               </nav>
