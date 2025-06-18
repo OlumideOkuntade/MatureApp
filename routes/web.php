@@ -103,6 +103,9 @@ Route::post('/admin/store', [AdminController::class,'store'])->name('admin.store
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->name("admin.dashboard");
+Route::get('/admin/logout', function () {
+    return view('admin.logout');
+})->name("admin.logout");
 
 
 Route::get('/about', function () {
@@ -114,6 +117,3 @@ Route::get('/contact', function () {
 Route::get('/product', function ( ) {
     return view('product');
 })->name("product");
-Route::get('/admin/logout', function () {
-    return view('admin.logout');
-})->name("admin.logout");

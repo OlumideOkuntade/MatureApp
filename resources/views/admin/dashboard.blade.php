@@ -33,7 +33,7 @@
             <nav class="navbar navbar-expand-lg " id='nav_head'>
                 <div class="container-fluid ">
                     <a class="navbar-brand fw-bold me-auto fs-3 fst-italic" href="{{route("admin.login")}}">Maturefashion</a>
-                    <a href="#">REGISTER</a>
+                    <a href={{route('admin.logout')}}>LOGOUT</a>
                 </div>
               </nav>
             </div>
@@ -84,7 +84,8 @@
         </nav>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Dashboard</h1>
+            <h3 class="h2">Dashboard</h3>
+            <h6>Welcome {{auth()->user()->customer->first_name}}</h6>
           </div>
           <canvas class="my-4 w-100" id="myChart" width="2000" height="180"></canvas>
         </main>
