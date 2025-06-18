@@ -28,17 +28,18 @@
       <div class="col-md-4 offset-4 mt-5 register">
         <h6 class="fs-5">Administrative login</h6>
         
-        <form action="/admin/login" method="post">
+        <form action="/admin/store" method="post">
           @csrf
           <div class='form-floating'>
-            <input type="text" name="name" class='form-control mb-3'placeholder="Enter your username" value={{old('name')}}>
-            <label>Enter your Username</label>
+            <input type="text" name="email" class='form-control mb-3'placeholder="Enter your username" value={{old('email')}}>
+            <label>Enter your email</label>
+            
           </div>
           <div class='form-floating'>
             <input type="password" name="password" class='form-control mb-3 ' placeholder="Enter your password" >
             <label>Enter your password</label>
           </div>
-          <button name="btn"class="btn btn-dark col-12 round-5 mb-2">Login</button>
+          <button class="btn btn-dark col-12 round-5 mb-2">Login</button>
         </form> 
       </div>
     </div> 

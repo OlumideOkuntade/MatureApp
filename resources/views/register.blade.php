@@ -8,44 +8,32 @@
         <div class=' form-floating '>
           <input type="text" name="firstname" class='form-control mb-3 ' placeholder="Enter your Firstname"value="{{old('firstname')}}">     
           <label >First name</label>
-          @error('firstname')
-            <p class="text-danger">{{$message}}</p>
-          @enderror
+          <x-error name="firstname" />
         </div>
         <div class=' form-floating '>
           <input type="text" name="lastname" class='form-control mb-3' placeholder="Enter your Lastname"value="{{old('lastname')}}">
           <label >Last name</label>
-           @error('lastname')
-            <p class="text-danger fs-6">{{$message}}</p>
-          @enderror
+           <x-error name="lastname" />
         </div>
         <div class=' form-floating '>
           <input type="email" name="email" class='form-control mb-3'placeholder="Enter your email"value="{{old('email')}}" >
           <label>Enter your email</label>
-           @error('email')
-            <p class="text-danger">{{$message}}</p>
-          @enderror
+           <x-error name="email" />
         </div>
         <div class=' form-floating '>
           <input type="text" name="phone" class='form-control mb-3 ' placeholder="Enter phone number"value="{{old('phone')}}" >
           <label>Phone number</label>
-          @error('phone')
-            <p class="text-danger">{{$message}}</p>
-          @enderror
+          <x-error name="phone" />
         </div>
         <div class=' form-floating '>
           <input type="password" name="password" class='form-control mb-3'placeholder="Enter your password" >
           <label>Enter your password</label>
-          @error('password')
-            <p class="text-danger">{{$message}}</p>
-          @enderror
+          <x-error name="password" />
         </div>
         <label>Would you like to receive updates on Mature latest products, 
           releases and exclusive partnerships in line with our privacy policy?</label>
         <div>
-          @error('radio')
-            <p class="text-danger">{{$message}}</p>
-          @enderror
+          <x-error name="radio" />
           <input type="radio" name="radio" class="mb-2" value ="yes"
            {{old('radio') == "yes" ? 'checked': ''}}> Yes
         </div>

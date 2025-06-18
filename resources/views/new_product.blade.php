@@ -44,9 +44,10 @@
                   <div>
                         <label for="category">Product category</label>
                         <select name="category" id="category"class="form-select mb-3">
-                              <option value="#">Select Category</option>
                               @foreach($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                    <option value="{{$category->id}}"
+                                          {{old("category") == $category->id ? 'selected':'' }}>{{$category->name}}
+                                    </option>
                               @endforeach
                         </select>
                           @error('category')

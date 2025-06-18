@@ -31,15 +31,12 @@ Route::get('/login', [LoginController::class,'create'])->name('login');
 Route::post('/login/store', [LoginController::class,'store'])->name('login.store');
 Route::post('/logout', [LoginController::class,'destroy'])->name('logout');
 
-Route::get('/register', [RegisterController::class,'create'])->name('register');
-Route::post('/register/store', [RegisterController::class,'store'])->name('register.store');
-
-Route::get('/new_product', [ProductController::class,'create'])->name('new_product');
-Route::post('/new_product/store', [ProductController::class,'store'])->name('new_product');
+Route::get('/register', [RegisterController::class,'create'])->middleware("guest")->name('register');
+Route::post('/register/store', [RegisterController::class,'store'])->middleware("guest")->name('register.store');
 
 Route::get('/dashboard', function () {
     $products = Product::all();
-
+    
     $user = auth()->user();
     if($user->role === 'customer'){
         $customer = $user->customer;
@@ -54,7 +51,10 @@ Route::get('/dashboard', function () {
         }
     }
     return view('dashboard')->with("products", $products)->with("cartItem", $cartItem ?? null)->with('count', $count ?? null )->with('total',$total ?? null);
-})->name("dashboard");
+})->middleware("role")->name("dashboard");
+
+Route::get('/product/{product}', [ProductPurchaseController::class,'create'])->middleware("role")->name("product.purchase");
+Route::post('/product/store', [ProductPurchaseController::class,'store'])->middleware("role")->name("product.store");
 
 Route::get('/confirm_purchase/{product}', function (Product $product) {
   $user = auth()->user();
@@ -71,7 +71,7 @@ Route::get('/confirm_purchase/{product}', function (Product $product) {
         }
     }
     return view('confirm_purchase')->with('product',$product)->with("cartItem", $cartItem ?? null)->with('count',$count ?? null)->with('total',$total ?? null);
-})->name("confirm.purchase");
+})->name("confirm.purchase")->middleware("auth");
 
 Route::get('/order_purchase', function(){
     $user = auth()->user();
@@ -87,18 +87,23 @@ Route::get('/order_purchase', function(){
         }
     }
     return view('order_purchase')->with("cartItem", $cartItem ?? null )->with('total',$total ?? null);
-})->name("order.purchase");
-
-Route::get('/product/{product}', [ProductPurchaseController::class,'create'])->name("product.purchase");
-Route::post('/product/store', [ProductPurchaseController::class,'store'])->name("product.store");
+})->middleware("auth")->name("order.purchase");
 
 Route::get('/confirm_order', [OrderController::class,'create'])->name('confirm.order');
 Route::post('/confirm_order/store', [OrderController::class,'store'])->name('confirm.order.store');
 Route::get('/my-orders', [OrderController::class,'index'])->name('my_orders');
 Route::get('/my-orders/{order_id}', [OrderController::class,'show'])->name('my_order');
 
+Route::get('/new_product', [ProductController::class,'create'])->name('new_product');
+Route::post('/new_product/store', [ProductController::class,'store'])->name('new_product');
+
 Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login');
-Route::post('/admin/login', [AdminController::class,'store'])->name('admin.login');
+Route::post('/admin/store', [AdminController::class,'store'])->name('admin.store');
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->name("admin.dashboard");
+
 
 Route::get('/about', function () {
     return view('about_us');

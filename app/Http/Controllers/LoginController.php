@@ -26,7 +26,7 @@ class LoginController extends Controller
       
     }
     
-     public function destroy()
+    public function destroy()
     {
       auth()->logout();
       return redirect('/')->with('success','Goodbye!');
