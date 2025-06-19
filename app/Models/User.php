@@ -51,11 +51,7 @@ class User extends Authenticatable
 
        public function isCustomer()
     {
-        $user = auth()->user();
-        if($user->role === 'customer'){
-            $customer = $user->customer;
-            return $customer;
-        }
+       return $this->role === 'customer';
     }
 
 

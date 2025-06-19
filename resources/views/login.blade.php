@@ -9,19 +9,9 @@
       <h6 class="fs-5 mt-4">Login</h6>
       <form action="/login/store" method="post" class="mt-4">
         @csrf
-        <div class=' form-floating '>
-          <input type="email" name="email" class='form-control mb-4 ' placeholder="Enter your email" value="{{old('email')}}" >
-          <label for='email'>Enter your email</label>
-          @error('email')
-            <p class="text-danger">{{$message}}</p>
-          @enderror
-        </div>
-        <div class=' form-floating '>
-          <input type="password" name="password" class='form-control mb-4' placeholder="Enter your password" >
-          <label for='password'>Enter your password</label>
-        </div>
+        <x-input name='email' type='email' label='Enter your'/>
+        <x-input name='password' type='password' label='Enter your'/>
         <button class="btn btn-dark col-6 round-5 col-12 mb-4"name="login">Login</button>
-        <div>
       </form>
     </div>
     <div class="mt-5 mb-5" >

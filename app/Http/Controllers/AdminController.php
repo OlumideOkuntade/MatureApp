@@ -7,15 +7,17 @@ use App\Models\Admin;
 use App\Models\User;
 
 class AdminController extends Controller
-{
-      public function create()
+  {
+    public function create()
     {
       return view('admin.login');
     }  
 
     public function store(){
+      $user = new User;
+      $customer = $user->isCustomer();
       $user = auth()->user();
-      if($user->role === "admin"){
+      if($user !== $customer){
         $user = request()->validate([
           "email"=> "required",
           "password" => "required"
@@ -31,4 +33,11 @@ class AdminController extends Controller
         ->withErrors(['email'=>'detail not found']);
       
     }
-}
+
+     public function destroy()
+    {
+      auth()->logout();
+      return redirect('/admin/login')->with('success','Goodbye!');
+    } 
+
+  }

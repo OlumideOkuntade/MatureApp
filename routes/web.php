@@ -11,16 +11,6 @@ use App\Models\Product;
 use App\Models\CartItem;
 use App\Models\Cart;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 Route::get('/', function () {
     $gen1 = 'Men';
     $gen2 = "Women";
@@ -57,7 +47,7 @@ Route::get('/product/{product}', [ProductPurchaseController::class,'create'])->m
 Route::post('/product/store', [ProductPurchaseController::class,'store'])->middleware("role")->name("product.store");
 
 Route::get('/confirm_purchase/{product}', function (Product $product) {
-  $user = auth()->user();
+    $user = auth()->user();
     if($user->role === 'customer'){
         $customer = $user->customer;
         $cart = $customer->carts;
@@ -97,17 +87,6 @@ Route::get('/my-orders/{order_id}', [OrderController::class,'show'])->name('my_o
 Route::get('/new_product', [ProductController::class,'create'])->name('new_product');
 Route::post('/new_product/store', [ProductController::class,'store'])->name('new_product');
 
-Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login');
-Route::post('/admin/store', [AdminController::class,'store'])->name('admin.store');
-
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->name("admin.dashboard");
-Route::get('/admin/logout', function () {
-    return view('admin.logout');
-})->name("admin.logout");
-
-
 Route::get('/about', function () {
     return view('about_us');
 })->name("about");
@@ -117,3 +96,17 @@ Route::get('/contact', function () {
 Route::get('/product', function ( ) {
     return view('product');
 })->name("product");
+
+//admin route
+
+Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login');
+Route::post('/admin/store', [AdminController::class,'store'])->name('admin.store');
+Route::get('/admin/logout', [AdminController::class,'destroy'])->name('admin.logout');
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->name("admin.dashboard");
+
+
+
+

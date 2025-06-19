@@ -2,7 +2,7 @@
 
       <div class="row">
             <div class="col-md-10 offset-1 mt-5">
-                  <table class="table table-bordered">
+                  <table class="table table-bordered table-hover">
                         <thead>
                               <tr>
                                     <th class="text-center">Order No</th>

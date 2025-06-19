@@ -30,15 +30,8 @@
         
         <form action="/admin/store" method="post">
           @csrf
-          <div class='form-floating'>
-            <input type="text" name="email" class='form-control mb-3'placeholder="Enter your username" value={{old('email')}}>
-            <label>Enter your email</label>
-            
-          </div>
-          <div class='form-floating'>
-            <input type="password" name="password" class='form-control mb-3 ' placeholder="Enter your password" >
-            <label>Enter your password</label>
-          </div>
+          <x-input name='email' type='email' label='Enter your' />
+          <x-input name='password' type='password' label='Enter your'/>
           <button class="btn btn-dark col-12 round-5 mb-2">Login</button>
         </form> 
       </div>

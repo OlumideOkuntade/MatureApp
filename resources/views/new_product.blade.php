@@ -46,7 +46,7 @@
                         <select name="category" id="category"class="form-select mb-3">
                               @foreach($categories as $category)
                                     <option value="{{$category->id}}"
-                                          {{old("category") == $category->id ? 'selected':'' }}>{{$category->name}}
+                                          {{old("category") == $category->id ? 'selected': '' }}>{{$category->name}}
                                     </option>
                               @endforeach
                         </select>
