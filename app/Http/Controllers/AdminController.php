@@ -15,16 +15,14 @@ class AdminController extends Controller
 
     public function store(){
       $user = new User;
-      $customer = $user->isCustomer();
-      $user = auth()->user();
-      if($user !== $customer){
-        $user = request()->validate([
+      if(!$user->isCustomer()){
+        $admin = request()->validate([
           "email"=> "required",
           "password" => "required"
         ]);
       }
 
-      if(auth()->attempt($user)){
+      if(auth()->attempt($admin)){
         return redirect('/admin/dashboard')->with('success','welcome Back!');
       }
 

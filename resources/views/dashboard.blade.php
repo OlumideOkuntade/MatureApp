@@ -1,7 +1,7 @@
 
 <x-layout :name="auth()->user()->customer->first_name" count="{{$count}}" >
         <x-modal :cartitem="$cartItem" total={{$total}} />
-
+        
         <div class="row mb-5">
             <div class="col-md-12 ">
                 <h3 style="margin-bottom:20px;" class="text-center heading-title mt-2">Dashboard</h3> 
