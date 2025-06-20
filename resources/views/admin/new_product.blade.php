@@ -1,9 +1,9 @@
-<x-layout>
+<x-no_cartlayout>
     
 <div class="row">
       <div class="col-md-4 offset-4 mt-5 register">
             <h6 class="fs-5">Add Product</h6>
-           <form action="/new_product" method="post">
+           <form action="/new_product/store" method="post" enctype="multipart/form-data">
                   @csrf
                   <div>
                         <label for="name">Product name</label>
@@ -28,8 +28,10 @@
                   </div>
                   <div>
                         <label for="file">Upload Image</label>
-                        <input type="file" name="file"  class="form-control mb-3" placeholder="please upload file">
-
+                        <input type="file" name="image"  class="form-control mb-3" placeholder="please upload file">
+                        @error('image')
+                              <p class="text-danger">{{$message}}</p>
+                        @enderror
                   </div>
                   <div>
                         <label for="status">Status</label>
@@ -37,7 +39,7 @@
                               <option value="active">Active</option>
                               <option value="inactive">Inactive</option>
                         </select>
-                          @error('status')
+                        @error('status')
                               <p class="text-danger">{{$message}}</p>
                         @enderror
                   </div>
@@ -50,7 +52,7 @@
                                     </option>
                               @endforeach
                         </select>
-                          @error('category')
+                        @error('category')
                               <p class="text-danger">{{$message}}</p>
                         @enderror
                   </div>
@@ -59,4 +61,4 @@
       </div>
 </div>
 
-</x-layout>
+</x-no_cartlayout>

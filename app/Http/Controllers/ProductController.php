@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function create(){
         $categories = Category::all();
-      return view('new_product')->with("categories", $categories);
+      return view('admin.new_product')->with("categories", $categories );
     } 
 
     public function store()
@@ -20,16 +20,26 @@ class ProductController extends Controller
             "price"=>"required",
             "category"=>"required",
             "status"=>"required",
-            "status"=>"required",
         ]);
         $prod = new Product;
         $prod->name = request()->name;
         $prod->quantity = request()->qty;
         $prod->price = request()->price;
         $prod->status = request()->status;
-        $prod->image = "";
         $prod->category_id = request()->category;
+        $prod->image = "";
         $prod->save();
-        return redirect('/dashboard')->with("success","post created successfully");
+        return redirect('/admin/dashboard')->with("success","post created successfully");
     } 
+
+      public function index(){
+       
+    } 
+
+
+
 }
+
+
+
+

@@ -64,7 +64,8 @@ Route::get('/confirm_purchase/{product}', function (Product $product) {
 })->name("confirm.purchase")->middleware("auth");
 
 Route::get('/order_purchase', function(){
-    $user = auth()->user();
+    
+    $user = auth()->user(); //usually returns a User model
     if($user->role === 'customer'){
         $customer = $user->customer;
         $cart = $customer->carts;
@@ -84,9 +85,6 @@ Route::post('/confirm_order/store', [OrderController::class,'store'])->name('con
 Route::get('/my-orders', [OrderController::class,'index'])->name('my_orders');
 Route::get('/my-orders/{order_id}', [OrderController::class,'show'])->name('my_order');
 
-Route::get('/new_product', [ProductController::class,'create'])->name('new_product');
-Route::post('/new_product/store', [ProductController::class,'store'])->name('new_product');
-
 Route::get('/about', function () {
     return view('about_us');
 })->name("about");
@@ -102,6 +100,9 @@ Route::get('/product', function ( ) {
 Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login');
 Route::post('/admin/store', [AdminController::class,'store'])->name('admin.store');
 Route::get('/admin/logout', [AdminController::class,'destroy'])->name('admin.logout');
+
+Route::get('/new_product', [ProductController::class,'create'])->name('new_product');
+Route::post('/new_product/store', [ProductController::class,'store'])->name('new_product.store');
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');

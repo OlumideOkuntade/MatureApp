@@ -56,7 +56,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="all_product.php">
+                <a class="nav-link" href={{route('new_product') }}>
                   <span data-feather="shopping-cart"></span>
                   Products
                 </a>
