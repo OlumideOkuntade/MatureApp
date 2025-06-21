@@ -1,20 +1,22 @@
-<x-no_cartlayout>
+<x-admin_layout>
     
 <div class="row">
-      <div class="col-md-4 offset-4 mt-5 register">
+      <div class="col-md-7 offset-1 mt-5 register">
             <h6 class="fs-5">Add Product</h6>
+            <button class="btn btn-light mb-4 float-end"><a href="/all_products">All product</a></button>
+            
            <form action="/new_product/store" method="post" enctype="multipart/form-data">
                   @csrf
                   <div>
-                        <label for="name">Product name</label>
+                        <label for="name" class="mt-5">Product name</label>
                         <input type="text" name="name" class="form-control mb-3" value = {{old('name')}}>
                         @error('name')
                               <p class="text-danger">{{$message}}</p>
                         @enderror
                   </div>
                   <div>
-                        <label for="qty">Quantity</label>
-                        <input type="number" name="qty" class="form-control mb-3"value ={{old('qty')}}>
+                        <label for="quantity">Quantity</label>
+                        <input type="number" name="quantity" class="form-control mb-3"value ={{old('qty')}}>
                           @error('qty')
                               <p class="text-danger">{{$message}}</p>
                         @enderror
@@ -61,4 +63,4 @@
       </div>
 </div>
 
-</x-no_cartlayout>
+</x-admin_layout>

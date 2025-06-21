@@ -9,6 +9,13 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+      'name',
+      'quantity',
+      'price',
+      'category_id',
+      'status'
+    ];
     public function category()
     {
         return $this->belongsTo(Category::class);

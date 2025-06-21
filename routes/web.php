@@ -101,10 +101,14 @@ Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login
 Route::post('/admin/store', [AdminController::class,'store'])->name('admin.store');
 Route::get('/admin/logout', [AdminController::class,'destroy'])->name('admin.logout');
 
+Route::get('/all_products', [ProductController::class,'index'])->name('all_products');
 Route::get('/new_product', [ProductController::class,'create'])->name('new_product');
 Route::post('/new_product/store', [ProductController::class,'store'])->name('new_product.store');
+Route::get('/edit_product/{product}', [ProductController::class,'edit'])->name('edit_product');
+Route::post('/update_product/{product}', [ProductController::class,'update'])->name('update_product');
+Route::delete('/delete_product/{product}', [ProductController::class,'destroy'])->name('delete_product');
 
-Route::get('/admin/dashboard', function () {
+Route::get('/admin/dashboard', function (){
     return view('admin.dashboard');
 })->name("admin.dashboard");
 
