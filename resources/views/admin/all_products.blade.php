@@ -7,9 +7,11 @@
             <button class="btn btn-dark mb-5 float-end"><a href="/new_product">Add product</a></button>
             
             @if(session('success'))
-                  <p class="text-success">Product Update successfully</p>
+                  <p class="bg-success text-light fs-5 mt-5">{{session('success')}}</p>
             @elseif (session('delete'))
-                  <p class="text-danger">Product deleted successfully</p>
+                  <p class="bg-success text-light fs-5 mt-5">{{session('delete')}}</p>
+            @elseif(session('add'))
+                   <p class="bg-success text-light fs-5 mt-5">{{session('add')}}</p>
             @endif
             <table class="table table-striped table-sm mt-5">
                   <thead>
@@ -32,7 +34,7 @@
                                           <td>{{$product->name}}</td>
                                           <td>{{$product->quantity}}</td>
                                           <td>{{number_format($product->price)}}</td>
-                                          <td><button class="btn btn-secondary ms-3"><a href="/edit_product/{{$product->id }}"> Edit</a></button>  </td>
+                                          <td><button class="btn btn-secondary ms-3"><a href="/edit_product/{{$product->id }}">Edit</a></button>  </td>
                                           
                                           <td>
                                                 <form method="post" action="/delete_product/{{$product->id}}">

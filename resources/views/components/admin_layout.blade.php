@@ -78,7 +78,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="all_customers.php">
+                        <a class="nav-link" href="/all_users">
                         <span data-feather="users"></span>
                         Customers
                         </a>

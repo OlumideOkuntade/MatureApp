@@ -17,7 +17,7 @@
                   <div>
                         <label for="quantity">Quantity</label>
                         <input type="number" name="quantity" class="form-control mb-3"value ={{old('qty')}}>
-                          @error('qty')
+                          @error('quantity')
                               <p class="text-danger">{{$message}}</p>
                         @enderror
                   </div>

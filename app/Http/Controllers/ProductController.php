@@ -23,17 +23,17 @@ class ProductController extends Controller
       "quantity"=>"required|max:200",
       "price"=>"required",
       "category"=>"required",
-      "status"=>"required"
+      "status"=>"required",
     ]);
-    $prod = new Product;
-    $prod->name = request()->name;
-    $prod->quantity = request()->quantity;
-    $prod->price = request()->price;
-    $prod->status = request()->status;
-    $prod->category_id = request()->category;
-    $prod->image = "";
-    $prod->save();
-    return redirect('/admin/dashboard')->with("success","post created successfully");
+    Product::create([
+      "name"=> request()->name,
+      "quantity"=> request()->quantity,
+      "price" => request()->price,
+      "status"=> request()->status,
+      "category_id" => request()->category,
+      "image"=> ""
+    ]);
+    return redirect('/all_products')->with("add","product added successfully");
   } 
 
   public function edit(Product $product){
@@ -42,21 +42,21 @@ class ProductController extends Controller
   } 
 
   public function update(Product $product){
-    $values = request()->validate([
+    $attributes = request()->validate([
       "name"=> "required|max:100",
       "quantity"=>"required|max:200",
       "price"=>"required",
       "category"=>"required",
       "status"=>"required"
     ]);
-    $product->update($values);
+    $product->update($attributes);
 
-    return redirect('/all_products')->with("success","post created successfully");
+    return redirect('/all_products')->with("success","product updated successfully");
   } 
 
    public function destroy(Product $product){
     $product->delete();
-    return redirect('/all_products')->with("delete","post deleted");
+    return redirect('/all_products')->with("delete","product deleted successfully");
   } 
 
 

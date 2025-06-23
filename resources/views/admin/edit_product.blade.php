@@ -10,17 +10,14 @@
                   <div>
                         <label for="name" class="mt-5">Product name</label>
                         <input type="text" name="name" class="form-control mb-3" value = {{$product->name}}>
-            
                   </div>
                   <div>
                         <label for="quantity">Quantity</label>
                         <input type="number" name="quantity" class="form-control mb-3"value ={{$product->quantity}}>
-
                   </div>
                   <div>
                         <label for="price">Price</label>
-                        <input type="text" name="price"  class="form-control mb-3"value={{$product->price}}>
-                          
+                        <input type="text" name="price"  class="form-control mb-3"value={{$product->price}}>  
                   </div>
                   <div>
                         <label for="file">Upload Image</label>
@@ -32,7 +29,6 @@
                               <option value="active">Active</option>
                               <option value="inactive">Inactive</option>
                         </select>
-                       
                   </div>
                   <div>
                         <label for="category">Product category</label>
@@ -40,8 +36,7 @@
                               <option value="{{$product->category->id}}"
                                     {{old("category") == $product->category->id ? 'selected': '' }}>{{$product->category->name}}
                               </option>
-                        </select>
-                       
+                        </select>   
                   </div>
                   <button class="btn btn-dark col-12 mb-3 round-4">Edit product</button>  
             </form>

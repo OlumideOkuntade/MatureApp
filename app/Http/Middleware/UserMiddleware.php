@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class RoleMiddleware
+class UserMiddleware
 {
     /**
      * Handle an incoming request.
@@ -19,15 +19,11 @@ class RoleMiddleware
         if(!auth()->check()){
             return redirect('login');
         }
-        $user = auth()->user();
-        if($user->role === "customer"){
+        if(auth()->user()->role === "customer"){
             return $next($request);
         }else{
             return redirect()->route("admin.login");
-           
         }
-        
-
         
     }
 }
