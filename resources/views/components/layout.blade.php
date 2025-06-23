@@ -56,7 +56,7 @@
                                     </li>
                                 </ul>
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping me-4"></i></a>
-                                <span>{{$count ?? 0}}</span>
+                                <span>{{$count ?? 0 }}</span>
                             </div>
                         </div>
                     </div>
