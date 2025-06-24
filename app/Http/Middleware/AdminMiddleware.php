@@ -19,10 +19,7 @@ class AdminMiddleware
         if(!auth()->check()){
             return redirect('/admin/login');
         }
-        if($request->isMethod('post')){
-            return redirect('/admin/login');
-        }
-        // $admin = auth()->user()->role;
+        
         if(auth()->user()->role === "admin"){
             return $next($request);
         }else{
