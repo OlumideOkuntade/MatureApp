@@ -21,8 +21,8 @@
                                                 <td class="text-center">{{$content->order_no }}</td>
                                                 <td class="text-center">{{$content->order_date }}</td>
                                                 <td class="text-center">{{$content->amount }}</td>
-                                                <td class="text-center">{{$content->status }}</td>
-                                                <td class="text-center">{{$content->payment_status}}</td>
+                                                <td><span class="badge rounded-pill text-bg-warning">{{$content->status }}</span></td>
+                                                <td><span class="badge rounded-pill text-bg-warning me-5">{{$content->payment_status}}</span></td>
                                                 <td class="text-center"><button><a href={{route('my_order',["order_id"=> $content->order_no])}}><i class="fa-solid fa-eye"></i></a></button></td>
                                                 <td class="text-center"><a href="">Make Payment</a></td>
                                           </tr>

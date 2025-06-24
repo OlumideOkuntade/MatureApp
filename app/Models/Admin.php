@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Admin extends Model
 {
     use HasFactory;
+    protected $fillable = [
+      'first_name',
+      'last_name',
+      'phone_number'
+    ];
+
+      public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

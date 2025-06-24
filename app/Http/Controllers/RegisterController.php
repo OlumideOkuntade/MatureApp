@@ -33,7 +33,8 @@ class RegisterController extends Controller
             "email" => request()->email, 
             "password" => bcrypt(request()->password),
             'role'=> 'customer',
-            'customer_id'=> $customer->id
+            'admin_id'=> "1",
+            'customer_id'=> '2'
         ]);
 
         auth()->login($user);

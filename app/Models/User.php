@@ -49,6 +49,11 @@ class User extends Authenticatable
         return $this->belongsTo(Customer::class);
     }
 
+      public function admin()
+    {
+        return $this->belongsTo(Admin::class);
+    }
+    
        public function isCustomer()
     {
        return $this->role === 'customer';

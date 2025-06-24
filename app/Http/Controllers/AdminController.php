@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\User;
-use App\Models\Customer;
 
 class AdminController extends Controller
   {
@@ -28,19 +27,20 @@ class AdminController extends Controller
         "phone"=> "required|min:11",
         "password"=> "required|min:3",
       ]);
-      Customer::create([
+      Admin::create([
         "first_name" => request()->firstname, 
         "last_name" => request()->lastname, 
         "phone_number" => request()->phone 
       ]);
-      $customer = Customer::latest()->first();
-      $admin = User::create([
+      $admin = Admin::latest()->first();
+      $attribute = User::create([
         "email" => request()->email, 
         "password" => bcrypt(request()->password),
         'role'=> 'admin',
-        'customer_id'=> $customer->id
+        'admin_id'=> $admin->id
       ]);
-      auth()->login($admin);
+
+      auth()->login($attribute);
       return redirect('/admin/login')->with("success",'Registration successful, Please login');
     }
 
