@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\User;
+use App\Models\Customer;
 
 class AdminController extends Controller
   {
@@ -12,6 +13,36 @@ class AdminController extends Controller
     {
       return view('admin.login');
     }  
+
+    public function create_register()
+    {
+      return view('admin.register');
+    }
+
+     public function store_register()
+    {
+      request()->validate([
+        "firstname"=> "required",
+        "lastname"=> "required",
+        "email"=> "required|email|unique:users,email",
+        "phone"=> "required|min:11",
+        "password"=> "required|min:3",
+      ]);
+      Customer::create([
+        "first_name" => request()->firstname, 
+        "last_name" => request()->lastname, 
+        "phone_number" => request()->phone 
+      ]);
+      $customer = Customer::latest()->first();
+      $admin = User::create([
+        "email" => request()->email, 
+        "password" => bcrypt(request()->password),
+        'role'=> 'admin',
+        'customer_id'=> $customer->id
+      ]);
+      auth()->login($admin);
+      return redirect('/admin/login')->with("success",'Registration successful, Please login');
+    }
 
     public function store(){
       $user = new User;
@@ -21,7 +52,7 @@ class AdminController extends Controller
           "password" => "required"
         ]);
       }
-
+     
       if(auth()->attempt($admin)){
         return redirect('/admin/dashboard')->with('success','welcome Back!');
       }

@@ -16,11 +16,17 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $admin = auth()->user()->role;
-        if($admin === "admin"){
+        if(!auth()->check()){
+            return redirect('/admin/login');
+        }
+        if($request->isMethod('post')){
+            return redirect('/admin/login');
+        }
+        // $admin = auth()->user()->role;
+        if(auth()->user()->role === "admin"){
             return $next($request);
         }else{
-            abort(403);
+            return redirect('/admin/login');
         }
     }
 }

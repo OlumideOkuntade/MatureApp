@@ -22,8 +22,7 @@ class UserMiddleware
         if(auth()->user()->role === "customer"){
             return $next($request);
         }else{
-            return redirect()->route("admin.login");
-        }
-        
+            return redirect('login');
+        }   
     }
 }

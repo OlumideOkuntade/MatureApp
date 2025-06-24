@@ -99,6 +99,8 @@ Route::get('/product', function ( ) {
 //admin route
 
 Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login');
+Route::get('/admin/register', [AdminController::class,'create_register'])->name('admin.register');
+Route::post('/admin/register/store', [AdminController::class,'store_register'])->name('admin.register.store');
 Route::post('/admin/store', [AdminController::class,'store'])->name('admin.store');
 Route::get('/admin/logout', [AdminController::class,'destroy'])->middleware("admin")->name('admin.logout');
 

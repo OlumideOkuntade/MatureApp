@@ -17,7 +17,7 @@
           <nav class="navbar navbar-expand-lg " id='nav_head'>
               <div class="container-fluid ">
                   <a class="navbar-brand fw-bold me-auto fs-3 fst-italic" href="{{route("admin.login")}}">Maturefashion</a>
-                  <a href="/admin/register">REGISTER</a>
+                  <a href="/admin/login">LOGIN</a>
               </div>
             </nav>
           </div>
@@ -26,28 +26,16 @@
     <!-- end navigation -->
     <div class="row">
       <div class="col-md-4 offset-4 mt-5 register">
-        @if (session('success'))
-          <p class="text-light bg-success fs-5 mt-5">{{session("success")}}</p>
-        @endif
-        <h6 class="fs-5">Administrative login</h6>
-        
-        <form action="/admin/store" method="post">
-          @csrf
-          <x-input name='email' type='email' label='Enter your' />
-          <x-input name='password' type='password' label='Enter your'/>
-          <button class="btn btn-dark col-12 round-5 mb-2">Login</button>
+        <h6 class="fs-5">Admin Registration</h6>
+          <form action="/admin/register/store" method="post">
+            @csrf
+            <x-input name='firstname' type='text' label="Enter your"/>
+            <x-input name='lastname' type='text' label="Enter your"/>
+            <x-input name='email' type='email' label='Enter your'/>
+            <x-input name='phone' type='text' label='Enter your'/>
+            <x-input name='password' type='password' label='Enter your'/>
+          <button class="btn btn-dark col-12 round-5 mb-2">Register</button>
         </form> 
       </div>
     </div> 
  @include("../footer")
-
-  
-
-
-
-
-
-
-
-
-

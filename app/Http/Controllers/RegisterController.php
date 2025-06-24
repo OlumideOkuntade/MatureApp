@@ -18,7 +18,7 @@ class RegisterController extends Controller
             'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required|email|unique:users,email',
-            'phone' => 'required',
+            'phone' => 'required|min:11',
             'password' =>'required|min:3',
             'radio' => 'required'
        ]);
@@ -38,6 +38,5 @@ class RegisterController extends Controller
 
         auth()->login($user);
         return redirect()->to('/login')->with('success','Registration successful, Please login');
-
     } 
 }

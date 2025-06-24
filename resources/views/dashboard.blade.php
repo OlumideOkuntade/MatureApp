@@ -18,7 +18,7 @@
         <div class="row ms-5 me-5 card_container">
             @foreach($products as $product)
                 <div class="col-md-3 mt-3 ">
-                    <div class="card" >
+                    <div class="card">
                         <img src="images/bg.jpeg" class="img-fluid rounded" style="width:350px; height:350px;" alt="responsive image">
                         <div class="card-body ">
                             <p class="fs-6 fw-bold lh-1">{{$product->name}}</p>
