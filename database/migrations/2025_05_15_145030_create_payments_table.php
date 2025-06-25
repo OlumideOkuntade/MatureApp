@@ -17,7 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->decimal('amount', total: 10, places: 2);
             $table->integer('customer_id')->constrained()->onDelete('cascade');
-            $table->boolean('is_paid')->default('0');
+            $table->boolean('is_paid')->default(0);
             $table->string('reference');
             $table->integer('order_id');
             $table->text('data');

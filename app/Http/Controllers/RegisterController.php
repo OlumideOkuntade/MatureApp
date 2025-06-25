@@ -5,8 +5,6 @@ use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-
-
 class RegisterController extends Controller
 {
     public function create(){
@@ -32,9 +30,7 @@ class RegisterController extends Controller
         $user = User::create([
             "email" => request()->email, 
             "password" => bcrypt(request()->password),
-            'role'=> 'customer',
-            'admin_id'=> "1",
-            'customer_id'=> '2'
+            'customer_id'=> $customer->id
         ]);
 
         auth()->login($user);

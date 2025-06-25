@@ -22,8 +22,8 @@ Route::get('/login', [LoginController::class,'create'])->name('login');
 Route::post('/login/store', [LoginController::class,'store'])->name('login.store');
 Route::post('/logout', [LoginController::class,'destroy'])->name('logout');
 
-Route::get('/register', [RegisterController::class,'create'])->middleware("guest")->name('register');
-Route::post('/register/store', [RegisterController::class,'store'])->middleware("guest")->name('register.store');
+Route::get('/register', [RegisterController::class,'create'])->name('register');
+Route::post('/register/store', [RegisterController::class,'store'])->name('register.store');
 
 Route::get('/dashboard', function () {
     $products = Product::all();

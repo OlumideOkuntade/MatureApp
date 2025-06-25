@@ -32,11 +32,12 @@ class AdminController extends Controller
         "last_name" => request()->lastname, 
         "phone_number" => request()->phone 
       ]);
+
       $admin = Admin::latest()->first();
       $attribute = User::create([
         "email" => request()->email, 
         "password" => bcrypt(request()->password),
-        'role'=> 'admin',
+        "role"=> "admin",
         'admin_id'=> $admin->id
       ]);
 
