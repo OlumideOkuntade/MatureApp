@@ -63,7 +63,6 @@ class AdminController extends Controller
         ->withErrors(['email'=>'detail not found']);
       
     }
-
      public function destroy()
     {
       auth()->logout();

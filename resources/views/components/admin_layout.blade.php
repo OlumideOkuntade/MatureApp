@@ -45,7 +45,7 @@
                                 </a>
                                 <ul class="dropdown-menu user-profile" style="border-radius:0px;background-color:white;">
                                     <li><a class="dropdown-item text-dark" href="#">Profile</a></li>
-                                    <li><a class="dropdown-item text-dark" href="">Orders</a></li>
+                                    <li><a class="dropdown-item text-dark" href="/all_orders">Orders</a></li>
                                     <li><a class="dropdown-item text-dark" href="">Payment</a></li>
                                     <li><a class="dropdown-item text-dark" href={{route('admin.logout')}}>Logout</a></li>
                                 </ul>
@@ -66,7 +66,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="all_orders.php">
+                        <a class="nav-link" href="/all_orders">
                         <span data-feather="file"></span>
                         Orders
                         </a>
@@ -84,13 +84,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="all_orders.php">
-                        <span data-feather="bar-chart-2"></span>
-                        Reports
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="all_payment.php">
+                        <a class="nav-link" href="/all_payment">
                         <span data-feather="layers"></span>
                         Payment Status
                         </a>

@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductPurchaseController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
@@ -103,6 +104,9 @@ Route::get('/admin/register', [AdminController::class,'create_register'])->name(
 Route::post('/admin/register/store', [AdminController::class,'store_register'])->name('admin.register.store');
 Route::post('/admin/store', [AdminController::class,'store'])->name('admin.store');
 Route::get('/admin/logout', [AdminController::class,'destroy'])->middleware("admin")->name('admin.logout');
+
+Route::get('/all_orders', [AdminOrderController::class,'index'])->middleware("admin")->name('all_orders');
+Route::get('/orders_product/{order_id}', [AdminOrderController::class,'show'])->middleware("admin")->name('orders_product');
 
 Route::get('/all_products', [ProductController::class,'index'])->middleware("admin")->name('all_products');
 Route::get('/new_product', [ProductController::class,'create'])->middleware("admin")->name('new_product');
