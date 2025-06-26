@@ -7,7 +7,6 @@
                               <tr>
                                     <th class="text-center">Order No</th>
                                     <th class="text-center">Order Date</th>
-                                    <th class="text-center">Customer Id</th>
                                     <th class="text-center">Customer Name</th>
                                     <th class="text-center">Total Amount</th>
                                     <th class="text-center"> Status</th>
@@ -17,11 +16,11 @@
                         </thead>
                         <tbody>
                               @if($orderContent ?? null)
+                                    @php $m = 1; @endphp
                                     @foreach($orderContent as $content)
                                           <tr>
-                                                <td class="text-center">{{$content->order_no }}</td>
+                                                <td class="text-center">{{$m++}}</td>
                                                 <td class="text-center">{{$content->order_date }}</td>
-                                                <td class="text-center">{{$content->customer_id }}</td>
                                                 <td class="text-center">{{$content->customer_name }}</td>
                                                 <td class="text-center">{{$content->amount }}</td>
                                                 <td><span class="badge rounded-pill text-bg-warning ">{{$content->status }}</span></td>

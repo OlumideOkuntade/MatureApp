@@ -16,9 +16,10 @@
                         </thead>
                         <tbody>
                               @if($orderContent ?? null)
+                                    @php $m = 1; @endphp
                                     @foreach($orderContent as $content)
                                           <tr>
-                                                <td class="text-center">{{$content->order_no }}</td>
+                                                <td class="text-center">{{$m++}}</td>
                                                 <td class="text-center">{{$content->order_date }}</td>
                                                 <td class="text-center">{{$content->amount }}</td>
                                                 <td><span class="badge rounded-pill text-bg-warning ">{{$content->status }}</span></td>

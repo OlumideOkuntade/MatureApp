@@ -63,6 +63,7 @@ class OrderController extends Controller
       "payment_status"=>$order->payment_status
       ]);
     }
+    
     return view('orders.index')->with("orderContent", $orderContent);
   }
 

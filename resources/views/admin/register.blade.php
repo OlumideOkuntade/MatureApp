@@ -27,14 +27,28 @@
     <div class="row">
       <div class="col-md-4 offset-4 mt-5 register">
         <h6 class="fs-5">Admin Registration</h6>
-          <form action="/admin/register/store" method="post">
-            @csrf
-            <x-input name='firstname' type='text' label="Enter your"/>
-            <x-input name='lastname' type='text' label="Enter your"/>
-            <x-input name='email' type='email' label='Enter your'/>
-            <x-input name='phone' type='text' label='Enter your'/>
-            <x-input name='password' type='password' label='Enter your'/>
-          <button class="btn btn-dark col-12 round-5 mb-2">Register</button>
+        <form action="/admin/register/store" method="post">
+          @csrf
+          <x-input name='firstname' type='text' label="Enter your"/>
+          <x-input name='lastname' type='text' label="Enter your"/>
+          <x-input name='email' type='email' label='Enter your'/>
+          <x-input name='phone' type='text' label='Enter your'/>
+          <x-input name='password' type='password' label='Enter your'/>
+          <div class='form-floating'>
+            <select name="group" id="group"class="form-select mb-3">
+            <option value="#">Please select user</option>  
+              @foreach($groups as $group)
+                <option value="{{$group->id}}"
+                  {{old("group") == $group->id ? 'selected': '' }}>{{$group->name}}
+                </option>
+              @endforeach
+              <label for="group">User group</label>
+            </select>
+            @error('group')
+              <p class="text-danger">{{$message}}</p>
+            @enderror
+          </div>
+          <button class="btn btn-dark col-12 round-5 mt-3 mb-2">Register</button>
         </form> 
       </div>
     </div> 
