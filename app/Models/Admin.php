@@ -12,12 +12,17 @@ class Admin extends Model
       'first_name',
       'last_name',
       'phone_number',
-      'user_id'
+      'user_id',
+      'userGroup_id'
     ];
 
       public function user()
     {
-      return $this->hasOne(User::class);
+      return $this->belongTo(User::class);
     }
 
+     public function usergroup()
+    {
+      return $this->belongTo(UserGroup::class);
+    }
 }

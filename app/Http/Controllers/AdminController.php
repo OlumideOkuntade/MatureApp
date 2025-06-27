@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\User;
+use App\Models\UserGroup;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -16,7 +17,7 @@ class AdminController extends Controller
 
     public function create_register()
     {
-      $groups = DB::table('user_groups')->get();
+      $groups = UserGroup::all();
       return view('admin.register')->with('groups',$groups);
     }
 
@@ -41,7 +42,9 @@ class AdminController extends Controller
         "first_name" => request()->firstname, 
         "last_name" => request()->lastname, 
         "phone_number" => request()->phone,
+        "userGroup_id"=> request()->group,
         "user_id"=> $user->id
+
       ]);
       auth()->login($user);
       return redirect('/admin/dashboard')->with("success",'Registration successful, Please login');
