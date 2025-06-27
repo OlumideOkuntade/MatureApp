@@ -20,20 +20,19 @@ class RegisterController extends Controller
             'password' =>'required|min:3',
             'radio' => 'required'
        ]);
-        
-        Customer::create([
-            "first_name" => request()->firstname, 
-            "last_name" => request()->lastname, 
-            "phone_number" => request()->phone 
-        ]);
-        $customer = Customer::latest()->first();
         $user = User::create([
             "email" => request()->email, 
             "password" => bcrypt(request()->password),
-            'customer_id'=> $customer->id
+            "role"=> "customer"
         ]);
-
+        $user = User::latest()->first();
+        Customer::create([
+            "first_name" => request()->firstname, 
+            "last_name" => request()->lastname, 
+            "phone_number" => request()->phone,
+            "user_id"=> $user->id
+        ]);
         auth()->login($user);
-        return redirect()->to('/login')->with('success','Registration successful, Please login');
+        return redirect()->to('/dashboard')->with('success',"Welcome!!! You have successfully registered");
     } 
 }

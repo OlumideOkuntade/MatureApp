@@ -30,20 +30,20 @@ class AdminController extends Controller
         "password"=> "required|min:3",
         "group"=> "required",
       ]);
+
+      $user = User::create([
+        "email" => request()->email, 
+        "password" => bcrypt(request()->password),
+        "role"=> "admin"
+      ]);
+      $user = User::latest()->first();
       Admin::create([
         "first_name" => request()->firstname, 
         "last_name" => request()->lastname, 
-        "phone_number" => request()->phone 
+        "phone_number" => request()->phone,
+        "user_id"=> $user->id
       ]);
-
-      $admin = Admin::latest()->first();
-      $attribute = User::create([
-        "email" => request()->email, 
-        "password" => bcrypt(request()->password),
-        "role"=> "admin",
-        'admin_id'=> $admin->id
-      ]);
-      auth()->login($attribute);
+      auth()->login($user);
       return redirect('/admin/dashboard')->with("success",'Registration successful, Please login');
     }
 

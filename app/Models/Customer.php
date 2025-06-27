@@ -10,12 +10,13 @@ class Customer extends  Model
     protected $fillable = [
       'first_name',
       'last_name',
-      'phone_number'
+      'phone_number',
+      'user_id'
     ];
 
       public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongTo(User::class);
     }
    
       public function orders()

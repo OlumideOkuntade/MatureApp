@@ -30,9 +30,8 @@ Route::get('/dashboard', function () {
     $products = Product::all();
     
     $user = auth()->user();
-    if($user->role === 'customer'){
-        $customer = $user->customer;
-        $cart = $customer->carts;
+    if($user->role === 'customer'){        
+        $cart = $user->carts;
         if($cart ?? false){
             foreach($cart as $cat){
                 $cat_id = $cat->id;

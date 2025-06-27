@@ -20,9 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'email',
         'password',
-        'role',
-        'customer_id',
-        'admin_id'
+        'role', 
     ];
 
     /**
@@ -46,7 +44,7 @@ class User extends Authenticatable
 
       public function customer()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->hasOne(Customer::class);
     }
 
       public function admin()
