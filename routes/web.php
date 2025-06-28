@@ -11,7 +11,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Models\CartItem;
-use App\Models\Cart;
+
 
 Route::get('/', function () {
     $gen1 = 'Men';

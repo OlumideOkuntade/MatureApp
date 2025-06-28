@@ -45,7 +45,9 @@
                                 </a>
                                 <ul class="dropdown-menu user-profile" style="border-radius:0px;background-color:white;">
                                     <li><a class="dropdown-item text-dark" href="#">Profile</a></li>
-                                    <li><a class="dropdown-item text-dark" href="/all_orders">Orders</a></li>
+                                    @if(auth()->user()->can('cashier')|| auth()->user()->can('admin'))
+                                        <li><a class="dropdown-item text-dark" href="/all_orders">Orders</a></li>
+                                    @endif
                                     <li><a class="dropdown-item text-dark" href="">Payment</a></li>
                                     <li><a class="dropdown-item text-dark" href={{route('admin.logout')}}>Logout</a></li>
                                 </ul>
@@ -58,38 +60,46 @@
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3">
+                  
                     <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/admin/dashboard">
-                        <span data-feather="home"></span>
-                        Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/all_orders">
-                        <span data-feather="file"></span>
-                        Orders
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href={{route('all_products')}}>
-                        <span data-feather="shopping-cart"></span>
-                        Products
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/all_users">
-                        <span data-feather="users"></span>
-                        Customers
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/all_payment">
-                        <span data-feather="layers"></span>
-                        Payment Status
-                        </a>
-                    </li>
-                    </ul>        
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/admin/dashboard">
+                                <span data-feather="home"></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        @if(auth()->user()->can('cashier')|| auth()->user()->can('admin'))
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/all_orders">
+                                    <span data-feather="file"></span>
+                                    Orders
+                                </a>
+                            </li>
+                        @endif
+                        @if(auth()->user()?->can('storeManager') || auth()->user()->can('admin') )
+                        
+                            <li class="nav-item">
+                                <a class="nav-link" href={{route('all_products')}}>
+                                    <span data-feather="shopping-cart"></span>
+                                    Products
+                                </a>
+                            </li>
+                        @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="/all_users">
+                                <span data-feather="users"></span>
+                                Customers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/all_payment">
+                                <span data-feather="layers"></span>
+                                Payment Status
+                            </a>
+                        </li>
+                    </ul> 
+             
                 </div>
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">

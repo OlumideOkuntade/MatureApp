@@ -16,15 +16,15 @@ class Customer extends  Model
 
       public function user()
     {
-        return $this->belongTo(User::class);
+      return $this->belongsTo(User::class);
     }
    
       public function orders()
     {
-        return $this->hasMany(Order::class);
+      return $this->hasMany(Order::class);
     }
       public function carts()
     {
-        return $this->hasMany(Cart::class);
+      return $this->hasMany(Cart::class);
     }
 }

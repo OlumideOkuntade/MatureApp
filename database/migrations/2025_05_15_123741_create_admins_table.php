@@ -16,7 +16,7 @@ class CreateAdminsTable extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id");
-            $table->foreignId("userGroup_id");
+            $table->foreignId("user_group_id");
             $table->string("first_name");
             $table->string("last_name");
             $table->string('phone_number');

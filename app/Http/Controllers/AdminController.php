@@ -42,7 +42,7 @@ class AdminController extends Controller
         "first_name" => request()->firstname, 
         "last_name" => request()->lastname, 
         "phone_number" => request()->phone,
-        "userGroup_id"=> request()->group,
+        "user_group_id"=> request()->group,
         "user_id"=> $user->id
 
       ]);

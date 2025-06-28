@@ -19,11 +19,10 @@ class AdminMiddleware
         if(!auth()->check()){
             return redirect('/admin/login');
         }
-        
-        if(auth()->user()->role === "admin"){
-            return $next($request);
-        }else{
+        if(auth()->user()->role !== "admin"){
             return redirect('/admin/login');
         }
+        
+        return $next($request);
     }
 }

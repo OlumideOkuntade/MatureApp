@@ -13,16 +13,16 @@ class Admin extends Model
       'last_name',
       'phone_number',
       'user_id',
-      'userGroup_id'
+      'user_group_id'
     ];
 
       public function user()
     {
-      return $this->belongTo(User::class);
+      return $this->belongsTo(User::class);
     }
 
-     public function usergroup()
+     public function userGroup()
     {
-      return $this->belongTo(UserGroup::class);
+      return $this->belongsTo(UserGroup::class);
     }
 }

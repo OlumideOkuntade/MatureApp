@@ -9,9 +9,9 @@ class UserGroup extends Model
 {
   use HasFactory;
 
-    public function admin()
+    public function admins()
   {
-    return $this->hasOne(Admin::class);
+    return $this->hasMany(Admin::class);
   }
 
 }
