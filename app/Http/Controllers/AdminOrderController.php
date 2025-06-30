@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use App\Models\Customer;
-use App\Models\Product;
 use App\Models\Order;
 
 class AdminOrderController extends Controller
 {
-    public function index(){
+  public function index(){
+    if(Gate::any(['admin','cashier'])){
       $customers = Customer::with('orders')->get();
       $orderContent = collect();
       foreach($customers as $customer){
@@ -26,6 +27,8 @@ class AdminOrderController extends Controller
       }
       return view('admin.all_orders')->with('orderContent',$orderContent ?? null);
     }
+    abort(403);
+  }
 
     public function show($order_id){
       $order = Order::with('products')->FindorFail($order_id);

@@ -104,10 +104,10 @@ Route::post('/admin/register/store', [AdminController::class,'store_register'])-
 Route::post('/admin/store', [AdminController::class,'store'])->name('admin.store');
 Route::get('/admin/logout', [AdminController::class,'destroy'])->middleware("admin")->name('admin.logout');
 
-Route::get('/all_orders', [AdminOrderController::class,'index'])->middleware("check.roles")->name('all_orders');
+Route::get('/all_orders', [AdminOrderController::class,'index'])->middleware("admin")->name('all_orders');
 Route::get('/orders_product/{order_id}', [AdminOrderController::class,'show'])->middleware("admin")->name('orders_product');
 
-Route::get('/all_products', [ProductController::class,'index'])->middleware("role.any")->name('all_products');
+Route::get('/all_products', [ProductController::class,'index'])->middleware("admin")->name('all_products');
 Route::get('/new_product', [ProductController::class,'create'])->middleware("admin")->name('new_product');
 Route::post('/new_product/store', [ProductController::class,'store'])->middleware("admin")->name('new_product.store');
 Route::get('/edit_product/{product}', [ProductController::class,'edit'])->middleware("admin")->name('edit_product');

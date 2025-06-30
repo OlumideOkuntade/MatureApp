@@ -1,15 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 class ProductController extends Controller
 {
   public function index(){
-    $products = Product::all();
+    if(Gate::any(['admin','storeManager'])){
+      $products = Product::all();
     return view('admin.all_products')->with("products", $products );
+    }
+    abort(403);
   } 
 
   public function create(){
