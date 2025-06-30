@@ -102,24 +102,22 @@ Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login
 Route::get('/admin/register', [AdminController::class,'create_register'])->name('admin.register');
 Route::post('/admin/register/store', [AdminController::class,'store_register'])->name('admin.register.store');
 Route::post('/admin/store', [AdminController::class,'store'])->name('admin.store');
-Route::get('/admin/logout', [AdminController::class,'destroy'])->middleware("admin")->name('admin.logout');
+Route::get('/admin/logout', [AdminController::class,'destroy'])->name('admin.logout');
 
-Route::get('/all_orders', [AdminOrderController::class,'index'])->middleware("admin")->name('all_orders');
-Route::get('/orders_product/{order_id}', [AdminOrderController::class,'show'])->middleware("admin")->name('orders_product');
+Route::middleware('admin')->group(function(){
+    Route::get('/all_products', [ProductController::class,'index'])->name('all_products');
+    Route::get('/new_product', [ProductController::class,'create'])->name('new_product');
+    Route::post('/new_product/store', [ProductController::class,'store'])->name('new_product.store');
+    Route::get('/edit_product/{product}', [ProductController::class,'edit'])->name('edit_product');
+    Route::post('/update_product/{product}', [ProductController::class,'update'])->name('update_product');
+    Route::delete('/delete_product/{product}', [ProductController::class,'destroy'])->name('delete_product');
+    Route::get('/all_orders', [AdminOrderController::class,'index'])->name('all_orders');
+    Route::get('/orders_product/{order_id}', [AdminOrderController::class,'show'])->name('orders_product');
+    Route::get('/all_users', [UserController::class,'index'])->name('all_users');
+    Route::delete('/delete_user/{user}', [UserController::class,'destroy'])->name('delete_user');
+    Route::get('/admin/dashboard',function () {return view('admin.dashboard');})->name("admin.dashboard");
+});
 
-Route::get('/all_products', [ProductController::class,'index'])->middleware("admin")->name('all_products');
-Route::get('/new_product', [ProductController::class,'create'])->middleware("admin")->name('new_product');
-Route::post('/new_product/store', [ProductController::class,'store'])->middleware("admin")->name('new_product.store');
-Route::get('/edit_product/{product}', [ProductController::class,'edit'])->middleware("admin")->name('edit_product');
-Route::post('/update_product/{product}', [ProductController::class,'update'])->middleware("admin")->name('update_product');
-Route::delete('/delete_product/{product}', [ProductController::class,'destroy'])->middleware("admin")->name('delete_product');
-
-Route::get('/all_users', [UserController::class,'index'])->middleware("admin")->name('all_users');
-Route::delete('/delete_user/{user}', [UserController::class,'destroy'])->middleware("admin")->name('delete_user');
-
-Route::get('/admin/dashboard', function (){
-    return view('admin.dashboard');
-})->middleware("admin")->name("admin.dashboard");
 
 
 

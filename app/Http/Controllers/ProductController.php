@@ -8,11 +8,11 @@ use App\Models\Category;
 class ProductController extends Controller
 {
   public function index(){
-    if(Gate::any(['admin','storeManager'])){
-      $products = Product::all();
-    return view('admin.all_products')->with("products", $products );
+    if(!Gate::any(['admin','storeManager'])){
+      abort(403);
     }
-    abort(403);
+    $products = Product::all();
+    return view('admin.all_products')->with("products", $products );
   } 
 
   public function create(){
@@ -57,7 +57,7 @@ class ProductController extends Controller
     return redirect('/all_products')->with("success","product updated successfully");
   } 
 
-   public function destroy(Product $product){
+  public function destroy(Product $product){
     $product->delete();
     return redirect('/all_products')->with("delete","product deleted successfully");
   } 
