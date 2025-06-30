@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-
-class AdminMiddleware
+use Illuminate\Support\Facades\Gate;
+class CheckMultipleRoles
 {
     /**
      * Handle an incoming request.
@@ -14,14 +14,12 @@ class AdminMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
+
     public function handle(Request $request, Closure $next)
     {
-        if(!auth()->check()){
-            return redirect('/admin/login');
+        if(Gate::any(['admin','cashier']) ){
+            return $next($request);
         }
-        if(auth()->user()->role !== "admin"){
-            return redirect('/admin/login');
-        }
-        return $next($request);
+        abort(403);
     }
 }

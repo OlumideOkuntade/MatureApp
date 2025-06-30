@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-
-class AdminMiddleware
+use Illuminate\Support\Facades\Gate;
+class RolesMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,12 +16,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!auth()->check()){
-            return redirect('/admin/login');
+        if(Gate::any(['admin','storeManager']) ){
+            return $next($request);
         }
-        if(auth()->user()->role !== "admin"){
-            return redirect('/admin/login');
-        }
+        abort(403);
         return $next($request);
     }
 }
