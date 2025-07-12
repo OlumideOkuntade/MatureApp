@@ -11,7 +11,7 @@ class Customer extends  Model
       'first_name',
       'last_name',
       'phone_number',
-      'user_id'
+      'user_id',
     ];
 
       public function user()

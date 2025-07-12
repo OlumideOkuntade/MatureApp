@@ -6,7 +6,7 @@ use App\Events\ResetUserPassword;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class SetPaswordToLastName
+class SetPasswordToLastName
 {
     /**
      * Create the event listener.
@@ -29,7 +29,7 @@ class SetPaswordToLastName
     {
         $user = $event->user;
         $user->password = bcrypt($user->customer->last_name);
-        dd($user->customer->last_name);
+        $user->verified_at = 'null';
         $user->save();
     }
 }

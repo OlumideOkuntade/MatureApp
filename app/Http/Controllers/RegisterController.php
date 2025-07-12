@@ -23,6 +23,7 @@ class RegisterController extends Controller
         $user = User::create([
             "email" => request()->email, 
             "password" => bcrypt(request()->password),
+            "verified_at"=> now(),
             "role"=> "customer"
         ]);
         $user = User::latest()->first();
@@ -31,6 +32,7 @@ class RegisterController extends Controller
             "last_name" => request()->lastname, 
             "phone_number" => request()->phone,
             "user_id"=> $user->id
+      
         ]);
         auth()->login($user);
         return redirect()->to('/dashboard')->with('success',"Welcome!!! You have successfully registered");

@@ -17,7 +17,6 @@ class UserController extends Controller
 
     public function resetPassword(User $user){
         event(new ResetUserPassword($user));
-
         return redirect("/all_users")->with("reset","password reset successfully");
     }
 
@@ -25,6 +24,4 @@ class UserController extends Controller
         $user->delete();
         return redirect("/all_users")->with("delete","user deleted successfully");
     }
-
-    
 }

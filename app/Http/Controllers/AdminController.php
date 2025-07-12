@@ -35,6 +35,7 @@ class AdminController extends Controller
       $user = User::create([
         "email" => request()->email, 
         "password" => bcrypt(request()->password),
+        "verified_at"=> now(),
         "role"=> "admin"
       ]);
       $user = User::latest()->first();

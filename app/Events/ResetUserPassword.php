@@ -21,7 +21,7 @@ class ResetUserPassword
      */
     public $user;
 
-    public function __construct($user)
+    public function __construct(User $user)
     {
         //you use a constructor in an event class to pass data into the event when it's dispatched.
         $this->user = $user;
