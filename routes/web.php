@@ -114,6 +114,7 @@ Route::middleware('admin')->group(function(){
     Route::get('/all_orders', [AdminOrderController::class,'index'])->name('all_orders');
     Route::get('/orders_product/{order_id}', [AdminOrderController::class,'show'])->name('orders_product');
     Route::get('/all_users', [UserController::class,'index'])->name('all_users');
+    Route::get('/resetPassword_user/{user}', [UserController::class,'resetPassword'])->name('resetPassword_user');
     Route::delete('/delete_user/{user}', [UserController::class,'destroy'])->name('delete_user');
     Route::get('/admin/dashboard',function () {return view('admin.dashboard');})->name("admin.dashboard");
 });

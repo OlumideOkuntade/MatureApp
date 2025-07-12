@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
-use App\Models\Customer;
 use App\Models\CartItem;
 
 class ProductPurchaseController extends Controller
@@ -34,16 +33,17 @@ class ProductPurchaseController extends Controller
             "price"=> "required"
         ]);
         $user = auth()->user();
-        if ($user->role === 'customer'){
+        if($user->role === 'customer'){
             $customer = $user->customer;
             $customer_id = $customer->id;
-            $cart = $customer->carts;
+            $cart = $customer->carts; //cart_id cannot be gotten tru a collection
             if($cart ?? false){
                 foreach($cart as $cat){
                     $cat_id = $cat->id;
                 }
             } 
         } 
+        //check if the user already has a cart_id
         $cartUserId = Cart::where('customer_id', $customer_id)->first();
         if(!$cartUserId){
             $cat = new Cart;
