@@ -92,12 +92,6 @@
                                 Customers
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/all_payment">
-                                <span data-feather="layers"></span>
-                                Payment Status
-                            </a>
-                        </li>
                     </ul> 
              
                 </div>

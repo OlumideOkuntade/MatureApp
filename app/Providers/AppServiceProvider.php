@@ -16,13 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(UserManager::class, function ($app) {
-        return new UserManager();
-        });
-
-        $this->app->bind(CustomerManager::class, function ($app) {
-        return new CustomerManager();  
-        });
+        //
     }
 
     /**

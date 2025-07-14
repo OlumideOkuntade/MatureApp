@@ -23,6 +23,7 @@
                   <tbody>
                         <?php $n = 1 ?>
                         @if($users ?? null)
+                        
                               @foreach ($users as $user)
                                     <tr>
                                           <td>{{$n++}}</td>
