@@ -14,10 +14,8 @@ use App\Models\CartItem;
 
 
 Route::get('/', function () {
-    $gen1 = 'Men';
-    $gen2 = "Women";
-    $view = "View all";
-    return view('index')->with('key', $gen1 .' '. $gen2)->with('view',$view);
+    $gender = 'Men';
+    return view('index')->with('gender', $gender);
 });
 Route::get('/login', [LoginController::class,'create'])->name('login');
 Route::post('/login/store', [LoginController::class,'store'])->name('login.store');

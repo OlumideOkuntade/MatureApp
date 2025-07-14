@@ -45,9 +45,7 @@
                                     Hi, {{$name ?? null}}
                                 </a>
                                 <ul class="dropdown-menu user-profile" style="border-radius:0px;background-color:white;">
-                                    <li><a class="dropdown-item text-dark" href="#">Profile</a></li>
                                     <li><a class="dropdown-item text-dark" href={{route('my_orders')}}>Orders</a></li>
-                                    <li><a class="dropdown-item text-dark" href="payment_status.php">Payment details</a></li>
                                     <li>
                                         <form action="/logout" method="post">
                                             @csrf
