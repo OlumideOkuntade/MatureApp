@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Events\ResetUserPassword;
-use App\Models\Customer;
 use Illuminate\Auth\Notifications\ResetPassword;
 
 class UserController extends Controller

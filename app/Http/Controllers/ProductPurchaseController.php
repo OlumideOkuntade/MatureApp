@@ -41,7 +41,7 @@ class ProductPurchaseController extends Controller
                 foreach($cart as $cat){
                     $cat_id = $cat->id;
                 }
-            } 
+            }
         } 
         //check if the user already has a cart_id
         $cartUserId = Cart::where('customer_id', $customer_id)->first();

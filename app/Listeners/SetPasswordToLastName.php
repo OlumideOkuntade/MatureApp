@@ -28,8 +28,9 @@ class SetPasswordToLastName
     public function handle(ResetUserPassword $event)
     {
         $user = $event->user;
-        $user->password = bcrypt($user->customer->last_name);
-        $user->verified_at = 'null';
-        $user->save();
+        $user->update([
+            'password' => bcrypt($user->customer->last_name),
+            'verified_at'=> 'null'
+        ]);
     }
 }
