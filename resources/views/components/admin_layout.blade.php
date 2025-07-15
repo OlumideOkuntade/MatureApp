@@ -44,11 +44,9 @@
                                     Hi, {{auth()->user()->admin->first_name}}
                                 </a>
                                 <ul class="dropdown-menu user-profile" style="border-radius:0px;background-color:white;">
-                                    <li><a class="dropdown-item text-dark" href="#">Profile</a></li>
                                     @if(auth()->user()->can('cashier')|| auth()->user()->can('admin'))
                                         <li><a class="dropdown-item text-dark" href="/all_orders">Orders</a></li>
                                     @endif
-                                    <li><a class="dropdown-item text-dark" href="">Payment</a></li>
                                     <li><a class="dropdown-item text-dark" href={{route('admin.logout')}}>Logout</a></li>
                                 </ul>
                             </div>

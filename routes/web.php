@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Models\CartItem;
 
-
 Route::get('/', function () {
     $gender = 'Men';
     return view('index')->with('gender', $gender);

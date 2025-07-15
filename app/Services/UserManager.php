@@ -7,12 +7,12 @@ use App\Models\User;
 class UserManager
 {
     public function createUser(){
-        User::create([
+        $user = User::create([
             "email" => request()->email, 
             "password" => bcrypt(request()->password),
             "verified_at"=> now(),
             "role"=> "customer"
         ]);
-        return User::latest()->first();
+        return $user;
     }
 }
