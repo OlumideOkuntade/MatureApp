@@ -62,7 +62,6 @@ Route::get('/confirm_purchase/{product}', function (Product $product) {
 })->middleware("user")->name("confirm.purchase");
 
 Route::get('/order_purchase', function(){
-    
     $user = auth()->user(); //usually returns a User model
     if($user->role === 'customer'){
         $customer = $user->customer;

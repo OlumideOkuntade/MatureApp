@@ -75,7 +75,7 @@
                                 </a>
                             </li>
                         @endif
-                        @if(auth()->user()?->can('storeManager') || auth()->user()->can('admin') )
+                        @if(auth()->user()->can('storeManager') || auth()->user()->can('admin') )
                         
                             <li class="nav-item">
                                 <a class="nav-link" href={{route('all_products')}}>

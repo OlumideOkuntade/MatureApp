@@ -61,7 +61,7 @@ class ProductPurchaseController extends Controller
         if($getProductExitInCartItem){
             $getProductExitInCartItem->increment('quantity', $quantity);
             $getProductExitInCartItem->increment('amount', $amount);
-             $getProductExitInCartItem->save();
+            $getProductExitInCartItem->save();
         }else{
             $cat = Cart::latest()->first();
             $cart = new CartItem;

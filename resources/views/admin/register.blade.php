@@ -36,7 +36,7 @@
           <x-input name='password' type='password' label='Enter your'/>
           <div class='form-floating'>
             <select name="group" id="group"class="form-select mb-3">
-            <option value="#">Please select user</option>  
+              <option value="#">Please select user</option>  
               @foreach($groups as $group)
                 <option value="{{$group->id}}"
                   {{old("group") == $group->id ? 'selected': '' }}>{{$group->name}}
