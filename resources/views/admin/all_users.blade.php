@@ -10,14 +10,15 @@
             @if(session('reset'))
                   <p class="bg-success text-light fs-5 mt-5">{{session('reset')}}</p>
             @endif
-            <table class="table table-striped table-sm mt-5">
+            <table class="table table-striped table-sm mt-5" id="allCustomers">
                   <thead>
                         <tr>
                               <th>S/N</th> 
                               <th>First name</th> 
                               <th>Last name</th>
                               <th>Phone number</th>
-                              <th class="text-center">Actions</th>
+                              <th class="text-center">Reset Password</th>
+                              <th class="text-center">Delete</th>
                         </tr>
                   </thead>
                   <tbody>

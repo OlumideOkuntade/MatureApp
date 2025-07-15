@@ -13,7 +13,7 @@
             @elseif(session('add'))
                    <p class="bg-success text-light fs-5 mt-5">{{session('add')}}</p>
             @endif
-            <table class="table table-striped table-sm mt-5">
+            <table class="table table-striped table-sm mt-5" id="myProduct">
                   <thead>
                         <tr>
                               <th>S/N</th> 
@@ -21,7 +21,8 @@
                               <th>Product Name</th>
                               <th>Qty</th>
                               <th>Price</th>
-                              <th class="text-center ps-3">Actions</th>
+                              <th class="text-center ps-3">Edit</th>
+                              <th class="text-center ps-3">Delete</th>
                         </tr>
                   </thead>
                   <tbody>

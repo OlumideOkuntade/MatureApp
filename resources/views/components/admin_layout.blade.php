@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/fontawesome/css/all.min.css">
+    <link rel= "stylesheet" href="//cdn.datatables.net/2.3.2/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <title>MaturedfashionStores</title>
     <style>
@@ -164,5 +166,14 @@
     </div>
     <script type="text/javascript" src="/bootstrap/js/bootstrap.bundle.min.js" ></script>
     <script src="js/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/2.3.2/js/dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myOrder").DataTable();
+            $("#myProduct").DataTable();
+            $("#allCustomers").DataTable();
+        })
+    </script>
 </body>
 </html>

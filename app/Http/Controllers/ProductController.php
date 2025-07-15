@@ -27,6 +27,7 @@ class ProductController extends Controller
       "price"=>"required",
       "category"=>"required",
       "status"=>"required",
+      "image"=> "required",
     ]);
     Product::create([
       "name"=> request()->name,
@@ -36,7 +37,7 @@ class ProductController extends Controller
       "category_id" => request()->category,
       "image"=> ""
     ]);
-    return redirect('/all_products')->with("add","product added successfully");
+   return redirect('/all_products')->with("add","product added successfully");
   } 
 
   public function edit(Product $product){
