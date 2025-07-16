@@ -6,29 +6,29 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-     public function create()
-    {
-      return view('login');
-    }  
-    public function store(){
-      $user = request()->validate([
-        "email"=> "required",
-        "password" => "required"
-      ]);
+  public function create()
+  {
+    return view('login');
+  }  
+  public function store(){
+    $user = request()->validate([
+      "email"=> "required",
+      "password" => "required"
+    ]);
 
-      if(auth()->attempt($user)){
-        return redirect('/dashboard')->with('success','welcome Back!');
-      }
-
-      return back()
-        ->withInput()
-        ->withErrors(['email'=>'Details not found']);
-      
+    if(auth()->attempt($user)){
+      return redirect('/dashboard')->with('success','welcome Back!');
     }
+
+    return back()
+      ->withInput()
+      ->withErrors(['email'=>'Details not found']);
     
-    public function destroy()
-    {
-      auth()->logout();
-      return redirect('/')->with('success','Goodbye!');
-    }  
+  }
+  
+  public function destroy()
+  {
+    auth()->logout();
+    return redirect('/')->with('success','Goodbye!');
+  }  
 }

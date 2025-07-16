@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductPurchaseController;
 use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
@@ -93,7 +94,6 @@ Route::get('/product', function ( ) {
 })->name("product");
 
 //admin route
-
 Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login');
 Route::get('/admin/register', [AdminController::class,'create_register'])->name('admin.register');
 Route::post('/admin/register/store', [AdminController::class,'store_register'])->name('admin.register.store');
@@ -101,6 +101,8 @@ Route::post('/admin/store', [AdminController::class,'store'])->name('admin.store
 Route::get('/admin/logout', [AdminController::class,'destroy'])->name('admin.logout');
 
 Route::middleware('admin')->group(function(){
+    Route::get('/category', [CategoryController::class,'create'])->name('category');
+    Route::post('/category.store', [CategoryController::class,'store'])->name('category.store');
     Route::get('/all_products', [ProductController::class,'index'])->name('all_products');
     Route::get('/new_product', [ProductController::class,'create'])->name('new_product');
     Route::post('/new_product/store', [ProductController::class,'store'])->name('new_product.store');
