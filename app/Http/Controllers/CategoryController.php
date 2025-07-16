@@ -40,7 +40,6 @@ class CategoryController extends Controller
         Category::create([
             "name" => $request->category
         ]);
-
         return redirect("/category")->with("success","Category uploaded successfully");
     }
 

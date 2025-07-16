@@ -69,22 +69,20 @@
                             </a>
                         </li>
                         @if(auth()->user()->can('cashier')|| auth()->user()->can('admin'))
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" href="/all_orders">
-                                    <span data-feather="file"></span>
-                                    Orders
-                                </a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/all_orders">
+                                <span data-feather="file"></span>
+                                Orders
+                            </a>
+                        </li>
                         @endif
                         @if(auth()->user()->can('storeManager') || auth()->user()->can('admin') )
-                        
-                            <li class="nav-item">
-                                <a class="nav-link" href={{route('all_products')}}>
-                                    <span data-feather="shopping-cart"></span>
-                                    Products
-                                </a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href={{route('all_products')}}>
+                                <span data-feather="shopping-cart"></span>
+                                Products
+                            </a>
+                        </li>
                         @endif
                         <li class="nav-item">
                             <a class="nav-link" href="/all_users">
@@ -92,8 +90,13 @@
                                 Customers
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/category">
+                                <span data-feather="users"></span>
+                                Category
+                            </a>
+                        </li>
                     </ul> 
-             
                 </div>
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
