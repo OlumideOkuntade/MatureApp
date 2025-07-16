@@ -20,8 +20,8 @@ class ProductController extends Controller
     return view('admin.new_product')->with("categories", $categories );
   } 
 
-  public function store(){
-    request()->validate([
+  public function store(Request $request){
+    $request->validate([
       "name"=> "required|max:100",
       "quantity"=>"required|max:200",
       "price"=>"required",
@@ -29,15 +29,15 @@ class ProductController extends Controller
       "status"=>"required",
     ]);
     $product = Product::create([
-      "name"=> request()->name,
-      "quantity"=> request()->quantity,
-      "price" => request()->price,
-      "status"=> request()->status,
-      "category_id" => request()->category,
+      "name"=> $request->name,
+      "quantity"=> $request->quantity,
+      "price" => $request->price,
+      "status"=> $request->status,
+      "category_id" => $request->category,
       "image"=> ''
     ]);
-    if (request()->hasFile('image')) {
-      $product->addMedia(request()->file('image'))->toMediaCollection();
+    if ($request->hasFile('image')) {
+      $product->addMedia($request->file('image'))->toMediaCollection();
     }
    //return redirect('/all_products')->with("add","product added successfully");
   } 
