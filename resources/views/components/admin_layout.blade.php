@@ -76,24 +76,33 @@
                             </a>
                         </li>
                         @endif
-                        @if(auth()->user()->can('storeManager') || auth()->user()->can('admin') )
-                        <li class="nav-item">
-                            <a class="nav-link" href={{route('all_products')}}>
-                                <span data-feather="shopping-cart"></span>
-                                Products
-                            </a>
-                        </li>
+                      
+                        @if(auth()->user()->can('manage_products'))
+                            <li class="nav-item">
+                                <a class="nav-link" href={{route('all_products')}}>
+                                    <span data-feather="shopping-cart"></span>
+                                    Products
+                                </a>
+                            </li>
                         @endif
-                        <li class="nav-item">
-                            <a class="nav-link" href="/all_users">
-                                <span data-feather="users"></span>
-                                Customers
-                            </a>
-                        </li>
+                        @if(auth()->user()->can('delete_customers'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="/all_users">
+                                    <span data-feather="users"></span>
+                                    Customers
+                                </a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="/category">
                                 <span data-feather="users"></span>
                                 Category
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/all_roles">
+                                <span data-feather="users"></span>
+                                Roles
                             </a>
                         </li>
                     </ul> 

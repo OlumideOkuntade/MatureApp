@@ -9,9 +9,13 @@ use App\Http\Controllers\ProductPurchaseController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Models\CartItem;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 
 Route::get('/', function () {
     $gender = 'Men';
@@ -26,7 +30,6 @@ Route::post('/register/store', [RegisterController::class,'store'])->name('regis
 
 Route::get('/dashboard', function () {
     $products = Product::all();
-    
     $user = auth()->user();
     if($user->role === 'customer'){        
         $cart = $user->carts;
@@ -39,7 +42,8 @@ Route::get('/dashboard', function () {
             } 
         }
     }
-    return view('dashboard')->with("products", $products)->with("cartItem", $cartItem ?? null)->with('count', $count ?? null )->with('total',$total ?? null);
+    $roles = Role::all();
+    return view('dashboard')->with("products", $products)->with("cartItem", $cartItem ?? null)->with('count', $count ?? null )->with('total',$total ?? null)->with('roles',$roles ?? null);
 })->middleware("user")->name("dashboard");
 
 Route::get('/product/{product}', [ProductPurchaseController::class,'create'])->middleware("user")->name("product.purchase");
@@ -116,6 +120,9 @@ Route::middleware('admin')->group(function(){
     Route::delete('/delete_user/{user}', [UserController::class,'destroy'])->name('delete_user');
     Route::get('/admin/dashboard',function () {return view('admin.dashboard');})->name("admin.dashboard");
 });
+//role route
+    Route::get('/all_roles', [RoleController::class,'create'])->name('all_roles');
+    Route::post('/all_roles/store', [RoleController::class,'store'])->name('all_roles.store');
 
 
 

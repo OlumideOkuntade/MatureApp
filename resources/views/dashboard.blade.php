@@ -3,7 +3,7 @@
         <x-modal :cartitem="$cartItem" total={{$total}} />
         
         <div class="row mb-5">
-            <div class="col-md-12 ">
+            <div class="col-md-7 ">
                 <h3 style="margin-bottom:20px;" class="text-center heading-title mt-2">Dashboard</h3> 
                 <h4 class="mx-5"> 
                     @if(session()->has('success'))
@@ -12,6 +12,14 @@
                     Hi, {{auth()->user()->customer->first_name}} 
                 </h4>
                 <p class="mx-5">You are logged in, Please select any cloth of choice for purchase.</p>
+            </div>
+             <div class="col-md-3 ms-5 mt-5">
+                <h6 style="margin-bottom:20px;" class="text-center heading-title mt-2">Select Roles</h6> 
+                <select name="roles" id="roles" class="form-select ms-5">
+                    @foreach($roles as $role)
+                        <option value={{$role->id}}>{{$role->name}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
  <!-- start card -->
