@@ -24,11 +24,11 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Store Manager', 'created_at' => now(), 'updated_at' => now()],
         ]);
 
-        Permission::firstOrCreate(["name"=>"manage_users"]);
-        Permission::firstOrCreate(["name"=>"manage_customers"]);
-        Permission::firstOrCreate(["name"=>"manage_products"]);
+        $manage_users = Permission::firstOrCreate(["name"=>"manage_users"]);
+        $manage_customers = Permission::firstOrCreate(["name"=>"manage_customers"]);
+        $manage_products = Permission::firstOrCreate(["name"=>"manage_products"]);
         $admin_role = Role::firstOrCreate(["name"=>"admin"]);
-        $admin_role->givePermissionTo("manage_users","manage_customers","manage_products");
+        $admin_role->givePermissionTo($manage_users,$manage_customers,$manage_products);
         $admin = User::firstOrcreate([
             "email"=> "olu@gmail.com",
             "password"=> bcrypt('1234'),

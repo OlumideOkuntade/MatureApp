@@ -107,6 +107,9 @@ Route::get('/admin/logout', [AdminController::class,'destroy'])->name('admin.log
 Route::middleware('admin')->group(function(){
     Route::get('/category', [CategoryController::class,'create'])->name('category');
     Route::post('/category.store', [CategoryController::class,'store'])->name('category.store');
+    Route::get('/edit_category/{category}', [CategoryController::class,'edit'])->name('edit_category');
+    Route::post('/update_category/{category}', [CategoryController::class,'update'])->name('update_category');
+    Route::delete('/delete_category/{category}', [CategoryController::class,'destroy'])->name('delete_category');
     Route::get('/all_products', [ProductController::class,'index'])->name('all_products');
     Route::get('/new_product', [ProductController::class,'create'])->name('new_product');
     Route::post('/new_product/store', [ProductController::class,'store'])->name('new_product.store');
@@ -120,9 +123,11 @@ Route::middleware('admin')->group(function(){
     Route::delete('/delete_user/{user}', [UserController::class,'destroy'])->name('delete_user');
     Route::get('/admin/dashboard',function () {return view('admin.dashboard');})->name("admin.dashboard");
 });
-//role route
+//role and permission route
     Route::get('/all_roles', [RoleController::class,'create'])->name('all_roles');
     Route::post('/all_roles/store', [RoleController::class,'store'])->name('all_roles.store');
+    Route::get('/edit_role/{role}', [RoleController::class,'edit'])->name('edit_role');
+    Route::post('/update_role/{role}', [RoleController::class,'update'])->name('update_role');
 
 
 

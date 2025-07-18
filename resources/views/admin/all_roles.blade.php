@@ -23,13 +23,31 @@
                   <button class="btn btn-dark col-12 mb-3 round-4">Create Role</button>  
             </form> 
       </div>
-
-      <div class="col-md-7 offset-1 mt-5 register">
-            <p>Exiting Roles</p>
-            <ul class="list-group">
-                  @foreach($roles as $role)
-                        <li class="list-group-item">{{$role->name}}</li>
-                  @endforeach
-            </ul>
-      </div>
+</div>
+<div class="row">
+      @foreach($roles as $role)
+            <div class="col-md-3 mt-5"> 
+                  <div class="card ">
+                        <div class="card-header bg-dark text-white">
+                              <strong>Role: {{ ucfirst($role->name) }}</strong>
+                        </div>
+                        <div class="card-body">
+                              <h6>Permissions:</h6>
+                              @if($role->permissions->isEmpty())
+                                    <p class="text-muted">No permissions assigned.</p>
+                              @else
+                              <ul class="list-group list-group-flush">
+                                    @foreach($role->permissions as $permission)
+                                          <li class="list-group-item">{{ $permission->name }}</li>
+                                    @endforeach
+                              </ul>
+                              @endif
+                        </div>
+                        <div class="card-footer text-end">
+                              <a href={{route('edit_role',["role" => $role->id])}} class="btn btn-sm btn-outline-secondary">Edit</a>
+                        </div>
+                  </div>
+            </div>
+      @endforeach  
+</div>
 </x-admin_layout>

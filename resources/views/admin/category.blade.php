@@ -18,5 +18,30 @@
                   <button class="btn btn-dark col-12 mb-3 round-4">Add Category</button>  
             </form> 
       </div>
+        <div class="col-md-7 offset-1 mt-5 ">
+            <h6 class="fs-5"></h6>
+            <table class="table">
+                  <thead>
+                        <th>Categories</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                  </thead>
+                  <tbody>
+                        @foreach ($categories as $category)
+                              <tr>
+                                    <td>{{$category->name}}</td>
+                                    <td><button class="btn btn-dark"><a href="/edit_category/{{$category->id}}">Edit</a></button></td>
+                                    <td>
+                                          <form action="/delete_category/{{$category->id}}" method ="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-dark">Delete</button>
+                                          </form>
+                                    </td>  
+                              </tr>
+                        @endforeach
+                  </tbody>
+            </table> 
+      </div>
 </div>
 </x-admin_layout>

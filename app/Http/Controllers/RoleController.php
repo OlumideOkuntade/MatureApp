@@ -57,7 +57,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -66,9 +66,11 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+        $permissions = Permission::all();
+        $permissionArray = $role->permissions->pluck('name')->toArray();
+        return view("admin.edit_role")->with('role',$role)->with('permissionArray',$permissionArray)->with('permissions',$permissions);
     }
 
     /**
@@ -78,9 +80,16 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        $request->validate([
+            'role' => 'required',
+            'permissions'=>'required|array'
+        ]);
+        $role->update(['name'=> $request->role]);
+        // Assign multiple permissions
+        $role->syncPermissions($request->permissions);
+        return redirect('/all_roles')->with('update', 'Permission updated');
     }
 
     /**
