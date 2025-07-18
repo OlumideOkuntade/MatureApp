@@ -26,7 +26,8 @@ class RoleController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view("admin.all_roles")->with("roles",$roles);
+        $permissions = Permission::all();
+        return view("admin.all_roles")->with("roles",$roles)->with("permissions",$permissions);
     }
 
     /**
@@ -38,12 +39,14 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'role' => 'required'
+            'role' => 'required',
+            'permissions'=>'required|array'
         ]);
-        Role::create([
-            'name'=> $request->role
-        ]);
+        $role = Role::create(['name'=> $request->role,]);
+        // Assign multiple permissions
+        $role->syncPermissions($request->permissions);
         return redirect('/all_roles')->with('success', 'role added');
+        
     }
 
     /**

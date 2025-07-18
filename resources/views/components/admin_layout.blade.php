@@ -68,15 +68,12 @@
                                 Dashboard
                             </a>
                         </li>
-                        @if(auth()->user()->can('cashier')|| auth()->user()->can('admin'))
                         <li class="nav-item">
                             <a class="nav-link" href="/all_orders">
                                 <span data-feather="file"></span>
                                 Orders
                             </a>
                         </li>
-                        @endif
-                      
                         @if(auth()->user()->can('manage_products'))
                             <li class="nav-item">
                                 <a class="nav-link" href={{route('all_products')}}>
@@ -85,7 +82,7 @@
                                 </a>
                             </li>
                         @endif
-                        @if(auth()->user()->can('delete_customers'))
+                        @if(auth()->user()->can('manage_customers'))
                             <li class="nav-item">
                                 <a class="nav-link" href="/all_users">
                                     <span data-feather="users"></span>
