@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductPurchaseController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleUserController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
@@ -128,6 +129,11 @@ Route::middleware('admin')->group(function(){
     Route::post('/all_roles/store', [RoleController::class,'store'])->name('all_roles.store');
     Route::get('/edit_role/{role}', [RoleController::class,'edit'])->name('edit_role');
     Route::post('/update_role/{role}', [RoleController::class,'update'])->name('update_role');
+
+    Route::get('/users_roles', [RoleUserController::class,'create'])->name('users_roles');
+    Route::post('/users_roles/store', [RoleUserController::class,'store'])->name('users_roles.store');
+    Route::get('/users_roles/edit/{user}', [RoleUserController::class,'edit'])->name('users_roles.edit');
+    Route::post('/users_roles/update/{user}', [RoleUserController::class,'update'])->name('users_roles.update');
 
 
 

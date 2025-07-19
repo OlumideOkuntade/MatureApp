@@ -40,7 +40,7 @@ class ProductController extends Controller
       $request->file('image')->move(storage_path("app/public"));
       //$product->addMedia($request->file('image'))->toMediaCollection();
     }
-   //return redirect('/all_products')->with("add","product added successfully");
+    return redirect('/all_products')->with("add","product added successfully");
   } 
 
   public function edit(Product $product){

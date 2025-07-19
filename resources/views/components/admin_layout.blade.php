@@ -102,6 +102,12 @@
                                 Roles
                             </a>
                         </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/users_roles">
+                                <span data-feather="users"></span>
+                                Users
+                            </a>
+                        </li>
                     </ul> 
                 </div>
             </nav>

@@ -13,11 +13,11 @@
                   </div>
                   <div>
                         <label for="quantity">Quantity</label>
-                        <input type="number" name="quantity" class="form-control mb-3"value ={{$product->quantity}}>
+                        <input type="number" name="quantity" class="form-control mb-3"value = {{$product->quantity}}>
                   </div>
                   <div>
                         <label for="price">Price</label>
-                        <input type="text" name="price"  class="form-control mb-3"value={{$product->price}}>  
+                        <input type="text" name="price"  class="form-control mb-3"value = {{$product->price}}>  
                   </div>
                   <div>
                         <label for="file">Upload Image</label>
