@@ -23,6 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $this->authorize('manage_products');
         $categories = Category::all();
         return view("admin.category")->with('categories',$categories ?? null);
     }

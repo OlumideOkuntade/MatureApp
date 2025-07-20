@@ -9,9 +9,7 @@ use App\Models\Order;
 class AdminOrderController extends Controller
 {
   public function index(){
-    if(!Gate::any(['admin','cashier'])){
-      abort(403);
-    }
+    $this->authorize('manage_customers');
     $customers = Customer::with('orders')->get();
     $orderContent = collect();
     foreach($customers as $customer){

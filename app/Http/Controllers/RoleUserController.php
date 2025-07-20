@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Customer;
+use App\Models\Admin;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -27,9 +27,10 @@ class RoleUserController extends Controller
      */
     public function create()
     {
+        $this->authorize('manage_users');
         $users = User::where('role','customer')->get();
         $roles = Role::all();
-        return view('admin.all_users_roles')->with('roles',$roles ?? null)->with('users',$users ?? null);
+        return view('admin.all_users_roles')->with('roles', $roles ?? null)->with('users',$users ?? null);
     }
 
     /**
@@ -51,10 +52,10 @@ class RoleUserController extends Controller
         $user = User::create([
             'email'    => $request->email,
             'password' => bcrypt($request->password),
-            'role'=>'customer',
+            'role'=>'admin',
             'verified_at'=> now(),
         ]);
-        Customer::create([
+        Admin::create([
             "first_name" => request()->first_name, 
             "last_name" => request()->last_name, 
             "phone_number" => request()->phone,
@@ -109,10 +110,10 @@ class RoleUserController extends Controller
         $user->update([
             'email'    => $request->email,
             'password' => bcrypt($request->password),
-            'role'=>'customer',
+            'role'=>'admin',
             'verified_at'=> now(),
         ]);
-        $user->customer->update([
+        $user->admin->update([
             "first_name" => request()->first_name, 
             "last_name" => request()->last_name, 
             "phone_number" => request()->phone,

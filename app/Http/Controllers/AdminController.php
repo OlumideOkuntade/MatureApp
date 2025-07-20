@@ -43,14 +43,13 @@ class AdminController extends Controller
       "first_name" => request()->firstname, 
       "last_name" => request()->lastname, 
       "phone_number" => request()->phone,
-      "user_group_id"=> request()->group,
       "user_id"=> $user->id
 
     ]);
     auth()->login($user);
     return redirect('/admin/dashboard')->with("success",'Registration successful, Please login');
   }
-
+  
   public function store(){
     $user = new User;
     if(!$user->isCustomer()){

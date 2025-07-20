@@ -10,11 +10,11 @@
                   @csrf
                     <div class="mb-3">
                         <label>Firstname</label>
-                        <input type="text" name="first_name" class="form-control"value="{{$user->customer->first_name}}">
+                        <input type="text" name="first_name" class="form-control"value="{{$user->admin->first_name}}">
                   </div>
                   <div class="mb-3">
                         <label>Lastname</label>
-                        <input type="text" name="last_name" class="form-control"value="{{$user->customer->last_name}}">
+                        <input type="text" name="last_name" class="form-control"value="{{$user->admin->last_name}}">
                         @error('last_name')
                               <p class="text-danger">{{$message}}</p>
                         @enderror
@@ -25,7 +25,7 @@
                   </div>
                    <div class="mb-3">
                         <label>Phone</label>
-                        <input type="text" name="phone" class="form-control"value="{{$user->customer->phone_number}}">
+                        <input type="text" name="phone" class="form-control"value="{{$user->admin->phone_number}}">
                   </div>
                   <div class="mb-3">
                         <label>Password</label>

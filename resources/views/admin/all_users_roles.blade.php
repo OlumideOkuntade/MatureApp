@@ -41,12 +41,12 @@
             </form> 
       </div>
 </div>
-</div class="row">
+<div class="row">
 @foreach($users as $user)
-      <div class="col-md-3 offset-2 mt-5"> 
+      <div class="col-md-3 mt-5"> 
             <div class="card ">
                   <div class="card-header bg-dark text-white">
-                        <strong>User: {{ ucfirst($user->customer->first_name ?? null ) }}</strong>
+                        <strong>User: {{ ucfirst($user->admin->first_name ?? null ) }}</strong>
                   </div>
                   <div class="card-body">
                         <h6>Role:</h6>

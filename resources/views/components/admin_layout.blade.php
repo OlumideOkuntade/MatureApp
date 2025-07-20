@@ -46,9 +46,7 @@
                                     Hi, {{auth()->user()->admin->first_name}}
                                 </a>
                                 <ul class="dropdown-menu user-profile" style="border-radius:0px;background-color:white;">
-                                    @if(auth()->user()->can('cashier')|| auth()->user()->can('admin'))
-                                        <li><a class="dropdown-item text-dark" href="/all_orders">Orders</a></li>
-                                    @endif
+                                    <li><a class="dropdown-item text-dark" href="/all_orders">Orders</a></li> 
                                     <li><a class="dropdown-item text-dark" href={{route('admin.logout')}}>Logout</a></li>
                                 </ul>
                             </div>
@@ -68,12 +66,14 @@
                                 Dashboard
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/all_orders">
-                                <span data-feather="file"></span>
-                                Orders
-                            </a>
-                        </li>
+                        @if(auth()->user()->can('manage_customers'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="/all_orders">
+                                    <span data-feather="file"></span>
+                                    Orders
+                                </a>
+                            </li>
+                        @endif
                         @if(auth()->user()->can('manage_products'))
                             <li class="nav-item">
                                 <a class="nav-link" href={{route('all_products')}}>
@@ -90,31 +90,37 @@
                                 </a>
                             </li>
                         @endif
-                        <li class="nav-item">
-                            <a class="nav-link" href="/category">
-                                <span data-feather="users"></span>
-                                Category
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/all_roles">
-                                <span data-feather="users"></span>
-                                Roles
-                            </a>
-                        </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="/users_roles">
-                                <span data-feather="users"></span>
-                                Users
-                            </a>
-                        </li>
+                        @if(auth()->user()->can('manage_products'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="/category">
+                                    <span data-feather="users"></span>
+                                    Category
+                                </a>
+                            </li>
+                        @endif
+                        @if(auth()->user()->can('manage_users'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="/all_roles">
+                                    <span data-feather="users"></span>
+                                    Roles
+                                </a>
+                            </li>
+                        @endif
+                        @if(auth()->user()->can('manage_users'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="/users_roles">
+                                    <span data-feather="users"></span>
+                                    Users
+                                </a>
+                            </li>
+                        @endif
                     </ul> 
                 </div>
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 {{ $slot }}
             </main>
-      </div>
+        </div>
 
         
 

@@ -8,9 +8,7 @@ use App\Models\Category;
 class ProductController extends Controller
 {
   public function index(){
-    if(!Gate::any(['admin','storeManager'])){
-      abort(403);
-    }
+    $this->authorize('manage_products');
     $products = Product::all();
     return view('admin.all_products')->with("products", $products );
   } 

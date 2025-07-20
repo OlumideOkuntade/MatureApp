@@ -26,14 +26,5 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         
-        Gate::define('cashier', function(User $user){
-            return $user->admin->userGroup->name === 'Cashier';
-        });
-        Gate::define('storeManager', function(User $user){
-            return $user->admin->userGroup->name === 'Store Manager';
-        });
-        Gate::define('admin', function(User $user){
-            return $user->admin->userGroup->name === 'Admin';
-        });
     }
 }

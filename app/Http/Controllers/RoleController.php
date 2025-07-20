@@ -25,6 +25,7 @@ class RoleController extends Controller
      */
     public function create()
     {
+        $this->authorize('manage_users');
         $roles = Role::all();
         $permissions = Permission::all();
         return view("admin.all_roles")->with("roles",$roles)->with("permissions",$permissions);
