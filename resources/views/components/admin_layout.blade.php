@@ -84,7 +84,7 @@
                         @endif
                         @if(auth()->user()->can('manage_customers'))
                             <li class="nav-item">
-                                <a class="nav-link" href="/all_users">
+                                <a class="nav-link" href="/all_customers">
                                     <span data-feather="users"></span>
                                     Customers
                                 </a>

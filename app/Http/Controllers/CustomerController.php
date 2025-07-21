@@ -7,20 +7,20 @@ use App\Models\User;
 use App\Events\ResetUserPassword;
 use Illuminate\Auth\Notifications\ResetPassword;
 
-class UserController extends Controller
+class CustomerController extends Controller
 {
     public function index(){
         $users = User::where('role','customer')->get();
-        return view('admin.all_users')->with("users", $users );
+        return view('admin.all_customers')->with("users", $users );
     }
 
     public function resetPassword(User $user){
         event(new ResetUserPassword($user));
-        return redirect("/all_users")->with("reset","password reset successfully");
+        return redirect("/all_customers")->with("reset","password reset successfully");
     }
 
     public function destroy(User $user){
         $user->delete();
-        return redirect("/all_users")->with("delete","user deleted successfully");
+        return redirect("/all_customers")->with("delete","user deleted successfully");
     }
 }

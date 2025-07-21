@@ -38,11 +38,13 @@
                                           <td><button class="btn btn-secondary ms-3"><a href="/edit_product/{{$product->id }}">Edit</a></button>  </td>
                                           
                                           <td>
-                                                <form method="post" action="/delete_product/{{$product->id}}">
-                                                      @csrf
-                                                      @method('DELETE')
-                                                      <button class="btn btn-danger">Delete</button>
-                                                </form>  
+                                                @can('delete', $product)
+                                                      <form method="post" action="/delete_product/{{$product->id}}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="btn btn-danger">Delete</button>
+                                                      </form>
+                                                @endcan  
                                           </td>
                                     </tr>
                               @endforeach

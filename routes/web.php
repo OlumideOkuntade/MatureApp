@@ -8,7 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductPurchaseController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RoleUserController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
@@ -119,9 +119,9 @@ Route::middleware('admin')->group(function(){
     Route::delete('/delete_product/{product}', [ProductController::class,'destroy'])->name('delete_product');
     Route::get('/all_orders', [AdminOrderController::class,'index'])->name('all_orders');
     Route::get('/orders_product/{order_id}', [AdminOrderController::class,'show'])->name('orders_product');
-    Route::get('/all_users', [UserController::class,'index'])->name('all_users');
-    Route::get('/resetPassword_user/{user}', [UserController::class,'resetPassword'])->name('resetPassword_user');
-    Route::delete('/delete_user/{user}', [UserController::class,'destroy'])->name('delete_user');
+    Route::get('/all_customers', [CustomerController::class,'index'])->name('all_customers');
+    Route::get('/resetPassword_user/{user}', [CustomerController::class,'resetPassword'])->name('resetPassword_user');
+    Route::delete('/delete_user/{user}', [CustomerController::class,'destroy'])->name('delete_user');
     Route::get('/admin/dashboard',function () {return view('admin.dashboard');})->name("admin.dashboard");
 });
 //role and permission route
