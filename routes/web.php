@@ -19,6 +19,7 @@ use Spatie\Permission\Models\Permission;
 
 
 Route::get('/', function () {
+    \App\Jobs\SlowJob::dispatch();
     $gender = 'Men';
     return view('index')->with('gender', $gender);
 });
