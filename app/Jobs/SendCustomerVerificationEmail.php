@@ -8,8 +8,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-
-class SlowJob implements ShouldQueue
+use App\Models\User;
+class SendCustomerVerificationEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -18,9 +18,11 @@ class SlowJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+    public $user;
+
+    public function __construct(User $user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -30,6 +32,8 @@ class SlowJob implements ShouldQueue
      */
     public function handle()
     {
-        sleep(5);
+        $this->user->verified_at = now();
+        $this->user->save();
     }
+    
 }

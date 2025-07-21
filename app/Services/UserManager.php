@@ -10,7 +10,7 @@ class UserManager
         $user = User::create([
             "email" => request()->email, 
             "password" => bcrypt(request()->password),
-            "verified_at"=> now(),
+            "verified_at"=> '',
             "role"=> "customer"
         ]);
         return $user;

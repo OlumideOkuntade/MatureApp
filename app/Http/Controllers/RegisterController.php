@@ -20,8 +20,8 @@ class RegisterController extends Controller
         $this->customerManager = $customerManager;
     }
 
-    public function store(){
-        request()->validate([
+    public function store(Request $request ){
+        $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -31,6 +31,7 @@ class RegisterController extends Controller
         ]);
         $user = $this->userManager->createUser();
         $this->customerManager->createCustomer($user);
+        \App\Jobs\SendCustomerVerificationEmail::dispatch($user);
         
         auth()->login($user);
         return redirect()->to('/dashboard')->with('success',"Welcome!!! You have successfully registered");
