@@ -2,12 +2,14 @@
 
 namespace App\Jobs;
 
+use App\Mail\CustomerVerificationEmail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 class SendCustomerVerificationEmail implements ShouldQueue
 {
@@ -33,7 +35,8 @@ class SendCustomerVerificationEmail implements ShouldQueue
     public function handle()
     {
         $this->user->verified_at = now();
+        Mail::to($this->user->email)->queue(new CustomerVerificationEmail($this->user));
         $this->user->save();
     }
-    
+
 }
