@@ -10,6 +10,7 @@ class ProductController extends Controller
   public function index(){
     $this->authorize('manage_products');
     $products = Product::all();
+   
     return view('admin.all_products')->with("products", $products ?? null );
   } 
 
@@ -35,7 +36,7 @@ class ProductController extends Controller
       "category_id" => $request->category,
       "image"=> ''
     ]);
-    if($request->hasFile('image') && $request->file('image')->isValid()) {
+    if($request->hasFile('image') && $request->file('image')->isValid()){
       $product->addMedia($request->file('image'))->toMediaCollection();
     }
     return redirect('/all_products')->with("add","product added successfully");

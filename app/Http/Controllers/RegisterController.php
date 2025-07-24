@@ -4,15 +4,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\UserManager;
 use App\Services\CustomerManager;
+use Spatie\Activitylog\Models\Activity;
 
 class RegisterController extends Controller
 {
+    protected $userManager; 
+    protected $customerManager;
+
+    public function show(){
+       return Activity::all();
+    } 
+
     public function create(){
        return view('register');
     } 
-
-    protected $userManager; 
-    protected $customerManager;
 
     public function __construct(UserManager $userManager, CustomerManager $customerManager)
     {
@@ -32,7 +37,7 @@ class RegisterController extends Controller
         $user = $this->userManager->createUser();
         $this->customerManager->createCustomer($user);
         \App\Jobs\SendCustomerVerificationEmail::dispatch($user);
-        
+
         auth()->login($user);
         return redirect()->to('/dashboard')->with('success',"Welcome!!! You have successfully registered");
     } 

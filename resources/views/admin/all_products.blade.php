@@ -28,10 +28,11 @@
                   <tbody>
                         
                         @if($products ?? null)
+                              <?php $n = 1 ?>
                               @foreach ($products as $product)
                                     <tr>
-                                          <td>{{$product->id}}</td>
-                                          <td><img src="{{ $product->getFirstMedia()}}" class="img-fluid rounded" style="width:50px; height:50px;" alt="responsive image"></td>
+                                          <td>{{$n++}}</td>
+                                          <td><img src="{{ $product->getFirstMediaUrl('default')}}"></td>
                                           <td>{{$product->name}}</td>
                                           <td>{{$product->quantity}}</td>
                                           <td>{{number_format($product->price)}}</td>

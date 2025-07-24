@@ -38,7 +38,6 @@ class FileController extends Controller
         $file = $request->file('file');
         $fileContents = file($file->getPathname(), FILE_SKIP_EMPTY_LINES);
         array_shift($fileContents);
-        dd($fileContents);
         foreach ($fileContents as  $Content) {
             $data = str_getcsv($Content);
             $productName = $data[0] ?? null;
@@ -46,7 +45,6 @@ class FileController extends Controller
             $qty = $data[2] ?? null;
             $categoryName = $data[3] ?? null;
             $category = Category::firstOrCreate(['name' => $categoryName]);
-            // Create the product with category_id
             Product::create([
                 'name'        => $productName,
                 'price'       => $price,

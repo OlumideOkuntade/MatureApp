@@ -29,6 +29,8 @@ Route::post('/logout', [LoginController::class,'destroy'])->name('logout');
 
 Route::get('/register', [RegisterController::class,'create'])->name('register');
 Route::post('/register/store', [RegisterController::class,'store'])->name('register.store');
+Route::get('/register/show', [RegisterController::class,'show'])->name('register.show');
+
 
 Route::get('/dashboard', function () {
     $products = Product::all();
