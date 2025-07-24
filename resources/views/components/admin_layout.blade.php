@@ -114,6 +114,12 @@
                                 </a>
                             </li>
                         @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="/upload/file">
+                                <span data-feather="users"></span>
+                                Uploads
+                            </a>
+                        </li>
                     </ul> 
                 </div>
             </nav>

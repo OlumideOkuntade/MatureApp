@@ -31,7 +31,7 @@
                               @foreach ($products as $product)
                                     <tr>
                                           <td>{{$product->id}}</td>
-                                          <td><img src="images/bg.jpeg" class="img-fluid rounded" style="width:50px; height:50px;" alt="responsive image"></td>
+                                          <td><img src="{{ $product->getFirstMedia()}}" class="img-fluid rounded" style="width:50px; height:50px;" alt="responsive image"></td>
                                           <td>{{$product->name}}</td>
                                           <td>{{$product->quantity}}</td>
                                           <td>{{number_format($product->price)}}</td>

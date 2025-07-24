@@ -10,7 +10,8 @@ use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RoleUserController;
-use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RoleController; 
+use App\Http\Controllers\FileController; 
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Models\CartItem;
@@ -134,6 +135,10 @@ Route::middleware('admin')->group(function(){
     Route::post('/users_roles/store', [RoleUserController::class,'store'])->name('users_roles.store');
     Route::get('/users_roles/edit/{user}', [RoleUserController::class,'edit'])->name('users_roles.edit');
     Route::post('/users_roles/update/{user}', [RoleUserController::class,'update'])->name('users_roles.update');
+
+    
+    Route::get('/upload/file', [FileController::class,'create'])->name('upload');
+    Route::post('/upload/store', [FileController::class,'store'])->name('upload.store');
 
 
 
