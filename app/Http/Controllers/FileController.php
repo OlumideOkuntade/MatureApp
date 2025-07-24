@@ -36,13 +36,10 @@ class FileController extends Controller
     public function store(Request $request)
     {
         $file = $request->file('file');
-        $fileContents = file($file->getPathname());
-        $header = null;
+        $fileContents = file($file->getPathname(), FILE_SKIP_EMPTY_LINES);
+        array_shift($fileContents);
+        dd($fileContents);
         foreach ($fileContents as  $Content) {
-            if (!$header) {
-                $header = true;
-                continue;
-            }
             $data = str_getcsv($Content);
             $productName = $data[0] ?? null;
             $price = $data[1] ?? null;
