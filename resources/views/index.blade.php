@@ -30,108 +30,24 @@
         </section>
     </div>
 <!-- first card -->
+    
     <div class="row ms-5 me-5 card_container">
-        <div class="col-md-3 ">
-            <div class="card" >
-                <img src="images/bg18.jpeg" class="img-fluid rounded" style="width:350px; height:350px;" alt="responsive image">
-                <div class="card-body ">
-                    <p class="fs-6 fw-bold lh-1">V-Neck Sweater</p>
-                    <div class="d-flex justify-content-between align-items-start">
-                        <p class="fs-4 fw-bold lh-1 ">₦23,000</p>
-                        <button class="btn btn-success round-5 lh-1 mt-4">Mature Fashion</button>  
+        @foreach ($products as $product )
+            <div class="col-md-3 ">
+                <div class="card bg-light-subtle float-end" >
+                    <img src="{{$product->getFirstMediaUrl('default')}}" class="img-fluid rounded-4" style="width:350px; height:350px;" alt="responsive image">
+                    <div class="card-body ">
+                        <p class="fs-6 fw-bold">{{$product->name }}</p>
+                        <div class="d-flex justify-content-between align-items-start">
+                            <p class="fs-5 fw-bold lh-1 "> {{'₦'.number_format($product->price)}}</p>
+                            <p class="fs-6 text-grey">Mature Fashion</p>  
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-3 ">
-            <div class="card" >
-                <img src="images/bg14.jpeg" class="img-fluid rounded" style="width:350px; height:350px;" alt="responsive image">
-                <div class="card-body ">
-                    <p class="fs-6 fw-bold lh-1">Black V-Neck Sweater</p>
-                    <div class="d-flex justify-content-between align-items-start">
-                        <p class="fs-4 fw-bold lh-1 ">₦21,000</p>
-                        <button class="btn btn-success round-5 lh-1 mt-4">Mature Fashion</button>  
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 ">
-            <div class="card" >
-                <img src="images/bg15.jpeg" class="img-fluid rounded" style="width:350px; height:350px;" alt="responsive image">
-                <div class="card-body ">
-                    <p class="fs-6 fw-bold lh-1">Green V-Neck Sweater</p>
-                    <div class="d-flex justify-content-between align-items-start">
-                        <p class="fs-4 fw-bold lh-1 ">₦29,000</p>
-                        <button class="btn btn-success round-5 lh-1 mt-4">Mature Fashion</button>  
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 ">
-            <div class="card" >
-                <img src="images/bg17.jpeg" class="img-fluid rounded" style="width:350px; height:350px;" alt="responsive image">
-                <div class="card-body ">
-                    <p class="fs-6 fw-bold lh-1">Light-Green V-Neck Sweater</p>
-                    <div class="d-flex justify-content-between align-items-start">
-                        <p class="fs-4 fw-bold lh-1 ">₦22,000</p>
-                        <button class="btn btn-success round-5 lh-1  mt-4">Mature Fashion</button>  
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
-<!-- end first card -->
-<!-- second card -->
-    <div class="row ms-5 me-5 card_container">
-        <div class="col-md-3 ">
-            <div class="card" >
-                <img src="images/bg.jpeg" class="img-fluid rounded" style="width:350px; height:350px;" alt="responsive image">
-                <div class="card-body ">
-                    <p class="fs-6 fw-bold lh-1">Complete Men style</p>
-                    <div class="d-flex justify-content-between align-items-start">
-                        <p class="fs-4 fw-bold lh-1 ">₦41,000</p>
-                        <button class="btn btn-success round-5 lh-1 mt-4">Mature Fashion</button>  
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 ">
-            <div class="card" >
-                <img src="images/bg8.jpeg" class="img-fluid rounded" style="width:350px; height:350px;" alt="responsive image">
-                <div class="card-body ">
-                    <p class="fs-6 fw-bold lh-1">Men Sweatshirt</p>
-                    <div class="d-flex justify-content-between align-items-start">
-                        <p class="fs-4 fw-bold lh-1 ">₦22,000</p>
-                        <button class="btn btn-success round-5 lh-1 mt-4">Mature Fashion</button>  
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 ">
-            <div class="card" >
-                <img src="images/bg9.jpeg" class="img-fluid rounded" style="width:350px; height:350px;" alt="responsive image">
-                <div class="card-body ">
-                    <p class="fs-6 fw-bold lh-1">Brown Sweatshirt</p>
-                    <div class="d-flex justify-content-between align-items-start">
-                        <p class="fs-4 fw-bold lh-1 ">₦24,000</p>
-                        <button class="btn btn-success round-5 lh-1 mt-4">Mature Fashion</button>  
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 ">
-            <div class="card" >
-                <img src="images/bg7.jpeg" class="img-fluid rounded" style="width:350px; height:350px;" alt="responsive image">
-                <div class="card-body ">
-                    <p class="fs-6 fw-bold lh-1">Jean Jacket Shirt</p>
-                    <div class="d-flex justify-content-between align-items-start">
-                        <p class="fs-4 fw-bold lh-1 ">₦26,000</p>
-                        <button class="btn btn-success round-5 lh-1 mt-4">Mature Fashion</button>  
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> 
-<!-- end second card -->      
+    
+<!-- end first card -->      
 <!-- footer -->
 @include("footer")

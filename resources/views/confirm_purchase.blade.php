@@ -3,7 +3,7 @@
 
       <div class="row">
             <div class="col-md-6 ms-5 mt-5 mb-5">
-                <img src="/images/bg.jpeg" class="img-fluid" style="width:280px;">
+                <img src="{{$product->getFirstMediaUrl('default') }}" class="img-fluid" style="width:280px;">
             </div>
             <div class="col-md-5 pt-5">
                 <p class="fs-5 fw-bold">{{$product->name}}</p>

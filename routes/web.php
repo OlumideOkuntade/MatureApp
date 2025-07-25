@@ -21,7 +21,8 @@ use Spatie\Permission\Models\Permission;
 
 Route::get('/', function () {
     $gender = 'Men';
-    return view('index')->with('gender', $gender);
+    $products = Product::all();
+    return view('index')->with('gender', $gender)->with('products',$products ?? null);
 });
 Route::get('/login', [LoginController::class,'create'])->name('login');
 Route::post('/login/store', [LoginController::class,'store'])->name('login.store');
@@ -138,7 +139,6 @@ Route::middleware('admin')->group(function(){
     Route::get('/users_roles/edit/{user}', [RoleUserController::class,'edit'])->name('users_roles.edit');
     Route::post('/users_roles/update/{user}', [RoleUserController::class,'update'])->name('users_roles.update');
 
-    
     Route::get('/upload/file', [FileController::class,'create'])->name('upload');
     Route::post('/upload/store', [FileController::class,'store'])->name('upload.store');
 

@@ -14,7 +14,7 @@
                     @if($cartItem ?? false)
                         @foreach($cartItem as $cart)
                             <tr>
-                                <td class="text-center"><img src="/images/bg.jpeg" class="img-fluid" style="width:40px;"></td>
+                                <td class="text-center"><img src="{{$cart->product->getFirstMediaUrl('default') }}" class="img-fluid" style="width:40px;"></td>
                                 <td class="text-center">{{$cart->product->name}}</td>
                                 <td class="text-center">{{'NGN'. number_format($cart->amount)}}</td>
                             </tr> 

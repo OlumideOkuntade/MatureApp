@@ -73,6 +73,7 @@ class OrderController extends Controller
     foreach($order->products as $product){
       $orderedProduct->push((object)[
         "name" => $product->name,
+        "image"=> $product->getFirstMediaUrl('default'),
         "qty" => $product->pivot->quantity,
         "amt" => $product->pivot->amount,
         "size" => $product->pivot->size

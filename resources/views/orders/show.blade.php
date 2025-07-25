@@ -16,7 +16,7 @@
                               @if($orderedProduct ?? null)
                                     @foreach($orderedProduct as $pro)
                                           <tr>
-                                                <td class="text-center"><img src="/images/bg.jpeg" class="img-fluid" style="width:40px;"></td>
+                                                <td class="text-center"><img src="{{ $pro->image}}" class="img-fluid" style="width:40px;"></td>
                                                 <td class="text-center">{{$pro->name }}</td>
                                                 <td class="text-center">{{$pro->size }}</td>
                                                 <td class="text-center">{{$pro->qty }}</td>
