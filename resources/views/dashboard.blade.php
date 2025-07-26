@@ -13,8 +13,8 @@
                 </h4>
                 <p class="mx-5">You are logged in, Please select any cloth of choice for purchase.</p>
             </div>
-            <div class="col-md-5 mt-2" id='anchor'>
-                <button class="btn btn-dark float-end"><a href="/2fa/setup" style="color:white;text-decoration:none">Enable Two-Factor Authentication</a></button>
+            <div class="col-md-5 mt-2">
+                <button class="btn btn-dark float-end" id="2fa"><a href="/2fa/setup" style="color:white;text-decoration:none">Enable Two-Factor Authentication</a></button>
             </div>
         </div>
  <!-- start card -->

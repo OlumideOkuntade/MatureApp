@@ -44,7 +44,6 @@ class TwoFactorAuthController extends Controller
         $user = $request->user();
         $google2fa = new Google2FA();
         $secret = decrypt($user->google2fa_secret);
-
         if ($google2fa->verifyKey($secret, $request->otp)) {
             $user->google2fa_enabled = true;
             $user->save();
@@ -66,16 +65,11 @@ class TwoFactorAuthController extends Controller
         if (!$user) {
             return redirect()->route('login')->withErrors(['otp' => 'Session expired. Please login again.']);
         }
-
         $google2fa = new Google2FA();
-
         if ($google2fa->verifyKey(decrypt($user->google2fa_secret), $request->otp)) {
-            // Clear session and log in user manually
             auth()->login($user);
-
             return redirect()->intended('dashboard');
         }
-
         return back()->withErrors(['otp' => 'Invalid verification code.']);
     }
 }

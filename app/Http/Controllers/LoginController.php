@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use PragmaRX\Google2FA\Google2FA;
 
 class LoginController extends Controller
 {
@@ -11,12 +12,14 @@ class LoginController extends Controller
     return view('login');
   }  
   public function store(Request $request){
-
-    $user = $request->validate([
+    $credentials = $request->validate([
       "email"=> "required",
       "password" => "required"
     ]);   
-    if(auth()->attempt($user)){
+    if(auth()->attempt($credentials)){
+      if(auth()->user()->google2fa_enabled){
+        return redirect('/2fa/verify/form');
+      }
       return redirect('/dashboard')->with('success','welcome Back!');
     }
     return back()

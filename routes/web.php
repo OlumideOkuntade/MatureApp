@@ -94,6 +94,13 @@ Route::post('/confirm_order/store', [OrderController::class,'store'])->middlewar
 Route::get('/my-orders', [OrderController::class,'index'])->middleware("user")->name('my_orders');
 Route::get('/my-orders/{order_id}', [OrderController::class,'show'])->middleware("user")->name('my_order');
 
+Route::group(['user'=> auth()],function(){
+    Route::get('/2fa/setup', [TwoFactorAuthController::class,'show2faSetup'])->name('2fa.setup');
+    Route::post('/2fa/enable', [TwoFactorAuthController::class, 'enable2fa'])->name('2fa.enable');
+    Route::get('/2fa/verify/form', [TwoFactorAuthController::class, 'show2faVerify'])->name('2fa.verify.form');
+    Route::post('/2fa/verify', [TwoFactorAuthController::class, 'verify2fa'])->name('2fa.verify');
+});
+
 Route::get('/about', function () {
     return view('about_us');
 })->name("about");
@@ -109,11 +116,6 @@ Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login
 Route::post('/admin/register/store', [AdminController::class,'store_register'])->name('admin.register.store');
 Route::post('/admin/store', [AdminController::class,'store'])->name('admin.store');
 Route::get('/admin/logout', [AdminController::class,'destroy'])->name('admin.logout');
-
-Route::get('/2fa/setup', [TwoFactorAuthController::class,'show2faSetup'])->name('2fa.setup');
-Route::post('/2fa/enable', [TwoFactorAuthController::class, 'enable2fa'])->name('2fa.enable');
-Route::get('/2fa/verify', [TwoFactorAuthController::class, 'show2faVerify'])->name('2fa.verify.form');
-Route::post('/2fa/verify', [TwoFactorAuthController::class, 'verify2fa'])->name('2fa.verify');
 
 Route::middleware('admin')->group(function(){
     Route::get('/category', [CategoryController::class,'create'])->name('category');
@@ -148,7 +150,6 @@ Route::middleware('admin')->group(function(){
     Route::post('/upload/store', [FileController::class,'store'])->name('upload.store');
     
     Route::get('/admin_log', [ActivityController::class,'showAdminLogs'])->name('admin.log');
-
 });
 
 
