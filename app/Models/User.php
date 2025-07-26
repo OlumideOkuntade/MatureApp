@@ -11,7 +11,6 @@ use Spatie\Permission\Traits\HasRoles;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles,LogsActivity;
@@ -27,7 +26,6 @@ class User extends Authenticatable
         'verified_at',
         'role', 
     ];
-
     
     /**
      * The attributes that should be hidden for serialization.
@@ -42,9 +40,7 @@ class User extends Authenticatable
       public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->logOnly(['email','password'])
-        ->logOnlyDirty();
-        // Chain fluent methods for configuration options
+        ->logOnly(['*']);
     }
     /**
      * The attributes that should be cast.

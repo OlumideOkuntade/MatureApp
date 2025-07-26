@@ -4,17 +4,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\UserManager;
 use App\Services\CustomerManager;
-use Spatie\Activitylog\Models\Activity;
+use Spatie\Activitylog\Facades\Activity;
 
 class RegisterController extends Controller
 {
     protected $userManager; 
     protected $customerManager;
 
-    public function show(){
-       return Activity::all();
-    } 
-
+   
     public function create(){
        return view('register');
     } 

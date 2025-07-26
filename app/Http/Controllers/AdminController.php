@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\User;
-use App\Models\UserGroup;
-use Illuminate\Support\Facades\DB;
+use Spatie\Activitylog\Facades\Activity;
+
+
 
 class AdminController extends Controller
 {
@@ -15,13 +16,7 @@ class AdminController extends Controller
     return view('admin.login');
   }  
 
-  public function create_register()
-  {
-    $groups = UserGroup::all();
-    return view('admin.register')->with('groups',$groups);
-  }
-
-    public function store_register()
+  public function store_register()
   {
     request()->validate([
       "firstname"=> "required",
@@ -29,7 +24,6 @@ class AdminController extends Controller
       "email"=> "required|email|unique:users,email",
       "phone"=> "required|min:11",
       "password"=> "required|min:3",
-      "group"=> "required",
     ]);
 
     $user = User::create([
@@ -44,25 +38,21 @@ class AdminController extends Controller
       "last_name" => request()->lastname, 
       "phone_number" => request()->phone,
       "user_id"=> $user->id
-
     ]);
-    auth()->login($user);
+    
+   auth()->login($user);
     return redirect('/admin/dashboard')->with("success",'Registration successful, Please login');
   }
-  
-  public function store(){
-    $user = new User;
-    if(!$user->isCustomer()){
-      $admin = request()->validate([
-        "email"=> "required",
-        "password" => "required"
-      ]);
-    }
-    
-    if(auth()->attempt($admin)){
-      return redirect('/admin/dashboard')->with('success','welcome Back!');
-    }
 
+  public function store(Request $request){
+    $admin = $request->validate([
+      "email"=> "required",
+      "password" => "required"
+    ]);
+    if(auth()->attempt($admin)){
+
+    return redirect('/admin/dashboard')->with('success','welcome Back!');
+  }
     return back()
     ->withInput()
     ->withErrors(['email'=>'detail not found']);

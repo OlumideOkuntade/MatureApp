@@ -10,8 +10,10 @@ use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RoleUserController;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\RoleController; 
-use App\Http\Controllers\FileController; 
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\TwoFactorAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Models\CartItem;
@@ -104,10 +106,14 @@ Route::get('/product', function ( ) {
 
 //admin route
 Route::get('/admin/login', [AdminController::class,'create'])->name('admin.login');
-Route::get('/admin/register', [AdminController::class,'create_register'])->name('admin.register');
 Route::post('/admin/register/store', [AdminController::class,'store_register'])->name('admin.register.store');
 Route::post('/admin/store', [AdminController::class,'store'])->name('admin.store');
 Route::get('/admin/logout', [AdminController::class,'destroy'])->name('admin.logout');
+
+Route::get('/2fa/setup', [TwoFactorAuthController::class,'show2faSetup'])->name('2fa.setup');
+Route::post('/2fa/enable', [TwoFactorAuthController::class, 'enable2fa'])->name('2fa.enable');
+Route::get('/2fa/verify', [TwoFactorAuthController::class, 'show2faVerify'])->name('2fa.verify.form');
+Route::post('/2fa/verify', [TwoFactorAuthController::class, 'verify2fa'])->name('2fa.verify');
 
 Route::middleware('admin')->group(function(){
     Route::get('/category', [CategoryController::class,'create'])->name('category');
@@ -127,8 +133,7 @@ Route::middleware('admin')->group(function(){
     Route::get('/resetPassword_user/{user}', [CustomerController::class,'resetPassword'])->name('resetPassword_user');
     Route::delete('/delete_user/{user}', [CustomerController::class,'destroy'])->name('delete_user');
     Route::get('/admin/dashboard',function () {return view('admin.dashboard');})->name("admin.dashboard");
-});
-//role and permission route
+    //role and permission route
     Route::get('/all_roles', [RoleController::class,'create'])->name('all_roles');
     Route::post('/all_roles/store', [RoleController::class,'store'])->name('all_roles.store');
     Route::get('/edit_role/{role}', [RoleController::class,'edit'])->name('edit_role');
@@ -141,6 +146,11 @@ Route::middleware('admin')->group(function(){
 
     Route::get('/upload/file', [FileController::class,'create'])->name('upload');
     Route::post('/upload/store', [FileController::class,'store'])->name('upload.store');
+    
+    Route::get('/admin_log', [ActivityController::class,'showAdminLogs'])->name('admin.log');
+
+});
+
 
 
 

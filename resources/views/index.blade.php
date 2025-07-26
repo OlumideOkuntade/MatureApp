@@ -22,9 +22,7 @@
                 <h3>New Arrivals</h3>
             </div>
             <div class="col-md-12 view_container-second" >
-                <div>
-                    {{$gender}}
-                    </div>
+                <div>{{$gender}}</div>
                 <button class="btn btn-dark btn-sm rounded-3 ">View all</button>
             </div>
         </section>
@@ -35,7 +33,7 @@
         @foreach ($products as $product )
             <div class="col-md-3 ">
                 <div class="card bg-light-subtle float-end" >
-                    <img src="{{$product->getFirstMediaUrl('default')}}" class="img-fluid rounded-4" style="width:350px; height:350px;" alt="responsive image">
+                    <a href=""><img src="{{$product->getFirstMediaUrl('default')}}" class="img-fluid rounded-4" style="width:350px; height:350px;" alt="responsive image"></a>
                     <div class="card-body ">
                         <p class="fs-6 fw-bold">{{$product->name }}</p>
                         <div class="d-flex justify-content-between align-items-start">

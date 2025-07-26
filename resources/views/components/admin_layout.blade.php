@@ -120,6 +120,14 @@
                                 Uploads
                             </a>
                         </li>
+                        @if(auth()->user()->can('manage_users'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin_log">
+                                    <span data-feather="users"></span>
+                                   Activity Log
+                                </a>
+                            </li>
+                        @endif
                     </ul> 
                 </div>
             </nav>

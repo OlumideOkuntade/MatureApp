@@ -2,16 +2,19 @@
 <x-layout :name="auth()->user()->customer->first_name" count="{{$count}}" >
         <x-modal :cartitem="$cartItem" total={{$total}} />
         
-        <div class="row mb-5">
+        <div class="row mb-3">
             <div class="col-md-7 ">
-                <h3 style="margin-bottom:20px;" class="text-center heading-title mt-2">Dashboard</h3> 
+                <h3 style="margin-bottom:20px;" class="text-center heading-title mt-2">Dashboard</h3>
                 <h4 class="mx-5"> 
                     @if(session()->has('success'))
-                        <p class="text-dark fs-5 mt-5">{{session('success')}}</p>
+                        <div class="text-dark fs-5 mt-5">{{session('success')}}</div>
                     @endif
                     Hi, {{auth()->user()->customer->first_name}} 
                 </h4>
                 <p class="mx-5">You are logged in, Please select any cloth of choice for purchase.</p>
+            </div>
+            <div class="col-md-5 mt-2" id='anchor'>
+                <button class="btn btn-dark float-end"><a href="/2fa/setup" style="color:white;text-decoration:none">Enable Two-Factor Authentication</a></button>
             </div>
         </div>
  <!-- start card -->

@@ -28,7 +28,7 @@
                   </table>
             </div>
             <div class="col-md-11 ">
-                  <button class="float-end btn btn-dark text-light"><a href={{route("my_orders")}} ><i class="fa-solid fa-arrow-left"></i></a></button>
+                  <button class="float-end btn btn-dark text-light"><a style="color:white;text-decoration:none;" href={{route("my_orders")}} ><i class="fa-solid fa-arrow-left"></i></a></button>
             </div>
       </div>
         
