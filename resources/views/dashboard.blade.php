@@ -1,5 +1,5 @@
 
-<x-layout :name="auth()->user()->customer->first_name" count="{{$count}}" >
+<x-layout :name="auth()->user()->customer->first_name" :count="$count">
         <x-modal :cartitem="$cartItem" total={{$total}} />
         
         <div class="row mb-3">
@@ -14,7 +14,9 @@
                 <p class="mx-5">You are logged in, Please select any cloth of choice for purchase.</p>
             </div>
             <div class="col-md-5 mt-2">
+            @if (!auth()->user()->google2fa_enabled)
                 <button class="btn btn-dark float-end" id="2fa"><a href="/2fa/setup" style="color:white;text-decoration:none">Enable Two-Factor Authentication</a></button>
+            @endif
             </div>
         </div>
  <!-- start card -->

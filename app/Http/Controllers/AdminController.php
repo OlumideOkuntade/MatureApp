@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\User;
+use App\Http\Controllers\Auth;
 use Spatie\Activitylog\Facades\Activity;
 
 
@@ -45,14 +46,21 @@ class AdminController extends Controller
   }
 
   public function store(Request $request){
-    $admin = $request->validate([
+    $credentials = $request->validate([
       "email"=> "required",
       "password" => "required"
     ]);
-    if(auth()->attempt($admin)){
+    if(auth()->attempt($credentials)){
+      $user = auth()->user();
+      if($user->role === 'admin'){
+        activity('admin-login')
+          ->causedBy($user)
+          ->withProperties(['email'=>$request->email,'password'=>$request->password])
+          ->log('Admin logged in');
 
-    return redirect('/admin/dashboard')->with('success','welcome Back!');
-  }
+        return redirect('/admin/dashboard')->with('success','welcome Back!');
+      }
+    }
     return back()
     ->withInput()
     ->withErrors(['email'=>'detail not found']);
