@@ -24,22 +24,15 @@ class Admin extends Model
     protected static $logOnlyDirty = true;
     protected static $submitEmptyLogs = false;
 
-    public function getDescriptionForEvent(string $eventName): string
-    {
-        return "Admin has been {$eventName}";
-    }
-    
+
       public function getActivitylogOptions(): LogOptions
     {
       return LogOptions::defaults()
-      ->logOnly(['*'])
-      ->useLogName('admin-login')
-      ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}");
+      ->logOnly(['*']);
     }
-
-
+    
       public function user()
-    {
-      return $this->belongsTo(User::class);
-    }
+      {
+        return $this->belongsTo(User::class);
+      }
 }

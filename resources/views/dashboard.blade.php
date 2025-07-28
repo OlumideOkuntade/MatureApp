@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-5 mt-2">
             @if (!auth()->user()->google2fa_enabled)
-                <button class="btn btn-dark float-end" id="2fa"><a href="/2fa/setup" style="color:white;text-decoration:none">Enable Two-Factor Authentication</a></button>
+                <button class="btn btn-dark float-end" id="2fa"><a href="/2fa/setup" style="color:white;text-decoration:none">Setup 2FA Authentication</a></button>
             @endif
             </div>
         </div>

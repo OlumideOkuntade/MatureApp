@@ -45,7 +45,7 @@ class AdminController extends Controller
     return redirect('/admin/dashboard')->with("success",'Registration successful, Please login');
   }
 
-  public function store(Request $request){
+  public function login(Request $request){
     $credentials = $request->validate([
       "email"=> "required",
       "password" => "required"
@@ -55,7 +55,7 @@ class AdminController extends Controller
       if($user->role === 'admin'){
         activity('admin-login')
           ->causedBy($user)
-          ->withProperties(['email'=>$request->email,'password'=>$request->password])
+          ->withProperties(['email'=>$request->email])
           ->log('Admin logged in');
 
         return redirect('/admin/dashboard')->with('success','welcome Back!');

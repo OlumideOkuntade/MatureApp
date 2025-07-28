@@ -25,7 +25,13 @@
                                                 <td><span class="badge rounded-pill text-bg-warning ">{{$content->status }}</span></td>
                                                 <td><span class="badge rounded-pill text-bg-warning me-5">{{$content->payment_status}}</span></td>
                                                 <td class="text-center"><button><a href={{route('my_order',["order_id"=> $content->order_no])}}><i class="fa-solid fa-eye"></i></a></button></td>
-                                                <td class="text-center"><button class="btn btn-dark rounded"><a style="color:white;text-decoration:none;" href="/">Make Payment</a></button></td>
+                                                <td class="text-center">
+                                                      <form action="">
+                                                            <button class="btn btn-dark rounded"><a style="color:white;text-decoration:none;" href="">Make Payment</a></button>
+                                                            <input type="hidden" name="" id="" value='{{  }}' >
+                                                            <input type="hidden" name="" id="" value='{{  }}' >
+                                                      </form>
+                                                </td>
                                           </tr>
                                     @endforeach
                               @endif

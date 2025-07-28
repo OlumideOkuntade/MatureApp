@@ -37,6 +37,6 @@ class CustomerVerificationEmail extends Mailable
         ->from('olumide.okuntade@gmail.com')
         ->to('')
         ->subject('Email Verification')
-        ->view('emails.email_created'); 
+        ->view('emails.user_accountCreated')->with('user',$this->user); 
     }
 }

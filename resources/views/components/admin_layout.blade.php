@@ -208,6 +208,7 @@
             $("#myOrder").DataTable();
             $("#myProduct").DataTable();
             $("#allCustomers").DataTable();
+            $("#mylog").DataTable();
         })
     </script>
 </body>

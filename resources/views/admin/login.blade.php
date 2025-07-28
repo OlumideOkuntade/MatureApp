@@ -31,7 +31,7 @@
         @endif
         <h6 class="fs-5">Administrative login</h6>
         
-        <form action="/admin/store" method="post">
+        <form action="/admin/login" method="post">
           @csrf
           <x-input name='email' type='email' label='Enter your' />
           <x-input name='password' type='password' label='Enter your'/>
