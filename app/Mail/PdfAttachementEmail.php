@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use App\Models\User;
 use Illuminate\Queue\SerializesModels;
 
-class CustomerVerificationEmail extends Mailable
+class PdfAttachementEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -20,10 +20,12 @@ class CustomerVerificationEmail extends Mailable
   
 
     public $user;
+    public $destinationPath;
 
-    public function __construct(User $user)
+    public function __construct(User $user, $destinationPath)
     {
         $this->user = $user;
+        $this->destinationPath = $destinationPath;
     }
 
     /**
@@ -36,6 +38,7 @@ class CustomerVerificationEmail extends Mailable
         return $this
         ->from('olumide.okuntade@gmail.com')
         ->subject('Email Verification')
+        ->attach($this->destinationPath)
         ->view('emails.user_account_created',[
             'user'=> $this->user
         ]);

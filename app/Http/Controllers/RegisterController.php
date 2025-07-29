@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\UserManager;
 use App\Services\CustomerManager;
-use Spatie\Activitylog\Facades\Activity;
 
 class RegisterController extends Controller
 {
@@ -34,7 +33,6 @@ class RegisterController extends Controller
         $user = $this->userManager->createUser();
         $this->customerManager->createCustomer($user);
         \App\Jobs\SendCustomerVerificationEmail::dispatch($user);
-
         auth()->login($user);
         return redirect()->to('/dashboard')->with('success',"Welcome!!! You have successfully registered");
     } 

@@ -28,8 +28,8 @@
                                                 <td class="text-center">
                                                       <form action="">
                                                             <button class="btn btn-dark rounded"><a style="color:white;text-decoration:none;" href="">Make Payment</a></button>
-                                                            <input type="hidden" name="" id="" value='{{  }}' >
-                                                            <input type="hidden" name="" id="" value='{{  }}' >
+                                                            <input type="hidden" name="" id="" value='' >
+                                                            <input type="hidden" name="" id="" value='' >
                                                       </form>
                                                 </td>
                                           </tr>
@@ -37,6 +37,9 @@
                               @endif
                         </tbody>
                   </table>
+            </div>
+            <div class="col-md-11">
+                  <button class="float-end rounded mt-3"><a style="color:blue;text-decoration:none;" href="/order_details">View Order Details</a></button>
             </div>
       </div>
         

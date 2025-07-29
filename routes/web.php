@@ -93,6 +93,8 @@ Route::get('/confirm_order', [OrderController::class,'create'])->middleware("use
 Route::post('/confirm_order/store', [OrderController::class,'store'])->middleware("user")->name('confirm.order.store');
 Route::get('/my-orders', [OrderController::class,'index'])->middleware("user")->name('my_orders');
 Route::get('/my-orders/{order_id}', [OrderController::class,'show'])->middleware("user")->name('my_order');
+Route::get('/order_details', [OrderController::class,'order_details'])->middleware("user")->name('order_details');
+Route::get('/generate-pdf', [OrderController::class,'generatePdf'])->middleware("user")->name('generate.pdf');
 
 Route::group(['user'=> auth()],function(){
     Route::get('/2fa/setup', [TwoFactorAuthController::class,'show2faSetup'])->name('2fa.setup');
