@@ -11,8 +11,7 @@ class StoreProductRequest extends FormRequest
      */
     public function authorize()
     {
-        $user = auth()->user();
-        return $this->user()->can(['manage_products','manage_users'], $user);
+        return true;
         
     }
 
@@ -29,6 +28,7 @@ class StoreProductRequest extends FormRequest
             'price' => 'required',
             'quantity' => 'required|integer',
             'status'=> 'required',
+            'image'=> ''
         ];
     }
 }
