@@ -17,7 +17,9 @@ use App\Http\Controllers\ProductApiController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('/products',[ProductApiController::class,'index']);
-Route::get('/product/{id}',[ProductApiController::class,'show']);
-Route::post('/product/store',[ProductApiController::class,'store']);
+Route::controller(ProductApiController::class)->group(function(){
+    Route::get('/products','index');
+    Route::get('/products/{id}','show');
+    Route::post('/products','store');
+});
+   

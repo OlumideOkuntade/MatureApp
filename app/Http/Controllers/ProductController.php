@@ -15,6 +15,7 @@ class ProductController extends Controller
   } 
 
   public function create(){
+    $this->authorize('manage_products');
     $categories = Category::all();
     return view('admin.new_product')->with("categories", $categories );
   } 

@@ -41,12 +41,13 @@ class ProductApiController extends Controller
         'category_id' => 'required|exists:categories,id',
         'price' => 'required',
         'quantity' => 'required|integer',
-        'status'=> 'required',
-        'image'=> ''
+        'status'=> 'required'
         ]);
         $product = Product::create($validated);
         if($product){
-            return['result'=>'Data has been added'];
+            return['result'=>'Data has been added',
+                'product'=> $product
+            ];
         }else{
             return['result'=>'Data failed to add'];
         }
