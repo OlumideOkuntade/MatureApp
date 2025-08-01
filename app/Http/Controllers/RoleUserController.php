@@ -28,7 +28,7 @@ class RoleUserController extends Controller
     public function create()
     {
         $this->authorize('manage_users');
-        $users = User::where('role','customer')->get();
+        $users = User::where('role','admin')->get();
         $roles = Role::all();
         return view('admin.all_users_roles')->with('roles', $roles ?? null)->with('users',$users ?? null);
     }

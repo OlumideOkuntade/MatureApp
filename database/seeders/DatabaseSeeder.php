@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(2)->create();
+         // \App\Models\User::factory(2)->create();
         $manage_users = Permission::firstOrCreate(["name"=>"manage_users"]);
         $manage_customers = Permission::firstOrCreate(["name"=>"manage_customers"]);
         $manage_products = Permission::firstOrCreate(["name"=>"manage_products"]);
