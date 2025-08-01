@@ -33,6 +33,7 @@ class AdminOrderController extends Controller
     $orderedProduct = collect();
     foreach($order->products as $product){
       $orderedProduct->push((object)[
+      "image"=> $product->getFirstMediaUrl('default'),
       "name" => $product->name,
       "qty" => $product->pivot->quantity,
       "amt" => $product->pivot->amount,

@@ -11,7 +11,9 @@ class StoreProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        $user = auth()->user();
+        return $this->user()->can(['manage_products','manage_users'], $user);
+        
     }
 
     /**

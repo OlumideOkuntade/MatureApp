@@ -4,7 +4,7 @@
       <div class="col-md-9 offset-1">
             <h6 class="fs-3">Edit products</h6>
             <hr>  
-            <button class="btn btn-dark mb-5 float-end"><a href="/new_product">Add product</a></button>     
+            <button class="btn btn-dark mb-5 float-end"><a style="color:white; text-decoration:none" href="/new_product">Add product</a></button>     
             <form action="/update_product/{{$product->id}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <div>

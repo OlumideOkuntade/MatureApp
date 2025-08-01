@@ -31,7 +31,7 @@
                                           <td>{{$user->customer->first_name}}</td>
                                           <td>{{$user->customer->last_name}}</td>
                                           <td>{{$user->customer->phone_number}}</td>
-                                          <td><button class="btn btn-warning"><a href="/resetPassword_user/{{$user->id}}">Reset Password</a></button></td>
+                                          <td><button class="btn btn-dark"><a style="color:white; text-decoration:none" href="/resetPassword_user/{{$user->id}}">Reset Password</a></button></td>
                                           <td>
                                                 <form method="post" action="/delete_user/{{$user->id}}">
                                                       @csrf

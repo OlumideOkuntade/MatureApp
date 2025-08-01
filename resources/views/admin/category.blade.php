@@ -30,7 +30,7 @@
                         @foreach ($categories as $category)
                               <tr>
                                     <td>{{$category->name}}</td>
-                                    <td><button class="btn btn-dark"><a href="/edit_category/{{$category->id}}">Edit</a></button></td>
+                                    <td><button class="btn btn-dark"><a style="color:white; text-decoration:none" href="/edit_category/{{$category->id}}">Edit</a></button></td>
                                     <td>
                                           <form action="/delete_category/{{$category->id}}" method ="post">
                                                 @csrf

@@ -4,7 +4,7 @@
       <div class="col-md-9 offset-1">
             <h6 class="fs-3">All products</h6>
             <hr>  
-            <button class="btn btn-dark mb-5 float-end"><a href="/new_product">Add product</a></button>
+            <button class="btn btn-dark mb-5 float-end"><a style="color:white; text-decoration:none" href="/new_product">Add product</a></button>
             
             @if(session('success'))
                   <p class="bg-success text-light fs-5 mt-5">{{session('success')}}</p>
@@ -36,7 +36,7 @@
                                           <td>{{$product->name}}</td>
                                           <td>{{$product->quantity}}</td>
                                           <td>{{number_format($product->price)}}</td>
-                                          <td><button class="btn btn-secondary ms-3"><a href="/edit_product/{{$product->id }}">Edit</a></button>  </td>
+                                          <td><button class="btn btn-secondary ms-3"><a style="color:white; text-decoration:none" href="/edit_product/{{$product->id }}">Edit</a></button>  </td>
                                           
                                           <td>
                                                 @can('delete', $product)
