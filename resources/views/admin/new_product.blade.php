@@ -16,7 +16,7 @@
                   </div>
                   <div>
                         <label for="quantity">Quantity</label>
-                        <input type="number" name="quantity" class="form-control mb-3"value ={{old('qty')}}>
+                        <input type="number" name="quantity" class="form-control mb-3"value ={{old('quantity')}}>
                           @error('quantity')
                               <p class="text-danger">{{$message}}</p>
                         @enderror
@@ -46,15 +46,15 @@
                         @enderror
                   </div>
                   <div>
-                        <label for="category">Product category</label>
-                        <select name="category" id="category"class="form-select mb-3">
+                        <label for="category_id">Product category</label>
+                        <select name="category_id" id="category_id"class="form-select mb-3">
                               @foreach($categories as $category)
                                     <option value="{{$category->id}}"
-                                          {{old("category") == $category->id ? 'selected': '' }}>{{$category->name}}
+                                          {{old("category_id") == $category->id ? 'selected': '' }}>{{$category->name}}
                                     </option>
                               @endforeach
                         </select>
-                        @error('category')
+                        @error('category_id')
                               <p class="text-danger">{{$message}}</p>
                         @enderror
                   </div>

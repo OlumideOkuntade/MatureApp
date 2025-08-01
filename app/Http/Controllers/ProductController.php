@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Http\Requests\StoreProductRequest;
+use App\Services\ProductManager;
+use Illuminate\Http\RedirectResponse;
+
+
 class ProductController extends Controller
 {
   public function index(){
@@ -20,27 +25,13 @@ class ProductController extends Controller
     return view('admin.new_product')->with("categories", $categories );
   } 
 
-  public function store(Request $request){
-    $request->validate([
-      "name"=> "required|max:100",
-      "quantity"=>"required|max:200",
-      "price"=>"required",
-      "category"=>"required",
-      "status"=>"required",
-      "image"=>"required",
-    ]);
-    $product = Product::create([
-      "name"=> $request->name,
-      "quantity"=> $request->quantity,
-      "price" => $request->price,
-      "status"=> $request->status,
-      "category_id" => $request->category,
-      "image"=> ''
-    ]);
+  public function store(StoreProductRequest $request, ProductManager $productManager):RedirectResponse{
+    $validated = $request->validated();
+    $product = $productManager->createProduct($validated);
     if($request->hasFile('image') && $request->file('image')->isValid()){
       $product->addMedia($request->file('image'))->toMediaCollection();
     }
-    return redirect('/all_products')->with("add","product added successfully");
+    return redirect('/all_products')->with('success', 'Product created successfully.');
   } 
 
   public function edit(Product $product){

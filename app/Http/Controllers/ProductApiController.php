@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ProductResource;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Http\Requests\StoreProductRequest;
+use App\Services\ProductManager;
+use Illuminate\Http\JsonResponse;
 
 class ProductApiController extends Controller
 {
@@ -34,22 +37,20 @@ class ProductApiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request, ProductManager $productManager):JsonResponse
     {
-        $validated = $request->validate([
-        'name' => 'required|unique:products,name',
-        'category_id' => 'required|exists:categories,id',
-        'price' => 'required',
-        'quantity' => 'required|integer',
-        'status'=> 'required'
-        ]);
-        $product = Product::create($validated);
+        $validated = $request->validated();
+        $product = $productManager->createProduct($validated);
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $product->addMedia($request->file('image'))->toMediaCollection();
+        }
         if($product){
-            return['result'=>'Data has been added',
-                'product'=> $product
-            ];
+          return response()->json([
+            'message' => 'Product created successfully.',
+            'data' => $product
+          ]);
         }else{
-            return['result'=>'Data failed to add'];
+            return response()->json(['result'=>'Data failed to add']);
         }
 
     }
