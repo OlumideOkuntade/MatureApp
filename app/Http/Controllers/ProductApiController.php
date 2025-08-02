@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ProductResource;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\User;
 use App\Http\Requests\StoreProductRequest;
 use App\Services\ProductManager;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Hash;
 
 class ProductApiController extends Controller
 {
@@ -18,8 +20,18 @@ class ProductApiController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return ProductResource::collection($products);
+        $products = ProductResource::collection(Product::all());
+         if($products){
+            return response()->json([
+                'message' => 'successful.',
+                'data' => $products
+            ]);
+        }else{
+            return response()->json([
+                'message'=>'Failed.',
+                'data'=> '422'
+            ]);
+        }
     }
     /**
      * Show the form for creating a new resource.
@@ -30,6 +42,24 @@ class ProductApiController extends Controller
     {
         //
     }
+
+      public function login(Request $request)
+    {
+        $user= User::where('email', $request->email)->first();
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response([
+                'message' => 'These credentials do not match our records.',
+                'data'=> '404'
+            ]);
+        }
+        $token = $user->createToken('my-app-token')->plainTextToken;
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+        return response($response, 201);
+    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -45,12 +75,15 @@ class ProductApiController extends Controller
             $product->addMedia($request->file('image'))->toMediaCollection();
         }
         if($product){
-          return response()->json([
-            'message' => 'Product created successfully.',
-            'data' => $product
-          ]);
+            return response()->json([
+                'message' => 'Product created successfully.',
+                'data' => $product
+            ]);
         }else{
-            return response()->json(['result'=>'Data failed to add']);
+            return response()->json([
+                'message'=>'Product failed to add.',
+                'data'=> '422'
+            ]);
         }
 
     }
@@ -63,7 +96,19 @@ class ProductApiController extends Controller
      */
     public function show($id)
     {
-        return new ProductResource(Product::find($id));
+        $product = new ProductResource(Product::find($id));
+        if($product){
+            return response()->json([
+                'message' => 'Successful.',
+                'data' => $product
+            ]);
+        }else{
+            return response()->json([
+                'message'=>'Failed.',
+                'data'=> '422'
+            ]);
+        }
+       
     }
 
     /**
