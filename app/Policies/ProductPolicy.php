@@ -65,7 +65,7 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product)
     {
-        return $user->can('manage_products') && $product->price < 5000;
+        return $user->can('manage_products') && $product->price < 10000;
     }
 
     /**

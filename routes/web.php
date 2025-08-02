@@ -34,13 +34,13 @@ Route::get('/register', [RegisterController::class,'create'])->name('register');
 Route::post('/register/store', [RegisterController::class,'store'])->name('register.store');
 Route::get('/register/show', [RegisterController::class,'show'])->name('register.show');
 
-
 Route::get('/dashboard', function () {
     $products = Product::all();
     $user = auth()->user();
     if($user->role === 'customer'){        
-        $cart = $user->carts;
-        if($cart ?? false){
+        $customer = $user->customer;
+        $cart = $customer->carts;
+        if($cart ?? null){
             foreach($cart as $cat){
                 $cat_id = $cat->id;
                 $cartItem = CartItem::where('cart_id', $cat_id)->get();
@@ -49,6 +49,7 @@ Route::get('/dashboard', function () {
             } 
         }
     }
+    
     $roles = Role::all();
     return view('dashboard')->with("products", $products)->with("cartItem", $cartItem ?? null)->with('count', $count ?? null )->with('total',$total ?? null)->with('roles',$roles ?? null);
 })->middleware("user")->name("dashboard");
@@ -152,6 +153,7 @@ Route::middleware('admin')->group(function(){
     Route::post('/upload/store', [FileController::class,'store'])->name('upload.store');
     
     Route::get('/admin_log', [ActivityController::class,'showAdminLogs'])->name('admin.log');
+    Route::get('/customer_log', [ActivityController::class,'showCustomerLogs'])->name('customer.log');
 });
 
 

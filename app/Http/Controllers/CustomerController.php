@@ -10,6 +10,7 @@ use Illuminate\Auth\Notifications\ResetPassword;
 class CustomerController extends Controller
 {
     public function index(){
+        $this->authorize('manage_customers');
         $users = User::where('role','customer')->get();
         return view('admin.all_customers')->with("users", $users );
     }

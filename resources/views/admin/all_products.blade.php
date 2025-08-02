@@ -36,8 +36,7 @@
                                           <td>{{$product->name}}</td>
                                           <td>{{$product->quantity}}</td>
                                           <td>{{number_format($product->price)}}</td>
-                                          <td><button class="btn btn-secondary ms-3"><a style="color:white; text-decoration:none" href="/edit_product/{{$product->id }}">Edit</a></button>  </td>
-                                          
+                                          <td><button class="btn btn-secondary ms-3"><a style="color:white; text-decoration:none" href="/edit_product/{{$product->id }}">Edit</a></button>  </td>                        
                                           <td>
                                                 @can('delete', $product)
                                                       <form method="post" action="/delete_product/{{$product->id}}">

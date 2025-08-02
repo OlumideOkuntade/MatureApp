@@ -27,9 +27,12 @@ class ActivityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function showCustomerLogs()
     {
-        //
+        $activities = Activity::where('log_name','default')->get();
+        return view('admin.customer_log',[
+            'activities'=> $activities ?? null
+        ]);
     }
 
     /**
