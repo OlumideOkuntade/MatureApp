@@ -17,7 +17,7 @@ class AlterImageColumnInProductsTable extends Migration
             $table->dropColumn('image');
         });
 
-         Schema::table('products', function (Blueprint $table) {
+        Schema::table('products', function (Blueprint $table) {
             $table->string('image')->nullable();
         });
     }

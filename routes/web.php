@@ -20,7 +20,6 @@ use App\Models\CartItem;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-
 Route::get('/', function () {
     $gender = 'Men';
     $products = Product::all();
@@ -49,7 +48,6 @@ Route::get('/dashboard', function () {
             } 
         }
     }
-    
     $roles = Role::all();
     return view('dashboard')->with("products", $products)->with("cartItem", $cartItem ?? null)->with('count', $count ?? null )->with('total',$total ?? null)->with('roles',$roles ?? null);
 })->middleware("user")->name("dashboard");
@@ -151,6 +149,10 @@ Route::middleware('admin')->group(function(){
 
     Route::get('/upload/file', [FileController::class,'create'])->name('upload');
     Route::post('/upload/store', [FileController::class,'store'])->name('upload.store');
+    Route::get('/video', [FileController::class,'video'])->name('video');
+    Route::get('/video/create', [FileController::class,'createVideo'])->name('video.create');
+    Route::post('/video/upload', [FileController::class,'upload'])->name('video.upload');
+
     
     Route::get('/admin_log', [ActivityController::class,'showAdminLogs'])->name('admin.log');
     Route::get('/customer_log', [ActivityController::class,'showCustomerLogs'])->name('customer.log');

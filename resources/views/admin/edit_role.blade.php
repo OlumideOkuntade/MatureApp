@@ -14,8 +14,7 @@
                         <h6>Permissions</h6>
                         @foreach($permissions as $permission)
                               <input type="checkbox" name="permissions[]" class="ms-2" value="{{$permission->name}}"
-                              {{ in_array($permission->name, $permissionArray) ? 'checked' : '' }}>
-                             
+                              {{ in_array($permission->name, $permissionArray) ? 'checked' : ''}}>
                               <label for="permissions">{{$permission->name}}</label>
                         @endforeach
                   </div>

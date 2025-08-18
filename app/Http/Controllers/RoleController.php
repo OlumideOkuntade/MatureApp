@@ -43,11 +43,13 @@ class RoleController extends Controller
             'role' => 'required',
             'permissions'=>'required|array'
         ]);
-        $role = Role::create(['name'=> $request->role,]);
+        $role = Role::create(['name'=> $request->role]);
         // Assign multiple permissions
+        // foreach($request->permissions as $permission){
+                // $role->givePermissionTo($permission);
+        //  }
         $role->syncPermissions($request->permissions);
         return redirect('/all_roles')->with('success', 'role added');
-        
     }
 
     /**
@@ -83,12 +85,15 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        $request->validate([
+        $request->validate(array(
             'role' => 'required',
             'permissions'=>'required|array'
-        ]);
+        ));
         $role->update(['name'=> $request->role]);
         // Assign multiple permissions
+        // foreach($request->permissions as $permission){
+        //     $role->givePermissionTo($permission);
+        // } 
         $role->syncPermissions($request->permissions);
         return redirect('/all_roles')->with('update', 'Permission updated');
     }

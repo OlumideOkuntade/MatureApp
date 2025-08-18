@@ -15,10 +15,28 @@
                               <p class="text-danger">{{$message}}</p>
                         @enderror
                         <h6>Select Permissions</h6>
-                        @foreach($permissions as $permission)
-                              <input type="checkbox" name="permissions[]" class="mb-3 ms-2" value ="{{$permission->name}}">
-                              <label for="permissions">{{$permission->name}}</label>
-                        @endforeach
+                        <table class="table">
+                              <thead>
+                                    <th>
+                                         <h6>Select Permissions</h6>  
+                                    </th>
+                              </thead>
+                              <tbody>
+                                    @foreach ($permissions as $permission)
+                                          <tr>
+                                                <td>
+                                                      <input type="checkbox" name="permissions[]" class="mb-3 ms-2" value ="{{$permission->name}}">
+                                                      <label for="permissions">{{$permission->name}}</label>
+                                                </td>
+                                          </tr>
+                                    @endforeach
+                                          
+                              </tbody>
+                        </table>
+                              {{-- @foreach($permissions as $permission)
+                                    <input type="checkbox" name="permissions[]" class="mb-3 ms-2" value ="{{$permission->name}}">
+                                    <label for="permissions">{{$permission->name}}</label>
+                              @endforeach --}}
                   </div>
                   <button class="btn btn-dark col-12 mb-3 round-4">Create Role</button>  
             </form> 

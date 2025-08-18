@@ -47,6 +47,7 @@ class ProductController extends Controller
       "category"=>"required",
       "status"=>"required"
     ]);
+    // $string = implode(',',$attributes);
     $product->update($attributes);
 
     return redirect('/all_products')->with("success","product updated successfully");

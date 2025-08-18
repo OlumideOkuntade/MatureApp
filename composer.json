@@ -13,12 +13,14 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.15",
         "laravel/tinker": "^2.5",
+        "laraveldaily/laravel-invoices": "^3.1",
         "mikehaertl/phpwkhtmltopdf": "^2.5",
         "pragmarx/google2fa-laravel": "^2.3",
         "spatie/browsershot": "^3.61",
         "spatie/laravel-activitylog": "^4.10",
         "spatie/laravel-medialibrary": "9.0.0",
-        "spatie/laravel-permission": "^6.20"
+        "spatie/laravel-permission": "^6.20",
+        "vimeo/laravel": "^5.10"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

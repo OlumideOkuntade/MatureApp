@@ -128,6 +128,12 @@
                                 </a>
                             </li>
                         @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="/video">
+                                <span data-feather="users"></span>
+                                Video
+                            </a>
+                        </li>
                     </ul> 
                 </div>
             </nav>
@@ -210,6 +216,15 @@
             $("#allCustomers").DataTable();
             $("#mylog").DataTable();
         })
+    </script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        const handstickPlayer = new Vimeo.Player('handstick');
+        handstickPlayer.on('play', function() {
+            console.log('played the handstick video!');
+        });
+
+    <!- Your Vimeo SDK player script goes here ->
     </script>
 </body>
 </html>

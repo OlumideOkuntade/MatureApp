@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Mail\PdfAttachementEmail;
 use Illuminate\Support\Facades\Mail;
+
+
 class OrderController extends Controller
 {
   public function create()
@@ -41,7 +43,9 @@ class OrderController extends Controller
       $order->products()->attach($item->product_id, [
         'size' => $item->size,
         'amount' => $item->amount,
-        'quantity' => $item->quantity
+        'quantity' => $item->quantity,
+        'created_at'=> now(),
+        'updated_at'=> now()
       ]);
     }
     CartItem::where('cart_id', $cat_id)->delete();
@@ -65,7 +69,6 @@ class OrderController extends Controller
       "payment_status"=>$order->payment_status
       ]);
     }
-    
     return view('orders.index',[
       "orderContent"=> $orderContent
     ]);
@@ -80,7 +83,7 @@ class OrderController extends Controller
         "image"=> $product->getFirstMediaUrl('default'),
         "qty" => $product->pivot->quantity,
         "amt" => $product->pivot->amount,
-        "size" => $product->pivot->size
+        "size" => $product->pivot->size,
       ]);
     }
     return view("orders.show")->with("orderedProduct", $orderedProduct ?? null); 
@@ -98,17 +101,20 @@ class OrderController extends Controller
       foreach($order->products as $product){
         $orderDetails->push((object)[
           "name" => $product->name,
+          "price"=> $product->price,
           "image"=> $product->getFirstMediaUrl('default'),
           "qty" => $product->pivot->quantity,
           "amt" => $product->pivot->amount,
-          "size" => $product->pivot->size
+          "size" => $product->pivot->size,
+          "date"=> $product->pivot->created_at
         ]);
       }
     }
     return view('orders.order_details',[
-      'orderDetails' => $orderDetails ?? null
+      'orderDetails' => $orderDetails ?? null,
+      'customer'=> $customer
     ]);
-
+    
   }
 
   public function generatePdf(){
@@ -122,31 +128,34 @@ class OrderController extends Controller
     foreach($customer->orders as $order){
       foreach($order->products as $product){
         $orderDetails->push((object)[
-          "id"  => $product->id,
           "name" => $product->name,
+          "price"=> $product->price,
           "image"=> $product->getFirstMediaUrl('default'),
           "qty" => $product->pivot->quantity,
           "amt" => $product->pivot->amount,
-          "size" => $product->pivot->size
+          "size" => $product->pivot->size,
+          "date"=> $product->pivot->created_at
         ]);
       }
     }
-    $pdf = Pdf::loadView('orders.order_details',['orderDetails'=> $orderDetails]);
+   
+    $pdf = Pdf::loadView('orders.order_details',[
+      'orderDetails'=> $orderDetails ?? null,
+      'customer'=> $customer
+    ]);
     $path = public_path('pdf');
     $randomString = Str::random(8); 
     $fileName = 'orders' . '-' . $randomString . '.pdf';
     $destinationPath =  $path . '/' . $fileName;
-    if (!file_exists( $path)){
-      mkdir($path,777,true); // create directory if not exists
+    if(!file_exists($path)){
+      mkdir($path, 777,true); // create directory if not exists
     }
     if($pdf->save($destinationPath)){
       Mail::to($user->email)->send(new PdfAttachementEmail($user,$destinationPath));
       return response()->json(['message' => 'PDF saved', 'path' => $destinationPath]);
-    } else {
+    }else {
       return response()->json(['error' => 'PDF not saved']);
     }
-  
-
   }
 
 

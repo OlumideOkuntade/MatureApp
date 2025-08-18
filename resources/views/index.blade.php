@@ -32,7 +32,7 @@
     <div class="row ms-5 me-5 card_container">
         @foreach ($products as $product )
             <div class="col-md-3 ">
-                <div class="card bg-light-subtle float-end" >
+                <div class="card bg-light-subtle float-end mt-3" >
                     <a href=""><img src="{{$product->getFirstMediaUrl('default')}}" class="img-fluid rounded-4" style="width:350px; height:350px;" alt="responsive image"></a>
                     <div class="card-body ">
                         <p class="fs-6 fw-bold">{{$product->name }}</p>

@@ -5,6 +5,9 @@ use Illuminate\Http\Request;
 use App\Services\UserManager;
 use App\Services\CustomerManager;
 
+use App\Mail\CustomerVerificationEmail;
+use Illuminate\Support\Facades\Mail;
+
 class RegisterController extends Controller
 {
     protected $userManager; 
@@ -32,7 +35,8 @@ class RegisterController extends Controller
         ]);
         $user = $this->userManager->createUser();
         $this->customerManager->createCustomer($user);
-        \App\Jobs\SendCustomerVerificationEmail::dispatch($user);
+        Mail::to($user->email)->send(new CustomerVerificationEmail($user));
+        // \App\Jobs\SendCustomerVerificationEmail::dispatch();
         auth()->login($user);
         return redirect()->to('/dashboard')->with('success',"Welcome!!! You have successfully registered");
     } 

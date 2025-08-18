@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use Vimeo\Laravel\VimeoManager;
+
 class FileController extends Controller
 {
     /**
@@ -27,6 +29,30 @@ class FileController extends Controller
         return view('file.file_upload');
     }
 
+    //  public function createVideo()
+    // {
+    //     return view('file.video');
+    // }
+
+    //  public function upload(Request $request, VimeoManager $vimeo)
+    // {
+    //     $request->validate([
+    //         'video' => '',
+    //         'title'=> 'required',
+    //         'description'=> 'required'
+    //     ]);
+    //     $storedPath = $request->file('video')->store('app','local');
+    //     $absolutePath = storage_path('app/' . $storedPath);
+    //     if (!file_exists($absolutePath) || !is_readable($absolutePath)) {
+    //         throw new \Exception("File not found or unreadable: " . $absolutePath);
+    //     }
+    //     // dd($absolutePath);
+    //     $url = $vimeo->upload($absolutePath ,[
+    //         'title'=> $request->title,
+    //         'description'=> $request->description,
+    //     ]);
+    //     dd($url);
+    // }
     /**
      * Store a newly created resource in storage.
      *
@@ -66,6 +92,11 @@ class FileController extends Controller
     public function show($id)
     {
         //
+    }
+
+     public function video()
+    {
+        return view('file.video');
     }
 
     /**
