@@ -10,6 +10,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Services\ProductManager;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class ProductApiController extends Controller
 {
@@ -45,13 +46,17 @@ class ProductApiController extends Controller
 
       public function login(Request $request)
     {
-        $user= User::where('email', $request->email)->first();
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return response([
-                'message' => 'These credentials do not match our records.',
-                'data'=> '404'
+        $validated = $request->validate([
+            'email'=> 'required',
+            'password'=> 'required'
+        ]); 
+        if(!Auth::attempt($validated)){
+            return response()->json([
+                'message'=> 'Invalid login credentials',
+                'status'=> 401,
             ]);
         }
+        $user = request()->user();
         $token = $user->createToken('my-app-token')->plainTextToken;
         $response = [
             'user' => $user,

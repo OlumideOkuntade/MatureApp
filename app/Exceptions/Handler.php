@@ -38,4 +38,12 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    protected function unauthenticated($request, $exception)
+        {
+            return response()->json([
+                'status' => 401,
+                'message'=> 'You must login to access this resource.'
+            ]);
+        }
 }
