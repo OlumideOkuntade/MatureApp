@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class Admin extends Model
@@ -31,7 +32,7 @@ class Admin extends Model
       ->logOnly(['*']);
     }
     
-      public function user()
+      public function user():BelongsTo
       {
         return $this->belongsTo(User::class);
       }

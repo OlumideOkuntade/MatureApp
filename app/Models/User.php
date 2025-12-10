@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -51,12 +52,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-      public function customer()
+      public function customer(): HasOne
     {
         return $this->hasOne(Customer::class);
     }
 
-      public function admin()
+      public function admin(): HasOne
     {
         return $this->hasOne(Admin::class);
     }
