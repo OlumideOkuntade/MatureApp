@@ -16,7 +16,7 @@
     </div>
     <div class="mt-5 mb-5" >
       <h6>Don't have an account?</h6>
-      <button class="btn btn-outline-dark col-12 round-5 "><a style="color:black;text-decoration:none;" href="{{route("register")}}">Create account</a></button>
+      <button class="btn btn-dark col-12 round-5 "><a style="color:white;text-decoration:none;" href="{{route("register")}}">Create account</a></button>
     </div>
   </div>
 </div>
